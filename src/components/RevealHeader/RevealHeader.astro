@@ -2,13 +2,18 @@
 interface Props {
     lines: {
         text: string;
-        font: 'formula' | 'editorial';
+        font: string;
     }[];
     color?: string;
 }
 
 const { lines, color = '#FFE500' } = Astro.props;
 const id = `reveal-${Math.random().toString(36).slice(2, 7)}`;
+const fontMap: Record<string, string> = {
+    radio: 'font-sans',
+    formula: 'font-formula',
+    editorial: 'font-editorial'
+};
 ---
 
 <div class="trigger relative" id={id} data-color={color}>
@@ -16,7 +21,9 @@ const id = `reveal-${Math.random().toString(36).slice(2, 7)}`;
         {
             lines.map(({ text, font }) => (
                 <div class="line-wrapper relative w-fit overflow-hidden">
-                    <h1 class={`font-${font} text-heading-xl leading-[110%] uppercase`}>{text}</h1>
+                    <h1 class={`${fontMap[font]} text-heading-xl leading-[110%] uppercase`}>
+                        {text}
+                    </h1>
                 </div>
             ))
         }

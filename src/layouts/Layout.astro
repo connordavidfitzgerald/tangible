@@ -1,5 +1,6 @@
 ---
 import '@styles/main.css';
+import '@styles/tailwind.css';
 import { Font, type CssVariable } from 'astro:assets';
 import { SEO } from 'astro-seo';
 import { defaultSeo } from '@data/seo';
@@ -32,7 +33,7 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
         {FONTS.map((font) => <Font cssVariable={font} preload />)}
     </head>
     <body>
-        <script src="../scripts/app.ts"></script>
+        <script src="../script  s/app.ts"></script>
 
         <div class="fixed container grid grid-cols-2 py-fluid-md">
             <div>

@@ -9,7 +9,7 @@ const isProd = import.meta.env.PROD;
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://locomotive-astro-boilerplate.vercel.app',
+    site: 'https://connordavidfitzgerald.github.io/tangible/',
     vite: {
         css: {
             postcss: {

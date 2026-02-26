@@ -8,6 +8,48 @@
 @import './utilities.css';
 @import './typography.css';
 
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('/fonts/PPRadioGrotesk-Ultralight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('/fonts/PPRadioGrotesk-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('/fonts/PPRadioGrotesk-Black.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Formula';
+    src: url('/fonts/PPFormula-CondensedBold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Editorial New';
+    src: url('/fonts/PPEditorialNew-Ultralight.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* rest of your css... */
+
 /* Global styles */
 :root {
     --color-primary: colorCode('black');

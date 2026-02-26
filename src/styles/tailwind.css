@@ -6,9 +6,9 @@
 }
 
 @theme static {
-    --font-sans: var(--radio);
-    --font-formula: var(--formula);
-    --font-editorial: var(--editorial);
+    --font-sans: 'PP Radio Grotesk', sans-erif;
+    --font-formula: 'PP Formula', sans-serif;
+    --font-editorial: 'PP Editorial New', serif;
 
     --text-heading-xl: utopia.clamp(60, 120);
     --text-heading-lg: utopia.clamp(48, 80);
