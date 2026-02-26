@@ -4,7 +4,7 @@ import { Font, type CssVariable } from 'astro:assets';
 import { SEO } from 'astro-seo';
 import { defaultSeo } from '@data/seo';
 import { getSeo } from '@scripts/utils/seo';
-import Icon from '../components/Icon/Icon.astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
     title: string;
@@ -16,7 +16,7 @@ const { title, seo = {} } = Astro.props;
 const seoData = getSeo(seo, defaultSeo, title);
 
 // Constants
-const FONTS: CssVariable[] = ['--custom-font-sans'];
+const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
 ---
 
 <!doctype html>
@@ -34,7 +34,7 @@ const FONTS: CssVariable[] = ['--custom-font-sans'];
     <body>
         <script src="../scripts/app.ts"></script>
 
-        <div class="container grid grid-cols-2 py-fluid-md">
+        <div class="fixed container grid grid-cols-2 py-fluid-md">
             <div>
                 <Icon name="logo" />
             </div>
@@ -50,17 +50,6 @@ const FONTS: CssVariable[] = ['--custom-font-sans'];
                 <slot />
             </div>
         </main>
-
-        <footer class="container flex justify-between py-fluid-xs">
-            <div>
-                &copy;{new Date().getFullYear()}
-            </div>
-
-            <nav class="flex gap-gutter">
-                <a href="/">Index</a>
-                <a href="/about">About</a>
-            </nav>
-        </footer>
 
         <script>
             import { setViewportSize } from '@scripts/utils/setViewportSize';

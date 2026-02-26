@@ -6,15 +6,23 @@
 }
 
 @theme static {
-    --font-sans: var(--custom-font-sans);
+    --font-sans: var(--radio);
+    --font-formula: var(--formula);
+    --font-editorial: var(--editorial);
 
     --text-heading-xl: utopia.clamp(60, 120);
     --text-heading-lg: utopia.clamp(48, 80);
     --text-body-sm: utopia.clamp(14, 16);
-    --text-button: utopia.clamp(16, 20);
+    --text-body-md: utopia.clamp(20, 32);
+    --text-body-lg: utopia.clamp(32, 40);
+    --text-button: utopia.clamp(14, 16);
 
     --color-black: #000000;
     --color-white: #ffffff;
+    --color-perle: #e1e3d0;
+    --color-bronze: #997e4e;
+    --color-yellow: #f4e727;
+    --color-offwhite: #ededed;
 
     --spacing-unit-sm: var(--unit-sm);
     --spacing-unit-md: var(--unit-md);

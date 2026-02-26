@@ -3,64 +3,74 @@ import Layout from '@layouts/Layout.astro';
 import Button from '@components/Button/Button.astro';
 import Wysiwyg from '@components/Wysiwyg/Wysiwyg.astro';
 import Accordion from '@components/Accordion/Accordion.astro';
+import Image from '@components/Image/Image.astro';
+import { Icon } from 'astro-icon/components';
+import chalkboard from '@images/Home_about.jpg';
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
 ---
 
 <Layout title="Welcome to the Locomotive Astro Boilerplate.">
-    <header class="container">
-        <h1 class="heading-lg">Welcome to the Locomotive Astro Boilerplate.</h1>
-    </header>
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-10 pl-10">
+        <RevealHeader
+            lines={[
+                { text: 'Concrétisez votre', font: 'formula' },
+                { text: 'Leadership', font: 'editorial' },
+                { text: 'Authentique', font: 'editorial' }
+            ]}
+        />
+    </div>
 
-    <div class="container mt-fluid-xl">
-        <div class="grid grid-cols-12 gap-gutter">
-            <div class="text-body col-span-full md:col-span-4">
-                <Wysiwyg>
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                </Wysiwyg>
-
-                <Button href="/about" class="mt-fluid-sm"> Learn More </Button>
+    <div class="grid h-fit min-h-[828px] grid-cols-12 gap-5 bg-offwhite pt-20 pr-10 pb-20 pl-10">
+        <div class="col-span-4 min-h-full overflow-clip pr-5">
+            <Image src={chalkboard} class="aspect-444/668 h-full" />
+        </div>
+        <div class="col-span-8 flex grow flex-col">
+            <div
+                class="font-radio text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 tracking-[3%] uppercase"
+            >
+                À Propos
             </div>
-
-            <div class="col-span-full text-body-sm md:col-span-4">
-                <Wysiwyg tag="article">
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                    <Button href="https://google.ca" target="_blank" class="mt-fluid-sm">
-                        Visit Us
-                    </Button>
-                </Wysiwyg>
-            </div>
-
-            <div class="col-span-full text-body-sm md:col-span-4">
-                <Wysiwyg>
-                    <Fragment
-                        set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                    />
-                </Wysiwyg>
-            </div>
-
-            <div class="col-span-full text-body-sm md:col-span-4">
-                <Accordion label="Accordion summary">
-                    <Wysiwyg>
-                        <Fragment
-                            set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                        />
-                    </Wysiwyg>
-                </Accordion>
-                <Accordion label="Accordion summary">
-                    <Wysiwyg>
-                        <Fragment
-                            set:html={`<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`}
-                        />
-                    </Wysiwyg>
-                </Accordion>
+            <div class="flex grow flex-col justify-between pt-20 pr-[3.78rem] pl-[3.78rem]">
+                <p class="font-radio text-body-md leading-[120%] font-light tracking-[3%]">
+                    <span class="font-bold text-bronze">Tangible</span> révèle le leadership authentique
+                    des entrepreneurs et des équipes exécutives. Notre approche intégrée allie coaching
+                    sur mesure, outils innovants et ateliers immersifs. Fondée sur la connexion humaine,
+                    la confiance et l’intelligence collective, elle crée des espaces de transformation
+                    durables et porteurs de sens.
+                </p>
+                <div class="flex w-full flex-row items-center justify-center pb-10">
+                    <Button class="tracking-[3%] uppercase">En savoir plus</Button>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Placeholder -->
-        <div class="mt-fluid-xl h-[50vh] w-full bg-black opacity-50"></div>
-        <div class="bg-grey mt-fluid-xl h-[50vh] w-full"></div>
+    <div
+        class="grid h-fit min-h-[902px] grid-cols-12 items-center justify-center gap-5 bg-yellow pt-20 pr-10 pb-20 pl-10"
+    >
+        <h1
+            class="heading-lg font-radio col-span-6 col-start-2 flex h-full flex-col justify-center leading-[105%] font-normal tracking-[0%]"
+        >
+            Et si cultiver l’effervescence de votre mission faisait toute la différence ?
+        </h1>
+        <div class="col-span-4 col-start-9 pr-16">
+            <Icon name="plant" class="h-auto w-full mix-blend-multiply" />
+        </div>
+    </div>
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-10 pl-10">
+        <RevealHeader
+            lines={[
+                { text: 'Coaching', font: 'formula' },
+                { text: 'D’Entreprises', font: 'editorial' }
+            ]}
+        />
+    </div>
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-10 pl-10">
+        <RevealHeader
+            lines={[
+                { text: 'Coaching', font: 'formula' },
+                { text: 'De Leaders', font: 'editorial' }
+            ]}
+        />
     </div>
 </Layout>

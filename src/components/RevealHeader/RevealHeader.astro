@@ -1,0 +1,78 @@
+---
+interface Props {
+    lines: {
+        text: string;
+        font: 'formula' | 'editorial';
+    }[];
+    color?: string;
+}
+
+const { lines, color = '#FFE500' } = Astro.props;
+const id = `reveal-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+<div class="trigger relative" id={id} data-color={color}>
+    <div class="flex h-screen w-full flex-col justify-center pr-10 pl-10">
+        {
+            lines.map(({ text, font }) => (
+                <div class="line-wrapper relative w-fit overflow-hidden">
+                    <h1 class={`font-${font} text-heading-xl leading-[110%] uppercase`}>{text}</h1>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.trigger').forEach((section) => {
+            const color = (section as HTMLElement).dataset.color || '#FFE500';
+            const wrappers = section.querySelectorAll('.line-wrapper');
+
+            wrappers.forEach((wrapper) => {
+                const overlay = document.createElement('div');
+                overlay.classList.add('reveal-bar');
+                Object.assign(overlay.style, {
+                    position: 'absolute',
+                    inset: '0',
+                    background: color,
+                    transform: 'scaleX(0)',
+                    transformOrigin: 'left center',
+                    zIndex: '1'
+                });
+                wrapper.appendChild(overlay);
+                gsap.set(wrapper.querySelector('h1'), { opacity: 0 });
+            });
+
+            const tl = gsap.timeline({
+                defaults: { ease: 'power3.inOut' },
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 50%',
+                    once: true
+                }
+            });
+
+            wrappers.forEach((wrapper, i) => {
+                const h1 = wrapper.querySelector('h1');
+                const bar = wrapper.querySelector('.reveal-bar');
+                const offset = i * 0.15;
+
+                tl.to(bar, { scaleX: 1, duration: 0.45 }, offset)
+                    .set(h1, { opacity: 1 }, offset + 0.45)
+                    .to(
+                        bar,
+                        { scaleX: 0, transformOrigin: 'right center', duration: 0.45 },
+                        offset + 0.45
+                    );
+            });
+        });
+
+        ScrollTrigger.refresh();
+    });
+</script>
