@@ -13,16 +13,19 @@ import Button from '../components/Button/Button.astro';
 
 import about from '@images/centreiam2.png';
 import leaders from '@images/leaders.jpg';
+import building from '@images/AH1A3167.jpg';
 ---
 
 <Layout title="Programmes — Leaders">
-    <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
+    <div
+        class="flex h-screen flex-col justify-end bg-offwhite pr-fluid-forty pb-16 pl-fluid-forty sm:justify-center sm:pb-0"
+    >
         <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
             <Picture
                 alt="A clipboard and paper"
-                src={leaders}
+                src={building}
                 layout="full-width"
-                class="h-full min-w-full object-cover"
+                class="h-full min-w-full object-cover brightness-80"
             />
         </div>
         <RevealHeader

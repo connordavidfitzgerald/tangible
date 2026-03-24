@@ -11,10 +11,11 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
 
 import about from '@images/centreiam2.png';
-import leaders from '@images/leaders.jpg';
+import leaders from '@images/hands_tangible.jpg';
+import mobcentre from '@images/mob_centre.png';
 ---
 
-<Layout title="Programmes — Leaders">
+<Layout title="Centre I AM">
     <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
         <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
             <Picture
@@ -35,21 +36,33 @@ import leaders from '@images/leaders.jpg';
         />
     </div>
     <div
-        class="grid aspect-1512/830 h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-forty pl-fluid-forty"
+        class="grid aspect-1512/830 h-fit grid-cols-8 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-forty pl-fluid-forty sm:grid-cols-12"
     >
-        <div class="col-span-4 pr-fluid-twenty">
-            <Picture src={about} alt="Ron Cherilus" class="h-auto w-full" />
+        <div
+            class="font-radio sm:text-body col-span-8 flex flex-row items-center justify-center border-b border-b-perle pb-3 text-[0.9rem] tracking-[3%] uppercase sm:hidden"
+        >
+            À Propos
+        </div>
+        <div
+            class="col-span-6 col-start-2 hidden w-full sm:col-span-4 sm:col-start-1 sm:flex sm:pr-fluid-twenty"
+        >
+            <Picture src={about} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+        </div>
+        <div
+            class="col-span-6 col-start-2 flex w-full pt-16 pb-16 pl-fluid-forty sm:col-span-4 sm:col-start-1 sm:hidden sm:pl-0"
+        >
+            <Picture src={mobcentre} alt="Ron Cherilus" class="h-auto w-full object-cover" />
         </div>
         <div
             class="col-span-8 flex h-full flex-col justify-start gap-fluid-eighty border-b border-b-perle"
         >
             <div
-                class="font-radio text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 tracking-[3%] uppercase"
+                class="font-radio text-body hidden flex-row items-center justify-center border-b border-b-perle pb-3 tracking-[3%] uppercase sm:flex"
             >
                 À Propos
             </div>
             <p
-                class="pr-fluid-sixty pl-fluid-sixty text-body-md leading-[120%] font-light tracking-[3%]"
+                class="pb-16 text-mob-body leading-[120%] font-light tracking-[3%] sm:pr-fluid-sixty sm:pl-fluid-sixty sm:text-body-md"
             >
                 Depuis 2012, le Centre I AM accompagne des milliers de membres vers la réalisation
                 de leur ÊTRE authentique. Établi au cœur du centre-ville, dans un espace à la fois
@@ -61,12 +74,12 @@ import leaders from '@images/leaders.jpg';
             </p>
         </div>
         <div
-            class="font-radio text-body col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-fluid-eighty pb-3 tracking-[3%] uppercase"
+            class="font-radio sm:text-body col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-16 pb-3 text-[0.9rem] tracking-[3%] uppercase sm:pt-fluid-eighty"
         >
             Nos services CIAM
         </div>
     </div>
-
+    <div class="flex h-4 bg-offwhite"></div>
     <ServiceSlider
         slides={[
             {
