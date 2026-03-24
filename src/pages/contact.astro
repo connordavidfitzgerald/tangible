@@ -38,25 +38,32 @@ import leaders from '@images/leaders.jpg';
     <div
         class="grid aspect-1512/830 h-fit grid-cols-12 gap-fluid-twenty bg-perle pt-fluid-160 pr-fluid-forty pb-fluid-160 pl-fluid-forty"
     >
-        <div class="col-span-8 col-start-3 flex h-full flex-col justify-start gap-fluid-eighty">
+        <div
+            class="col-span-12 flex h-full flex-col justify-start gap-fluid-eighty sm:col-span-8 sm:col-start-3"
+        >
             <div
-                class="flex flex-col gap-fluid-forty text-body-md leading-[120%] font-light tracking-[3%]"
+                class="flex flex-col gap-fluid-forty pt-32 pb-32 text-mob-body leading-[120%] font-light tracking-[3%] sm:pt-0 sm:pb-0 sm:text-body-md"
             >
                 <p class="font-bold text-bronze">
                     Vous souhaitez amorcer une transformation tangible, pour vous, votre équipe ou
                     votre écosystème ?
                 </p>
-                <div class="flex flex-col gap-fluid-forty">
-                    <p>
+                <div class="flex flex-col gap-0 sm:gap-fluid-forty">
+                    <p class="pb-fluid-forty sm:pb-0">
                         L’équipe Tangible est là pour vous accompagner à chaque étape. Que ce soit
                         pour en savoir plus sur nos programmes, réserver une consultation ou
                         rencontrer un·e coach de notre équipe, nous serons heureux de créer un
                         moment porteur avec vous.
                     </p>
                     <div
-                        class="grid grid-cols-2 gap-fluid-twenty border-t border-b border-white pt-fluid-forty pb-fluid-forty"
+                        class="flex flex-col gap-fluid-twenty border-t border-b border-white pt-fluid-forty pb-fluid-forty sm:grid sm:grid-cols-2"
                     >
                         <a>info@tangiblecoach.com</a>
+                        <a class="hidden sm:flex">514-679-2312</a>
+                    </div>
+                    <div
+                        class="flex flex-col gap-fluid-twenty border-b border-white pt-fluid-forty pb-fluid-forty sm:grid sm:hidden sm:grid-cols-2"
+                    >
                         <a>514-679-2312</a>
                     </div>
                 </div>
@@ -64,9 +71,9 @@ import leaders from '@images/leaders.jpg';
         </div>
     </div>
     <div
-        class="grid grid-cols-12 bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-270 pl-fluid-forty"
+        class="grid grid-cols-12 bg-offwhite pt-16 pr-fluid-forty pb-32 pl-fluid-forty sm:pt-fluid-eighty sm:pb-fluid-270"
     >
-        <div class="col-span-8 col-start-3">
+        <div class="col-span-12 sm:col-span-8 sm:col-start-3">
             <form id="contact-form">
                 <input
                     type="hidden"
