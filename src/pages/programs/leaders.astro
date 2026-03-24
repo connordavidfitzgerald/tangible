@@ -1,0 +1,102 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import { Picture } from 'astro:assets';
+
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
+import RevealImage from '@components/RevealHeader/RevealImage.astro';
+import RevealBody from '@components/RevealHeader/RevealBody.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
+
+import leaders from '@images/leaders.jpg';
+---
+
+<Layout title="Programmes — Leaders">
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
+        <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
+            <Picture
+                alt="A clipboard and paper"
+                src={leaders}
+                layout="full-width"
+                class="h-full min-w-full object-cover"
+            />
+        </div>
+        <RevealHeader
+            delay={0.25}
+            textColor="#FFFFFF"
+            lines={[
+                { text: 'Coaching', font: 'formula' },
+                { text: 'Des Leaders', font: 'editorial' }
+            ]}
+        />
+    </div>
+    <div
+        class="grid aspect-1512/830 h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-5xl pr-fluid-forty pb-fluid-5xl pl-fluid-forty"
+    >
+        <div
+            class="col-span-12 flex h-full flex-col justify-center gap-fluid-eighty pt-16 pb-16 sm:col-span-8 sm:col-start-3 sm:pt-0 sm:pb-0"
+        >
+            <p class="text-mob-body leading-[120%] font-light tracking-[3%] sm:text-body-md">
+                Nos programmes dédiés au leaders accompagnent les entrepreneur·es, coach·es et
+                professionnel·les en transition ou en croissance. Ils sont conçus pour soutenir un
+                leadership aligné, humain et durable à travers des parcours individuels, de groupe
+                et immersifs.
+            </p>
+        </div>
+    </div>
+
+    <ServiceSlider
+        slides={[
+            {
+                shapeClass: 'hexagon',
+                shapeTitle: 'Programmes<br/>Individuels',
+                descriptions: [
+                    {
+                        title: 'Propulse',
+                        text: 'Coaching d’activation pour leaders en émergence. Pour passer à l’action avec clarté, structurer les premières bases de son projet.'
+                    },
+                    {
+                        title: 'Croissance+',
+                        text: 'Coaching structurant pour entrepreneur·es en expansion. Pour consolider sa posture, clarifier sa vision et créer un impact stratégique durable.'
+                    },
+                    {
+                        title: 'Focus stratégique',
+                        text: 'Pour mentors et fondateur·ices aguerri·es en phase de transmission, de transition ou de recentragee. Inclut le GLP (Global Leadership Profile).'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'circle',
+                shapeTitle: 'Programmes<br/>De Groupe',
+                descriptions: [
+                    {
+                        title: 'NEOSPHÈRE – Le réseau des entrepreneurs ouverts aux opportunités',
+                        text: 'Un programme collectif transformationnel pour les leaders en quête de sens. Entre introspection guidée, alignement entrepreneurial et activation collective, NEOSPHÈRE offre un espace porteur, stratégique et profondément humain.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'diamond',
+                shapeTitle: 'Expériences<br/>Immersives',
+                descriptions: [
+                    {
+                        title: 'Cercles Tangible',
+                        text: 'Abonnements mensuels donnant accès à des contenus exclusifs, du coaching de groupe et une communauté engagée. Trois formats : Cocréation, Ancrage et Expansion.'
+                    },
+                    {
+                        title: 'Whiteboard™',
+                        text: 'Ateliers intensifs pour clarifier sa trajectoire entrepreneuriale, faciliter les décisions clés et raviver sa vision stratégique.'
+                    },
+                    {
+                        title: 'Retraites Tangible',
+                        text: 'Immersions humaines pour leaders et régénératrices pour leaders en quête de recentrage, d’alignement et de ressourcement — en nature ou en ville.'
+                    }
+                ]
+            }
+        ]}
+    />
+
+    <ContactFooter heading="Amorcez une transformation tangible." />
+</Layout>

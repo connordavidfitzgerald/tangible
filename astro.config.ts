@@ -1,11 +1,9 @@
-import { defineConfig, fontProviders } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import postcssUtopia from 'postcss-utopia';
 import postcssHelpersFunctions from '@locomotivemtl/postcss-helpers-functions';
 import postcssTailwindShortcuts from '@locomotivemtl/postcss-tailwind-shortcuts';
 import tailwindcss from '@tailwindcss/postcss';
-
-const isProd = import.meta.env.PROD;
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +13,11 @@ export default defineConfig({
             postcss: {
                 plugins: [
                     tailwindcss(),
-                    postcssUtopia(),
+                    postcssUtopia({
+                        minWidth: 320,
+                        maxWidth: 2560,
+                        relativeTo: 'container'
+                    }),
                     postcssHelpersFunctions(),
                     postcssTailwindShortcuts()
                 ]

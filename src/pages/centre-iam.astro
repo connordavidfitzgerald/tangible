@@ -1,0 +1,121 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import { Picture } from 'astro:assets';
+
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
+import RevealImage from '@components/RevealHeader/RevealImage.astro';
+import RevealBody from '@components/RevealHeader/RevealBody.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
+
+import about from '@images/centreiam2.png';
+import leaders from '@images/leaders.jpg';
+---
+
+<Layout title="Programmes — Leaders">
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
+        <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
+            <Picture
+                alt="A clipboard and paper"
+                src={leaders}
+                layout="full-width"
+                class="h-full min-w-full object-cover"
+            />
+        </div>
+        <RevealHeader
+            delay={0.25}
+            textColor="#FFFFFF"
+            lines={[
+                { text: 'Pour une connexion', font: 'formula' },
+                { text: 'authentique', font: 'editorial' },
+                { text: 'à son étre', font: 'editorial' }
+            ]}
+        />
+    </div>
+    <div
+        class="grid aspect-1512/830 h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-forty pl-fluid-forty"
+    >
+        <div class="col-span-4 pr-fluid-twenty">
+            <Picture src={about} alt="Ron Cherilus" class="h-auto w-full" />
+        </div>
+        <div
+            class="col-span-8 flex h-full flex-col justify-start gap-fluid-eighty border-b border-b-perle"
+        >
+            <div
+                class="font-radio text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 tracking-[3%] uppercase"
+            >
+                À Propos
+            </div>
+            <p
+                class="pr-fluid-sixty pl-fluid-sixty text-body-md leading-[120%] font-light tracking-[3%]"
+            >
+                Depuis 2012, le Centre I AM accompagne des milliers de membres vers la réalisation
+                de leur ÊTRE authentique. Établi au cœur du centre-ville, dans un espace à la fois
+                inspirant et unique, le Centre I AM est un lieu de rencontres humaines où
+                formations, services de coaching et méditations sont offerts. Guidé par une équipe
+                de coach·es professionnel·les certifié·es, le Centre I AM propose des
+                accompagnements  pour développer votre autonomie, cultiver votre présence à soi et
+                incarner un plus grand épanouissement dans toutes les sphères de votre vie.
+            </p>
+        </div>
+        <div
+            class="font-radio text-body col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-fluid-eighty pb-3 tracking-[3%] uppercase"
+        >
+            Nos services CIAM
+        </div>
+    </div>
+
+    <ServiceSlider
+        slides={[
+            {
+                shapeClass: 'starburst',
+                shapeTitle: 'Formations',
+                descriptions: [
+                    {
+                        text: 'Nos coachs certifié·es vous accompagnent dans l’émergence du leader authentique en vous. Nos formations proposent de découvrir et d’intégrer la posture du leader-coach. En partant de l’essence (l’alignement intérieur, la clarté, l’intention), les participant·es apprendront à transformer leur leadership en une pratique tangible, vécue dans leurs conversations quotidiennes, leurs décisions et leur façon de mobiliser leurs équipes.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'diamond',
+                shapeTitle: 'Coaching',
+                descriptions: [
+                    {
+                        text: 'Nos services de coaching offrent des expériences personnalisées et transformatrices, en individuel ou en groupe. Ces rencontres vous permettent de faire le point, de vous aligner sur votre I AM et d’accéder à un niveau supérieur de clarté, de congruence et de confiance en vous, tant dans vos décisions que dans vos relations.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'sparkle',
+                shapeTitle: 'Méditation',
+                descriptions: [
+                    {
+                        text: 'Nos expert·es et professeur·es vous initient à diverses techniques de méditation basées sur des approches scientifiques et des méthodes immersives. Grâce à des outils comme les intégrations musicales, nous vous aidons à vous recentrer, calmer le mental et retrouver votre pleine puissance intérieure.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'circle',
+                shapeTitle: 'Coaching de<br/>prise de parole',
+                descriptions: [
+                    {
+                        text: 'S’exprimer librement en public, c’est souvent sortir de sa zone de confort. Le coaching I AM vous aide à le faire avec authenticité, assurance et liberté. Nos accompagnements allient approche introspective et volet technique: vous explorez le récit personnel qui donne sens à votre message, tout en développant votre présence, votre aisance, votre éloquence et votre maîtrise de la parole. Une démarche complète pour vous aligner, incarner votre histoire et communiquer avec impact.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'hexagon',
+                shapeTitle: 'Nos services pro bono',
+                descriptions: [
+                    {
+                        text: 'Pour accroître notre impact social, l’équipe de coaching I AM offre ses services pro bono à des organismes à but non lucratif (OBNL) qui ont une mission sociale, environnementale, sportive ou éducative auprès des jeunes. Une façon concrète de mettre notre expertise au service de ceux et celles qui bâtissent un monde meilleur.'
+                    }
+                ]
+            }
+        ]}
+    />
+
+    <ContactFooter heading="Amorcez une transformation tangible." />
+</Layout>

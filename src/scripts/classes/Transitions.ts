@@ -4,6 +4,7 @@ import SwupPreloadPlugin from '@swup/preload-plugin';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
 import Swup from 'swup';
 import { Scroll } from '@scripts/classes/Scroll';
+import { gsap } from 'gsap';
 
 export class Transitions {
     static readonly READY_CLASS = 'is-ready';
@@ -64,6 +65,31 @@ export class Transitions {
         this.swup.hooks.on('content:replace', this.onContentReplaceBind);
         this.swup.hooks.on('animation:in:end', this.onAnimationInEndBind);
         this.swup.hooks.on('animation:out:start', this.onAnimationOutStartBind);
+
+        this.swup.hooks.replace('animation:out:await', async (visit, args, defaultHandler) => {
+            return new Promise((resolve) => {
+                gsap.to('.transition-col', {
+                    scaleX: 1.01,
+                    transformOrigin: 'left',
+                    duration: 0.6,
+                    ease: 'power3.inOut',
+                    onComplete: resolve
+                });
+            });
+        });
+
+        this.swup.hooks.replace('animation:in:await', async (visit, args, defaultHandler) => {
+            return new Promise((resolve) => {
+                gsap.to('.transition-col', {
+                    scaleX: 0,
+                    transformOrigin: 'right',
+                    duration: 0.7,
+                    delay: 0.2,
+                    ease: 'power3.inOut',
+                    onComplete: resolve
+                });
+            });
+        });
 
         this.swup.hooks.on('fetch:error', (e) => {
             console.log('fetch:error:', e);

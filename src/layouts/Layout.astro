@@ -6,6 +6,7 @@ import { SEO } from 'astro-seo';
 import { defaultSeo } from '@data/seo';
 import { getSeo } from '@scripts/utils/seo';
 import { Icon } from 'astro-icon/components';
+import Navbar from '@components/Navigation/Navbar.astro';
 
 interface Props {
     title: string;
@@ -24,8 +25,7 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, viewport-fit=cover" />
         <meta name="generator" content={Astro.generator} />
 
         <SEO {...seoData} />
@@ -35,23 +35,92 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
     <body>
         <script src="../scripts/app.ts"></script>
 
-        <div class="fixed container grid grid-cols-2 py-fluid-md">
-            <div>
-                <Icon name="logo" />
-            </div>
-            <nav class="flex gap-gutter justify-self-end">
-                <a href="/">Index</a>
-                <a href="/about">About</a>
-                <a href="/post">The post</a>
-            </nav>
-        </div>
-
-        <main id="swup" class="transition-fade">
+        <Navbar />
+        <main id="swup">
             <div id="content">
                 <slot />
             </div>
         </main>
+        <footer>
+            <div
+                class="desktop-version grid grid-cols-12 gap-fluid-twenty bg-black p-fluid-forty leading-[120%] tracking-[3%] text-offwhite"
+            >
+                <div class="col-span-3 flex flex-col items-start justify-between">
+                    <Icon name="logo" class="h-fluid-thirty w-auto" />
+                    <h6 class="font-sans text-body-sm">EN</h6>
+                </div>
+                <div class="col-span-5 flex flex-col items-start gap-10">
+                    <h6 class="font-sans text-body-sm leading-[120%]">
+                        1337 Avenue du Mont-Royal Est<br />
+                        Montreal (Quebec) H2J 1Y6<br />
+                        CANADA
+                    </h6>
+                    <h6 class="font-sans text-body-sm leading-[120%]">
+                        (514) 903-1794<br />
+                        info@tangible.com
+                    </h6>
+                </div>
+                <div
+                    class="col-span-2 flex flex-col justify-between font-sans text-body-sm uppercase"
+                >
+                    <a class="hover-underline w-fit">À Propos</a>
+                    <a class="hover-underline w-fit">Nos Programmes</a>
+                    <a class="hover-underline w-fit">Espace Membre</a>
+                </div>
+                <div
+                    class="col-span-2 flex flex-col justify-between font-sans text-body-sm uppercase"
+                >
+                    <a class="hover-underline w-fit">Contact</a>
+                    <a class="hover-underline w-fit">Centre IAM</a>
+                    <a class="hover-underline w-fit">Réservez une consulatation</a>
+                </div>
+            </div>
 
+            <div
+                class="mob-version grid grid-cols-8 gap-x-mob-16 gap-y-mob-footer bg-black pt-mob-64 pr-mob-16 pb-mob-32 pl-mob-16 text-white"
+            >
+                <div class="col-span-8">
+                    <Icon name="logo" class="h-fluid-thirty w-auto" />
+                </div>
+                <div
+                    class="col-span-8 flex flex-col items-start gap-mob-64 text-mob-footer-nav tracking-[3%]"
+                >
+                    <h6 class="font-radio leading-[120%]">
+                        1337 Avenue du Mont-Royal Est<br />
+                        Montreal (Quebec) H2J 1Y6<br />
+                        CANADA<br /><br />
+                        (514) 903-1794<br />
+                        info@tangible.com
+                    </h6>
+
+                    <div class="flex flex-col gap-mob-32">
+                        <div class="grid grid-cols-2 gap-mob-16 uppercase">
+                            <div class="flex flex-col gap-mob-32">
+                                <a>À Propos</a>
+                                <a>Nos Programmes</a>
+                                <a>Espace Membre</a>
+                            </div>
+                            <div class="flex flex-col gap-mob-32">
+                                <a>Contact</a>
+                                <a>Centre IAM</a>
+                                <a>Réservez une consulatation</a>
+                            </div>
+                        </div>
+                        <div class="border-t border-t-white pt-mob-32 text-left">
+                            <a>EN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="transition-columns pointer-events-none fixed inset-0 z-header flex">
+            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
+            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
+            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
+            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
+            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
+            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
+        </div>
         <script>
             import { setViewportSize } from '@scripts/utils/setViewportSize';
             import { $screenDebounce } from '@scripts/stores/screen';

@@ -1,0 +1,68 @@
+---
+interface Props {
+    tag?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+    class?: string;
+}
+
+const { tag: Tag = 'p', class: className = '' } = Astro.props;
+---
+
+<split-reveal style="display: contents;">
+    <Tag data-split class={className}>
+        <slot />
+    </Tag>
+</split-reveal>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    import { SplitText } from 'gsap/SplitText';
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    class SplitReveal extends HTMLElement {
+        connectedCallback() {
+            const el = this.querySelector('[data-split]');
+            if (!el) return;
+
+            // Pin the computed line-height before SplitText alters the DOM.
+            // On real iOS Safari, the inline-block wrappers SplitText creates
+            // produce a different line-height than the original flow, so when
+            // revert() removes them the text snaps to a different height.
+            // Setting it explicitly keeps both states identical.
+            const computedLineHeight = getComputedStyle(el).lineHeight;
+            (el as HTMLElement).style.lineHeight = computedLineHeight;
+
+            new SplitText(el, {
+                type: 'words,lines',
+                mask: 'lines',
+                autoSplit: true,
+                onSplit(self) {
+                    gsap.from(self.lines, {
+                        yPercent: 120,
+                        duration: 1,
+                        ease: 'power3.out',
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 90%',
+                            once: true
+                        },
+                        onComplete: () => {
+                            self.revert();
+                            // Remove the pinned line-height so the element
+                            // returns to normal CSS cascade after animation.
+                            (el as HTMLElement).style.lineHeight = '';
+                        }
+                    });
+                }
+            });
+
+            ScrollTrigger.refresh();
+        }
+    }
+
+    if (!customElements.get('split-reveal')) {
+        customElements.define('split-reveal', SplitReveal);
+    }
+</script>

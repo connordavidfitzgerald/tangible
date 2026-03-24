@@ -1,0 +1,87 @@
+---
+interface Props {
+    tag?: 'h1' | 'h2' | 'h3' | 'p';
+    color?: string;
+    class?: string;
+}
+
+const { tag: Tag = 'h1', color = '#FFE500', class: className = '' } = Astro.props;
+---
+
+<reveal-body style="display: contents;">
+    <div class="reveal-heading-wrapper" data-color={color}>
+        <Tag class={className}>
+            <slot />
+        </Tag>
+    </div>
+</reveal-body>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    import { SplitText } from 'gsap/SplitText';
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    class RevealBody extends HTMLElement {
+        connectedCallback() {
+            const wrapper = this.querySelector('.reveal-heading-wrapper');
+            if (!wrapper) return;
+
+            const el = wrapper as HTMLElement;
+            const color = el.dataset.color || '#F4E727';
+            const textEl = wrapper.querySelector('h1, h2, h3, h4, p');
+            if (!textEl) return;
+
+            new SplitText(textEl, {
+                type: 'lines',
+                mask: 'lines',
+                autoSplit: true,
+                onSplit(self) {
+                    const tl = gsap.timeline({
+                        defaults: { ease: 'power3.inOut' },
+                        scrollTrigger: {
+                            trigger: wrapper,
+                            start: 'top 75%',
+                            once: true
+                        }
+                    });
+
+                    self.lines.forEach((line, i) => {
+                        const maskWrapper = line.parentElement as HTMLElement | null;
+                        if (!maskWrapper) return;
+                        maskWrapper.style.position = 'relative';
+                        const overlay = document.createElement('div');
+                        Object.assign(overlay.style, {
+                            position: 'absolute',
+                            height: '101%',
+                            inset: '0',
+                            background: color,
+                            transform: 'scaleX(0)',
+                            transformOrigin: 'left center',
+                            zIndex: '1'
+                        });
+                        maskWrapper.appendChild(overlay);
+                        gsap.set(line, { opacity: 0 });
+
+                        const offset = i * 0.05;
+
+                        tl.to(overlay, { scaleX: 1, duration: 0.8 }, offset)
+                            .set(line, { opacity: 1 }, offset + 0.8)
+                            .to(
+                                overlay,
+                                { scaleX: 0, transformOrigin: 'right center', duration: 0.8 },
+                                offset + 0.8
+                            );
+                    });
+                }
+            });
+
+            ScrollTrigger.refresh();
+        }
+    }
+
+    if (!customElements.get('reveal-body')) {
+        customElements.define('reveal-body', RevealBody);
+    }
+</script>

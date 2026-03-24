@@ -1,76 +1,379 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Button from '@components/Button/Button.astro';
-import Wysiwyg from '@components/Wysiwyg/Wysiwyg.astro';
-import Accordion from '@components/Accordion/Accordion.astro';
 import Image from '@components/Image/Image.astro';
+import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import chalkboard from '@images/Home_about.jpg';
 import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
+import RevealImage from '@components/RevealHeader/RevealImage.astro';
+import RevealBody from '@components/RevealHeader/RevealBody.astro';
+
+import img1 from '@images/tangible1.jpg';
+import img2 from '@images/tangible2.jpg';
+import img3 from '@images/tangible3.jpg';
+import img4 from '@images/tangible4.jpg';
+import img5 from '@images/tangible5.jpg';
 ---
 
-<Layout title="Welcome to the Locomotive Astro Boilerplate.">
-    <div class="flex h-screen flex-col justify-center bg-offwhite pr-10 pl-10">
-        <RevealHeader
-            lines={[
-                { text: 'Concrétisez votre', font: 'formula' },
-                { text: 'Leadership', font: 'editorial' },
-                { text: 'Authentique', font: 'editorial' }
-            ]}
-        />
+<Layout title="Tangible">
+    <div
+        class="hero-section relative flex h-dvh max-h-dvh flex-col justify-end overflow-hidden pr-fluid-forty pb-fluid-270 pl-fluid-forty lg:max-h-300 lg:min-h-200 lg:justify-center lg:pb-0"
+    >
+        <!-- Crossfade background slideshow -->
+        <div class="hero-slideshow brightness-80">
+            <div class="hero-slide" style="z-index: 5; animation-delay: 0s" aria-hidden="true">
+                <Picture src={img1} alt="" layout="full-width" />
+            </div>
+            <div class="hero-slide" style="z-index: 4; animation-delay: 4s" aria-hidden="true">
+                <Picture src={img2} alt="" layout="full-width" />
+            </div>
+            <div class="hero-slide" style="z-index: 3; animation-delay: 8s" aria-hidden="true">
+                <Picture src={img3} alt="" layout="full-width" />
+            </div>
+            <div class="hero-slide" style="z-index: 2; animation-delay: 12s" aria-hidden="true">
+                <Picture src={img4} alt="" layout="full-width" />
+            </div>
+            <div class="hero-slide" style="z-index: 1; animation-delay: 16s" aria-hidden="true">
+                <Picture src={img5} alt="" layout="full-width" />
+            </div>
+        </div>
+        <!-- Overlay for text legibility -->
+
+        <!-- Foreground content -->
+        <div class="relative z-10">
+            <RevealHeader
+                delay={0.25}
+                textColor={'#FFFFFF'}
+                lines={[
+                    { text: 'Concrétisez votre', font: 'formula' },
+                    { text: 'Leadership', font: 'editorial' },
+                    { text: 'Authentique', font: 'editorial' }
+                ]}
+            />
+        </div>
     </div>
 
-    <div class="grid h-fit min-h-[828px] grid-cols-12 gap-5 bg-offwhite pt-20 pr-10 pb-20 pl-10">
-        <div class="col-span-4 min-h-full overflow-clip pr-5">
-            <Image src={chalkboard} class="aspect-444/668 h-full" />
+    <div
+        class="desktop-version grid h-fit min-h-[500px] grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
+    >
+        <div class="col-span-4 min-h-full overflow-clip pr-fluid-twenty">
+            <RevealImage>
+                <Picture
+                    src={chalkboard}
+                    class="aspect-444/668 min-h-[500px] object-cover"
+                    layout="full-width"
+                    alt="chalkboard"
+                />
+            </RevealImage>
         </div>
         <div class="col-span-8 flex grow flex-col">
             <div
-                class="font-radio text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 tracking-[3%] uppercase"
+                class="font-radio lg:text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 text-mob-section tracking-[3%] uppercase"
             >
                 À Propos
             </div>
-            <div class="flex grow flex-col justify-between pt-20 pr-[3.78rem] pl-[3.78rem]">
-                <p class="font-radio text-body-md leading-[120%] font-light tracking-[3%]">
+            <div
+                class="desktop-version flex grow flex-col justify-between pt-fluid-eighty pr-[3.78rem] pl-[3.78rem]"
+            >
+                <p class="text-test leading-[120%] font-light tracking-[3%]">
                     <span class="font-bold text-bronze">Tangible</span> révèle le leadership authentique
                     des entrepreneurs et des équipes exécutives. Notre approche intégrée allie coaching
                     sur mesure, outils innovants et ateliers immersifs. Fondée sur la connexion humaine,
                     la confiance et l’intelligence collective, elle crée des espaces de transformation
                     durables et porteurs de sens.
                 </p>
-                <div class="flex w-full flex-row items-center justify-center pb-10">
-                    <Button class="tracking-[3%] uppercase">En savoir plus</Button>
+            </div>
+            <div
+                class="desktop-version flex w-full flex-row items-center justify-center pb-fluid-forty"
+            >
+                <Button class="text-body-sm tracking-[3%] uppercase">En savoir plus</Button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mob-version grid h-fit min-h-[500px] grid-cols-8 gap-mob-16 bg-offwhite p-mob-16">
+        <div
+            class="font-radio col-span-8 flex flex-row items-center justify-center border-b border-b-perle pt-mob-64 pr-mob-16 pb-mob-16 pl-mob-16 text-mob-section tracking-[3%] uppercase"
+        >
+            À Propos
+        </div>
+        <div class="col-span-6 col-start-2 min-h-full overflow-clip pt-mob-64">
+            <RevealImage>
+                <Picture
+                    src={chalkboard}
+                    class="aspect-267/343 object-cover"
+                    layout="full-width"
+                    alt="chalkboard"
+                />
+            </RevealImage>
+        </div>
+        <div class="col-span-8 flex flex-col pt-mob-64 pb-mob-64">
+            <div class="flex flex-col gap-mob-32">
+                <p class="text-mob-body leading-[120%] font-light tracking-[3%]">
+                    <span class="font-bold text-bronze">Tangible</span> révèle le leadership authentique
+                    des entrepreneurs et des équipes exécutives. Notre approche intégrée allie coaching
+                    sur mesure, outils innovants et ateliers immersifs. Fondée sur la connexion humaine,
+                    la confiance et l’intelligence collective, elle crée des espaces de transformation
+                    durables et porteurs de sens.
+                </p>
+                <div class="flex w-full flex-row items-center justify-center">
+                    <Button class="text-body-sm tracking-[3%] uppercase">En savoir plus</Button>
                 </div>
             </div>
         </div>
     </div>
 
     <div
-        class="grid h-fit min-h-[902px] grid-cols-12 items-center justify-center gap-5 bg-yellow pt-20 pr-10 pb-20 pl-10"
+        class="desktop-version grid h-fit grid-cols-12 items-center justify-center gap-fluid-twenty bg-yellow pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
     >
         <h1
             class="heading-lg font-radio col-span-6 col-start-2 flex h-full flex-col justify-center leading-[105%] font-normal tracking-[0%]"
         >
             Et si cultiver l’effervescence de votre mission faisait toute la différence ?
         </h1>
-        <div class="col-span-4 col-start-9 pr-16">
+        <div class="col-span-4 col-start-9 pt-fluid-4xl pr-fluid-sixty pb-fluid-4xl">
             <Icon name="plant" class="h-auto w-full mix-blend-multiply" />
         </div>
     </div>
-    <div class="flex h-screen flex-col justify-center bg-offwhite pr-10 pl-10">
-        <RevealHeader
-            lines={[
-                { text: 'Coaching', font: 'formula' },
-                { text: 'D’Entreprises', font: 'editorial' }
-            ]}
-        />
+
+    <div
+        class="mob-version grid grid-cols-8 items-center justify-center gap-mob-16 bg-yellow pt-mob-64 pr-mob-16 pb-mob-64 pl-mob-16"
+    >
+        <div class="col-span-6 col-start-2 flex flex-col gap-mob-64">
+            <Icon name="plant" class="h-auto w-full mix-blend-multiply" />
+            <h1
+                class="font-radio flex flex-col justify-center text-mob-md leading-[105%] font-normal tracking-[0%]"
+            >
+                Et si cultiver l’effervescence de votre mission faisait toute la différence ?
+            </h1>
+        </div>
     </div>
-    <div class="flex h-screen flex-col justify-center bg-offwhite pr-10 pl-10">
-        <RevealHeader
-            lines={[
-                { text: 'Coaching', font: 'formula' },
-                { text: 'De Leaders', font: 'editorial' }
-            ]}
-        />
+
+    <div
+        class="desktop-version flex h-fit flex-col bg-offwhite pt-fluid-forty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
+    >
+        <div
+            class="font-radio flex w-full flex-row items-center justify-center border-b border-b-perle pb-3 text-body-sm tracking-[3%] uppercase"
+        >
+            Nos programmes
+        </div>
+        <div
+            class="relative grid grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-forty pr-fluid-forty pl-fluid-forty"
+        >
+        </div>
     </div>
+
+    <div class="mob-version flex h-fit flex-col bg-offwhite pt-mob-64 pr-mob-16 pl-mob-16">
+        <div
+            class="font-radio flex w-full flex-row items-center justify-center border-b border-b-perle pb-3 text-body-sm tracking-[3%] uppercase"
+        >
+            Nos programmes
+        </div>
+        <div
+            class="relative grid grid-cols-8 gap-mob-16 border-b border-perle bg-offwhite pt-fluid-forty"
+        >
+            <div class="col-span-8 pt-mob-64 pb-mob-16">
+                <RevealHeader
+                    lines={[
+                        { text: 'Coaching', font: 'formula' },
+                        { text: 'D’Entreprises', font: 'editorial' }
+                    ]}
+                />
+            </div>
+            <Image src={chalkboard} class="aspect-267/367.43 col-span-6 col-start-2" />
+            <div class="col-span-6 col-start-2 flex flex-col justify-start gap-0 pt-mob-16">
+                <p class="pb-fluid-forty text-mob-caption leading-[120%] tracking-[3%]">
+                    Le leadership d’entreprise ne s’improvise pas. Il se cultive. Découvrez nos
+                    programmes conçus pour les dirigeant·es, gestionnaires et équipes internes de
+                    moyennes et grandes organisations. Nous offrons un accompagnement individuel et
+                    de groupe de haute qualité pour incarner un leadership à la fois humain,
+                    stratégique et pérenne. Nos feuilles de route sur mesure associent ateliers
+                    d’expert·es, outils psychométriques, coaching exécutif et ateliers collaboratifs
+                    pour générer des dynamiques puissantes fondées sur l’intelligence collective.
+                    <br />
+                    <br />
+                    <span class="font-bold text-bronze">Résultat</span> : une clarté renforcée, une cohésion
+                    amplifiée et un impact durable.
+                </p>
+                <div class="flex w-full flex-row items-center justify-center pt-mob-16 pb-mob-64">
+                    <Button class="text-body-sm tracking-[3%] uppercase">En savoir plus</Button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="relative grid grid-cols-8 gap-mob-16 border-b border-perle bg-offwhite pt-fluid-forty"
+        >
+            <div class="col-span-8 pt-mob-64 pb-mob-16">
+                <RevealHeader
+                    lines={[
+                        { text: 'Coaching', font: 'formula' },
+                        { text: 'Des leaders', font: 'editorial' }
+                    ]}
+                />
+            </div>
+            <Image src={chalkboard} class="aspect-267/367.43 col-span-6 col-start-2" />
+            <div class="col-span-6 col-start-2 flex flex-col justify-start gap-0 pt-mob-16">
+                <p class="pb-fluid-forty text-mob-caption leading-[120%] tracking-[3%]">
+                    Le leadership d’entreprise ne s’improvise pas. Il se cultive. Découvrez nos
+                    programmes conçus pour les dirigeant·es, gestionnaires et équipes internes de
+                    moyennes et grandes organisations. Nous offrons un accompagnement individuel et
+                    de groupe de haute qualité pour incarner un leadership à la fois humain,
+                    stratégique et pérenne. Nos feuilles de route sur mesure associent ateliers
+                    d’expert·es, outils psychométriques, coaching exécutif et ateliers collaboratifs
+                    pour générer des dynamiques puissantes fondées sur l’intelligence collective.
+                    <br />
+                    <br />
+                    <span class="font-bold text-bronze">Notre ambition</span> : du sens, de l’impact,
+                    de la cohérence.
+                </p>
+                <div class="flex w-full flex-row items-center justify-center pt-mob-16 pb-mob-64">
+                    <Button class="uppercase">En savoir plus</Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="desktop-version relative grid h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-forty pl-fluid-forty"
+    >
+        <div class="col-span-4 flex flex-col overflow-clip pr-fluid-twenty">
+            <Image src={chalkboard} class="h-full" />
+        </div>
+        <div
+            class="col-span-8 flex h-full flex-col items-start gap-fluid-forty overflow-hidden border-b border-b-perle pr-fluid-sixty pl-fluid-sixty"
+        >
+            <RevealHeader
+                lines={[
+                    { text: 'Coaching', font: 'formula' },
+                    { text: 'D’Entreprises', font: 'editorial' }
+                ]}
+            />
+            <div class="flex flex-col justify-end gap-0">
+                <p class="pb-fluid-forty text-body-caption leading-[120%] tracking-[3%]">
+                    Le leadership d’entreprise ne s’improvise pas. Il se cultive. Découvrez nos
+                    programmes conçus pour les dirigeant·es, gestionnaires et équipes internes de
+                    moyennes et grandes organisations. Nous offrons un accompagnement individuel et
+                    de  groupe de haute qualité pour incarner un leadership à la fois humain,
+                    stratégique et pérenne. Nos feuilles de route sur mesure associent ateliers
+                    d’expert·es, outils psychométriques, coaching exécutif et ateliers collaboratifs
+                    pour générer des dynamiques puissantes fondées sur l’intelligence collective.
+                    <br />
+                    <br />
+                    <span class="font-bold text-bronze">Résultat</span> : une clarté renforcée, une cohésion
+                    amplifiée et un impact durable.
+                </p>
+                <div class="flex w-full flex-row items-center justify-center pb-fluid-forty">
+                    <Button class="text-body-sm tracking-[3%] uppercase">En savoir plus</Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="desktop-version relative grid h-fit grid-cols-12 gap-fluid-twenty border-b border-b-perle bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
+    >
+        <div
+            class="col-span-8 flex h-full flex-col items-start gap-fluid-forty overflow-hidden pr-fluid-sixty pl-fluid-sixty"
+        >
+            <RevealHeader
+                lines={[
+                    { text: 'Coaching', font: 'formula' },
+                    { text: 'De Leaders', font: 'editorial' }
+                ]}
+            />
+            <div class="flex flex-col justify-end gap-0">
+                <p class="pb-fluid-forty text-body-caption leading-[120%] tracking-[3%]">
+                    Un leadership authentique commence par un alignement intérieur. Entrepreneurs,
+                    professionnel·les en mouvement, coachs certifiés — nos programmes vous
+                    accompagnent pour incarner un leadership aligné sur vos valeurs et votre
+                    mission, à la fois humain et performant. Coaching individuel, outils
+                    psychométriques, cercles de co-apprentissage entre leaders : une approche sur
+                    mesure dans un cadre stratégique, stimulant et bienveillant.
+                    <br />
+                    <br />
+                    <span class="font-bold text-bronze">Notre ambition</span> : du sens, de l’impact,
+                    de la cohérence.
+                </p>
+                <div class="flex w-full flex-row items-center justify-center pb-fluid-forty">
+                    <Button class="text-body-sm tracking-[3%] uppercase">En savoir plus</Button>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-4 overflow-clip pl-fluid-twenty">
+            <Image src={chalkboard} class="aspect-444/668 h-full" />
+        </div>
+    </div>
+
+    <ContactFooter heading="Amorcez une transformation tangible." />
 </Layout>
+
+<style>
+    /* ─── Hero Slideshow ────────────────────────────────────────────── */
+    .hero-section {
+        background: #1a1a1a; /* fallback while images load */
+    }
+
+    .hero-slideshow {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    /*
+     * Each slide fills the container. All start fully opaque (opacity: 1 is
+     * the CSS default, applied BEFORE the delayed animation begins).
+     * The animation fades the slide OUT to reveal the one beneath it.
+     * z-index stacking: img1 on top → img5 at the bottom.
+     */
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 1; /* visible by default; animation will fade it out */
+        animation: hero-fade 20s ease-out infinite;
+    }
+
+    /* The picture + img inside each wrapper fill the space */
+    :global(.hero-slide picture),
+    :global(.hero-slide img) {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 6; /* above all 5 slides */
+        background: rgba(0, 0, 0, 0.35);
+        pointer-events: none;
+    }
+
+    /*
+     * 5 images × 4s per image = 20s total cycle.
+     * Each image: hold 3s (0%→15%), fade out over 1s (15%→20%),
+     * stay transparent (20%→95%), then gently fade back in (95%→100%, 1s).
+     * The 1s fade-in (95%→100%) overlaps perfectly with the previous
+     * image's 1s fade-out (15%→20%), making every loop restart seamless.
+     */
+    @keyframes hero-fade {
+        0% {
+            opacity: 1;
+        } /* hold — current image is shown  */
+        15% {
+            opacity: 1;
+        } /* hold for ~3s                   */
+        20% {
+            opacity: 0;
+        } /* fade out over ~1s              */
+        95% {
+            opacity: 0;
+        } /* stay hidden while others cycle */
+        100% {
+            opacity: 1;
+        } /* smooth 1s fade-in to be ready  */
+    }
+</style>

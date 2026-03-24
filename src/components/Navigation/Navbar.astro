@@ -1,0 +1,217 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div
+    id="navbar"
+    class="fixed top-10 z-50 flex h-fit w-full flex-row justify-between bg-yellow pt-2 pr-mob-16 pb-2 pl-mob-16 md:pr-fluid-forty md:pl-fluid-forty"
+>
+    <a href="/" class="relative z-10"><Icon name="logo" class="h-fluid-thirty w-auto" /></a>
+
+    <!-- Desktop nav items -->
+    <div
+        class="desktop-nav flex flex-row items-center gap-fluid-forty font-sans text-body-sm tracking-[2%] uppercase"
+    >
+        <a class="hover-underline" href="/about">À Propos</a>
+        <a class="hover-underline" href="/programs">Nos programmes</a>
+        <a class="hover-underline">Espace membres</a>
+        <a class="hover-underline" href="/contact">Contact</a>
+        <a class="hover-underline" href="/programs">Centre IAM</a>
+    </div>
+    <div
+        class="desktop-nav flex flex-row items-center gap-5 font-sans text-body-sm tracking-[2%] uppercase"
+    >
+        <a class="hover-underline">EN</a>
+        <a class="hover-underline" href="/contact">Réserver une consultation</a>
+    </div>
+
+    <!-- Hamburger button (mobile only) -->
+    <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+</div>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav gap-0 pr-mob-16 pl-mob-16">
+        <a
+            href="/about"
+            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+            >À Propos</a
+        >
+        <a
+            href="/programs"
+            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+            >Nos programmes</a
+        >
+        <a
+            href="#"
+            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+            >Espace membres</a
+        >
+        <a
+            href="/contact"
+            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+            >Contact</a
+        >
+        <a
+            href="/programs"
+            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+            >Centre IAM</a
+        >
+        <a
+            href="/contact"
+            class="flex w-full flex-col border-t border-b border-white pt-mob-menu pb-mob-menu text-mob-nav"
+            >Réserver une consultation</a
+        >
+        <a
+            href="#"
+            class="w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav-sm"
+            >EN</a
+        >
+    </nav>
+</div>
+
+<style>
+    /* ── Hamburger button ── */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        position: relative;
+        z-index: 200;
+    }
+
+    .bar {
+        display: block;
+        width: 30px;
+        height: 1px;
+        background-color: black;
+        transition:
+            transform 0.35s cubic-bezier(0.77, 0, 0.175, 1),
+            opacity 0.25s ease;
+        transform-origin: center;
+    }
+
+    /* X state */
+    .hamburger.is-open .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    .hamburger.is-open .bar:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    .hamburger.is-open .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ── Mobile menu overlay ── */
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+        background-color: var(--color-yellow); /* yellow — adjust to your yellow token */
+        z-index: 40;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        padding-top: 10rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        /* Hidden by default */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition:
+            opacity 0.35s cubic-bezier(0.77, 0, 0.175, 1),
+            transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .mobile-menu.is-open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+
+    .mobile-nav {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .mobile-nav a {
+        font-family: var(--font-sans, sans-serif);
+        letter-spacing: 0%;
+        line-height: 105%;
+        color: black;
+        text-decoration: none;
+        position: relative;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+        .desktop-nav {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+    }
+</style>
+
+<script>
+    function initNavbar() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (!hamburger || !mobileMenu) return;
+
+        // Forward wheel events into the overlay so trackpad/mouse scroll works
+        // while the body is locked (fixed elements sit outside the normal scroll chain)
+        mobileMenu.addEventListener(
+            'wheel',
+            (e) => {
+                e.preventDefault();
+                mobileMenu.scrollTop += e.deltaY;
+            },
+            { passive: false }
+        );
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('is-open');
+            mobileMenu.classList.toggle('is-open', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+
+            // Lock body so background page doesn't scroll behind the menu
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-open');
+                mobileMenu.classList.remove('is-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
+    // Run on initial load and after Astro page transitions
+    initNavbar();
+    document.addEventListener('astro:page-load', initNavbar);
+</script>

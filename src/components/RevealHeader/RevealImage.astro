@@ -1,0 +1,57 @@
+---
+interface Props {
+    class?: string;
+    color?: string;
+}
+
+const { class: className = '', color = '#FFE500' } = Astro.props;
+---
+
+<reveal-image
+    class={`reveal-image-wrapper relative block overflow-hidden ${className}`}
+    data-color={color}
+>
+    <slot />
+</reveal-image>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    class RevealImage extends HTMLElement {
+        connectedCallback() {
+            const wrapper = this;
+            const color = wrapper.dataset.color || '#F4E727';
+
+            const overlay = document.createElement('div');
+            Object.assign(overlay.style, {
+                position: 'absolute',
+                inset: '0',
+                background: color,
+                transform: 'scaleY(1)',
+                transformOrigin: 'bottom center',
+                zIndex: '1'
+            });
+            wrapper.appendChild(overlay);
+
+            const tl = gsap.timeline({
+                defaults: { ease: 'power3.inOut' },
+                scrollTrigger: {
+                    trigger: wrapper,
+                    start: 'top 75%',
+                    once: true
+                }
+            });
+
+            tl.to(overlay, { scaleY: 0, duration: 0.8, delay: 0.1 });
+
+            ScrollTrigger.refresh();
+        }
+    }
+
+    if (!customElements.get('reveal-image')) {
+        customElements.define('reveal-image', RevealImage);
+    }
+</script>

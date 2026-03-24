@@ -1,0 +1,120 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Button from '@components/Button/Button.astro';
+import Image from '@components/Image/Image.astro';
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import chalkboard from '@images/Home_about.jpg';
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
+import RevealImage from '@components/RevealHeader/RevealImage.astro';
+import RevealBody from '@components/RevealHeader/RevealBody.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
+
+import entreprises from '@images/entreprises.jpg';
+---
+
+<Layout title="Programmes — Entreprises">
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
+        <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
+            <Picture
+                alt="A clipboard and paper"
+                src={entreprises}
+                layout="full-width"
+                class="h-full min-w-full object-cover"
+            />
+        </div>
+        <RevealHeader
+            textColor="#FFFFFF"
+            delay={0.25}
+            lines={[
+                { text: 'Coaching', font: 'formula' },
+                { text: 'D’Entreprises', font: 'editorial' }
+            ]}
+        />
+    </div>
+    <div
+        class="grid h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-5xl pr-fluid-forty pb-fluid-5xl pl-fluid-forty"
+    >
+        <div
+            class="col-span-12 flex h-full flex-col justify-center gap-fluid-eighty pt-16 pb-16 sm:col-span-8 sm:col-start-3 sm:pt-0 sm:pb-0"
+        >
+            <p class="text-mob-body leading-[120%] font-light tracking-[3%] sm:text-body-md">
+                Nos programmes dédiés aux entreprises accompagnent les dirigeants, gestionnaires et
+                comités exécutifs des moyennes et grandes organisations. Nous proposons des services
+                adaptés en format individuel, de groupe et immersif pour favoriser une culture de
+                leadership stratégique, humain et durable. Nos programmes allient outils
+                psychométriques, coaching exécutif individualisés et ateliers collaboratifs pour
+                activer des dynamiques collectives puissantes, nourries par l'intelligence du
+                groupe.
+            </p>
+            <p class="text-mob-body leading-[120%] font-light tracking-[3%] sm:text-body-md">
+                <span class="font-bold text-bronze">L'objectif</span> : incarner un leadership à la fois
+                stratégique, humain et pérenne avec, à la clé, plus de clarté, plus de cohésion et un
+                impact durable.
+            </p>
+        </div>
+    </div>
+
+    <ServiceSlider
+        slides={[
+            {
+                shapeClass: 'hexagon',
+                shapeTitle: 'Programmes<br/>Individuels',
+                descriptions: [
+                    {
+                        title: 'Propulse',
+                        text: "Coaching ciblé pour les employé·es qui prennent de nouvelles responsabilités. Pour clarifier les priorités, renforcer la confiance et poser un plan d'action clair."
+                    },
+                    {
+                        title: 'Croissance+',
+                        text: 'Développement sur mesure pour gestionnaires et cadres. Pour structurer une posture de leadership durable et à aligner la vision stratégique avec les réalités du terrain.'
+                    },
+                    {
+                        title: 'Focus stratégique',
+                        text: 'Parcours pour dirigeant·es ou cadres expérimentés, incluant une évaluation GLP (Global Leadership Profile). Pour prendre du recul, affiner la clarté décisionnelle et maximiser l’impact à long terme.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'circle',
+                shapeTitle: 'Programmes<br/>De Groupe',
+                descriptions: [
+                    {
+                        title: 'LÉA – Leadership évolutif authentique',
+                        text: 'Programme de transformation culturelle pour les comités exécutifs. Vise l’alignement stratégique, le renforcement des relations et l’émergence de dynamiques collectives solides.'
+                    },
+                    {
+                        title: 'LÉON – Leadership évolutif et opportunités à naviguer',
+                        text: 'Parcours de développement pour les équipes de direction, axé sur la cohésion et le style relationnel, conçu pour créer des cadres collaboratifs permettant de naviguer dans la complexité humaine et de maximiser les opportunités de succès.'
+                    }
+                ]
+            },
+            {
+                shapeClass: 'diamond',
+                shapeTitle: 'Expériences<br/>Immersives',
+                descriptions: [
+                    {
+                        title: 'TRUST™',
+                        text: 'Atelier immersif pour (re)connecter à la confiance, individuelle et collective. Idéal pour les moments charnières d’équipe.'
+                    },
+                    {
+                        title: 'Leadership Week',
+                        text: 'Semaine immersive pour directions élargies. Un temps fort pour aligner vision, posture et plan d’action dans un cadre stimulant.'
+                    },
+                    {
+                        title: 'Whiteboard™',
+                        text: 'Atelier présentiel structuré pour clarifier un enjeu stratégique, prendre des décisions clés et faire émerger une vision commune.'
+                    },
+                    {
+                        title: 'Retraite / Lac-à-l’épaule',
+                        text: 'Immersion stratégique sur mesure, en nature ou en ville, pour nourrir la cohésion, renforcer la vision partagée et accompagner les virages clés.'
+                    }
+                ]
+            }
+        ]}
+    />
+
+    <ContactFooter heading="Amorcez une transformation tangible." />
+</Layout>

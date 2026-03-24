@@ -1,7 +1,5 @@
 @utility heading-xl {
     font-size: var(--text-heading-xl);
-    font-style: normal;
-    line-height: 0.85;
 }
 
 @utility heading-lg {
@@ -18,4 +16,12 @@
 
 @utility text-body-md {
     font-size: var(--text-body-md);
+}
+
+@utility text-body-caption {
+    font-size: var(--text-body-caption);
+}
+
+@utility text-test {
+    font-size: var(--text-test);
 }

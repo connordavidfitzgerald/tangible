@@ -4,3 +4,13 @@
     @apply mx-auto w-full px-unit-md;
     @apply max-w-none;
 }
+
+@utility h-dvh {
+    height: 100dvh;
+}
+@utility h-svh {
+    height: 100svh;
+}
+@utility max-h-dvh {
+    max-height: 100dvh;
+}
