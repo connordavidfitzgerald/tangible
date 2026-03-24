@@ -10,7 +10,7 @@ import ContactFooter from '../components/ContactFooter/ContactFooter.astro';
 
 <Layout title="À Propos">
     <div
-        class="hero-section sm: relative flex h-fit flex-col justify-start overflow-hidden bg-bronze pt-32 pr-fluid-forty pb-fluid-270 pl-fluid-forty sm:max-h-300 sm:min-h-200 sm:justify-start sm:gap-32 sm:pb-0"
+        class="hero-section flex h-fit flex-col justify-start overflow-hidden bg-bronze pt-32 pr-fluid-forty pb-fluid-270 pl-fluid-forty sm:relative sm:min-h-300 sm:justify-start sm:gap-32 sm:pb-0"
     >
         <div
             class="font-radio lg:text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 text-mob-section tracking-[3%] text-perle uppercase"
@@ -20,18 +20,20 @@ import ContactFooter from '../components/ContactFooter/ContactFooter.astro';
         <div
             class="relative w-full pt-16 pb-20 sm:absolute sm:top-1/2 sm:right-fluid-twenty sm:w-[45%] sm:min-w-[450px] sm:-translate-y-1/2 sm:pt-32 sm:pb-0"
         >
-            <Icon name="hands" class="h-auto w-full mix-blend-multiply" />
+            <Icon name="hands" class="h-auto w-full pb-32 mix-blend-multiply" />
         </div>
-        <RevealHeader
-            delay={0.25}
-            textColor={'#E1E3D0'}
-            lines={[
-                { text: 'Tangible: Rélever', font: 'formula' },
-                { text: 'la pleine puissance', font: 'formula' },
-                { text: 'des leaders', font: 'editorial' },
-                { text: 'et des equipes.', font: 'editorial' }
-            ]}
-        />
+        <div class="sm:absolute sm:top-1/2 sm:-translate-y-1/2">
+            <RevealHeader
+                delay={0.25}
+                textColor={'#E1E3D0'}
+                lines={[
+                    { text: 'Tangible: Rélever', font: 'formula' },
+                    { text: 'la pleine puissance', font: 'formula' },
+                    { text: 'des leaders', font: 'editorial' },
+                    { text: 'et des equipes.', font: 'editorial' }
+                ]}
+            />
+        </div>
     </div>
     <div
         class="grid h-fit grid-cols-8 gap-mob-16 bg-perle pt-mob-128 pr-mob-16 pb-mob-128 pl-mob-16 md:min-h-[900px] md:grid-cols-12 md:gap-fluid-twenty md:pt-0 md:pr-fluid-forty md:pb-0 md:pl-fluid-forty"
