@@ -10,8 +10,18 @@ import ContactFooter from '../components/ContactFooter/ContactFooter.astro';
 
 <Layout title="À Propos">
     <div
-        class="hero-section relative flex h-dvh max-h-dvh flex-col justify-end overflow-hidden bg-bronze pr-fluid-forty pb-fluid-270 pl-fluid-forty sm:max-h-300 sm:min-h-200 sm:justify-center sm:pb-0"
+        class="hero-section sm: relative flex h-fit flex-col justify-start overflow-hidden bg-bronze pt-32 pr-fluid-forty pb-fluid-270 pl-fluid-forty sm:max-h-300 sm:min-h-200 sm:justify-start sm:gap-32 sm:pb-0"
     >
+        <div
+            class="font-radio lg:text-body flex flex-row items-center justify-center border-b border-b-perle pb-3 text-mob-section tracking-[3%] text-perle uppercase"
+        >
+            Mission
+        </div>
+        <div
+            class="relative w-full pt-16 pb-20 sm:absolute sm:top-1/2 sm:right-fluid-twenty sm:w-[45%] sm:min-w-[450px] sm:-translate-y-1/2 sm:pt-32 sm:pb-0"
+        >
+            <Icon name="hands" class="h-auto w-full mix-blend-multiply" />
+        </div>
         <RevealHeader
             delay={0.25}
             textColor={'#E1E3D0'}
