@@ -4,12 +4,49 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 
 interface Props {
     heading?: string;
+    lang?: 'fr' | 'en';
 }
 
-const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
+const {
+    lang = 'fr',
+    heading = lang === 'en'
+        ? 'Initiate a tangible transformation.'
+        : 'Amorcez une transformation tangible.'
+} = Astro.props;
+
+const dict = {
+    fr: {
+        paragraph:
+            'Tissons des connexions authentiques et déclenchons un impact durable — pour vous, votre équipe et votre communauté.',
+        booking: 'Réservez une consultation',
+        bookingMob:
+            'Tissons des connexions authentiques et déclenchons un impact durable — pour vous, votre équipe et votre communauté.<br /><br />Réserver une consulation.',
+        emailLabel: 'Courriel',
+        phoneLabel: 'Téléphone',
+        submitText: 'Soumettre',
+        successText: 'Succès'
+    },
+    en: {
+        paragraph:
+            "Let's weave authentic connections and trigger lasting impact — for you, your team, and your community.",
+        booking: 'Book a consultation',
+        bookingMob:
+            "Let's weave authentic connections and trigger lasting impact — for you, your team, and your community.<br /><br />Book a consultation.",
+        emailLabel: 'Email',
+        phoneLabel: 'Phone',
+        submitText: 'Submit',
+        successText: 'Success'
+    }
+};
+
+const t = dict[lang];
 ---
 
-<contact-form style="display: contents;">
+<contact-form
+    style="display: contents;"
+    data-btn-submit={t.submitText}
+    data-btn-success={t.successText}
+>
     <div
         class="desktop-version grid aspect-1512/902 grid-cols-12 gap-fluid-twenty bg-bronze pt-fluid-4xl pr-fluid-forty pb-fluid-4xl pl-fluid-forty"
     >
@@ -24,14 +61,13 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                     class="font-radio text-body-md leading-[120%] font-light tracking-[3%] text-perle"
                     tag="p"
                 >
-                    Tissons des connexions authentiques et déclenchons un impact durable — pour
-                    vous, votre équipe et votre communauté.
+                    {t.paragraph}
                 </SplitReveal>
                 <div class="flex flex-col gap-fluid-twenty">
                     <h3
                         class="font-radio text-body-md leading-[120%] font-light tracking-[3%] text-perle"
                     >
-                        Réservez une consultation
+                        {t.booking}
                     </h3>
                     <form class="contact-form-inner">
                         <input
@@ -55,7 +91,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                             for="email"
                             class="font-radio block text-sm text-body-sm tracking-[2%] text-perle uppercase opacity-75"
                         >
-                            Courriel
+                            {t.emailLabel}
                         </label>
                         <input
                             type="email"
@@ -67,7 +103,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                             for="phone"
                             class="font-radio block text-sm text-body-sm tracking-[2%] text-perle uppercase opacity-75"
                         >
-                            Téléphone
+                            {t.phoneLabel}
                         </label>
                         <input
                             type="text"
@@ -75,7 +111,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                             class="mb-5 w-full border-b border-b-perle pt-1 pb-1 text-body-md text-offwhite outline-0"
                             required
                         />
-                        <Button class="submit-btn" type="submit">Soumettre</Button>
+                        <Button class="submit-btn" type="submit">{t.submitText}</Button>
                     </form>
                 </div>
             </div>
@@ -92,11 +128,8 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
         <SplitReveal
             class="font-radio col-span-8 text-mob-body leading-[120%] font-light tracking-[3%] text-perle"
             tag="p"
-        >
-            Tissons des connexions authentiques et déclenchons un impact durable — pour vous, votre
-            équipe et votre communauté.<br /><br />
-            Réserver une consulation.
-        </SplitReveal>
+            set:html={t.bookingMob}
+        />
         <form class="contact-form-inner col-span-8">
             <input type="hidden" name="access_key" value="3cb859b7-eb03-4988-a1d8-38cf672ee0c8" />
             <label
@@ -115,7 +148,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                 for="email"
                 class="font-radio block text-sm text-button-mob tracking-[2%] text-perle uppercase opacity-75"
             >
-                Courriel
+                {t.emailLabel}
             </label>
             <input
                 type="email"
@@ -127,7 +160,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                 for="phone"
                 class="font-radio block text-sm text-button-mob tracking-[2%] text-perle uppercase opacity-75"
             >
-                Téléphone
+                {t.phoneLabel}
             </label>
             <input
                 type="text"
@@ -136,7 +169,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                 required
             />
             <div class="flex flex-row justify-center pt-mob-16">
-                <Button class="submit-btn" type="submit">Soumettre</Button>
+                <Button class="submit-btn" type="submit">{t.submitText}</Button>
             </div>
         </form>
     </div>
@@ -151,6 +184,9 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
         private ctx: gsap.Context | undefined;
 
         connectedCallback() {
+            const submitText = this.dataset.btnSubmit || 'Soumettre';
+            const successText = this.dataset.btnSuccess || 'Succès';
+
             this.ctx = gsap.context(() => {
                 const forms = this.querySelectorAll('form.contact-form-inner');
 
@@ -199,7 +235,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                             });
                         });
 
-                        // Animate "Soumettre" down
+                        // Animate button text down
                         const btnSplit = new SplitText(btn, { type: 'chars' });
                         await gsap.to(btnSplit.chars, {
                             y: 10,
@@ -220,9 +256,9 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                             (form as HTMLFormElement).reset();
                             inputs.forEach((input) => (input.style.opacity = ''));
 
-                            // Swap text and animate "Succès" up from below
+                            // Swap text and animate success up from below
                             btnSplit.revert();
-                            btn.textContent = 'Succès';
+                            btn.textContent = successText;
 
                             const successSplit = new SplitText(btn, { type: 'chars' });
                             gsap.from(successSplit.chars, {
@@ -233,7 +269,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                                 ease: 'power2.out'
                             });
 
-                            // After 2s, animate "Succès" out and bring "Soumettre" back
+                            // After 2s, animate success out and bring submit back
                             setTimeout(async () => {
                                 await gsap.to(successSplit.chars, {
                                     y: 10,
@@ -244,7 +280,7 @@ const { heading = 'Amorcez une transformation tangible.' } = Astro.props;
                                 });
 
                                 successSplit.revert();
-                                btn.textContent = 'Soumettre';
+                                btn.textContent = submitText;
 
                                 const revertSplit = new SplitText(btn, { type: 'chars' });
                                 gsap.from(revertSplit.chars, {
