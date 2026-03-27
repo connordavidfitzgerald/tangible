@@ -4,10 +4,18 @@ import postcssUtopia from 'postcss-utopia';
 import postcssHelpersFunctions from '@locomotivemtl/postcss-helpers-functions';
 import postcssTailwindShortcuts from '@locomotivemtl/postcss-tailwind-shortcuts';
 import tailwindcss from '@tailwindcss/postcss';
+import lottie from 'astro-integration-lottie';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://connordavidfitzgerald.github.io/tangible/',
+    i18n: {
+        defaultLocale: 'fr',
+        locales: ['fr', 'en'],
+        routing: {
+            prefixDefaultLocale: false
+        }
+    },
     vite: {
         css: {
             postcss: {
@@ -27,7 +35,8 @@ export default defineConfig({
     integrations: [
         icon({
             iconDir: './src/assets/svgs'
-        })
+        }),
+        lottie()
     ],
     devToolbar: {
         enabled: false

@@ -1,0 +1,119 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Button from '@components/Button/Button.astro';
+import Image from '@components/Image/Image.astro';
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import chalkboard from '@images/Home_about.jpg';
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
+import RevealImage from '@components/RevealHeader/RevealImage.astro';
+import RevealBody from '@components/RevealHeader/RevealBody.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
+
+import entreprises from '@images/entreprises.jpg';
+---
+
+<Layout title="Programs — Corporate">
+    <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
+        <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
+            <Picture
+                alt="A clipboard and paper"
+                src={entreprises}
+                layout="full-width"
+                class="object-cover"
+            />
+        </div>
+        <RevealHeader
+            textColor="#FFFFFF"
+            delay={0.25}
+            lines={[
+                { text: 'Corporate', font: 'formula' },
+                { text: 'Coaching', font: 'editorial' }
+            ]}
+        />
+    </div>
+    <div
+        class="grid h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-5xl pr-fluid-forty pb-fluid-5xl pl-fluid-forty"
+    >
+        <div
+            class="col-span-12 flex h-full flex-col justify-center gap-fluid-eighty pt-16 pb-16 sm:col-span-8 sm:col-start-3 sm:pt-0 sm:pb-0"
+        >
+            <p class="text-mob-body leading-[120%] font-light tracking-[3%] sm:text-body-md">
+                Our corporate programs support executives, managers, and executive committees of
+                medium and large organizations. We offer tailored services in individual, group, and
+                immersive formats to foster a culture of strategic, human, and sustainable
+                leadership. Our programs combine psychometric tools, individualized executive
+                coaching, and collaborative workshops to activate powerful collective dynamics,
+                fueled by group intelligence.
+            </p>
+            <p class="text-mob-body leading-[120%] font-light tracking-[3%] sm:text-body-md">
+                <span class="font-bold text-bronze">The Objective</span>: embody leadership that is
+                strategic, human, and lasting with, ultimately, more clarity, more cohesion, and a
+                sustainable impact.
+            </p>
+        </div>
+    </div>
+    <div class="z-10 bg-offwhite">
+        <ServiceSlider
+            slides={[
+                {
+                    shapeClass: 'hexagon',
+                    shapeTitle: 'Individual<br/>Programs',
+                    descriptions: [
+                        {
+                            title: 'Propulse',
+                            text: 'Targeted coaching for employees taking on new responsibilities. To clarify priorities, build confidence, and set a clear action plan.'
+                        },
+                        {
+                            title: 'Growth+',
+                            text: 'Tailored development for managers and executives. To structure a sustainable leadership posture and align strategic vision with on-the-ground realities.'
+                        },
+                        {
+                            title: 'Strategic Focus',
+                            text: 'Path for experienced executives or managers, including a GLP (Global Leadership Profile) assessment. To step back, refine decision-making clarity, and maximize long-term impact.'
+                        }
+                    ]
+                },
+                {
+                    shapeClass: 'circle',
+                    shapeTitle: 'Group<br/>Programs',
+                    descriptions: [
+                        {
+                            title: 'LÉA – Authentic Evolutionary Leadership',
+                            text: 'Cultural transformation program for executive committees. Aims at strategic alignment, strengthening relationships, and the emergence of solid collective dynamics.'
+                        },
+                        {
+                            title: 'LÉON – Evolutionary Leadership and Opportunities to Navigate',
+                            text: 'Development path for management teams, focused on cohesion and relational style, designed to create collaborative frameworks to navigate human complexity and maximize opportunities for success.'
+                        }
+                    ]
+                },
+                {
+                    shapeClass: 'diamond',
+                    shapeTitle: 'Immersive<br/>Experiences',
+                    descriptions: [
+                        {
+                            title: 'TRUST™',
+                            text: 'Immersive workshop to (re)connect to trust, individually and collectively. Ideal for turning points in a team.'
+                        },
+                        {
+                            title: 'Leadership Week',
+                            text: 'Immersive week for extended management. A highlight to align vision, posture, and action plan in a stimulating setting.'
+                        },
+                        {
+                            title: 'Whiteboard™',
+                            text: 'Structured in-person workshop to clarify a strategic issue, make key decisions, and bring out a common vision.'
+                        },
+                        {
+                            title: 'Retreat / Strategic Planning',
+                            text: 'Tailor-made strategic immersion, in nature or in the city, to nurture cohesion, strengthen shared vision, and support key shifts.'
+                        }
+                    ]
+                }
+            ]}
+        />
+    </div>
+    <ContactFooter heading="Initiate a tangible transformation." />
+</Layout>

@@ -42,57 +42,65 @@ const fontMap: Record<string, string> = {
     gsap.registerPlugin(ScrollTrigger);
 
     class RevealHeader extends HTMLElement {
+        private ctx: gsap.Context | undefined;
+
         connectedCallback() {
-            const color = this.dataset.color || '#F4E727';
-            const wrappers = this.querySelectorAll('.line-wrapper');
+            this.ctx = gsap.context(() => {
+                const color = this.dataset.color || '#F4E727';
+                const wrappers = this.querySelectorAll('.line-wrapper');
 
-            wrappers.forEach((wrapper) => {
-                const overlay = document.createElement('div');
-                overlay.classList.add('reveal-bar');
-                Object.assign(overlay.style, {
-                    position: 'absolute',
-                    height: '101%',
-                    width: '101%',
-                    inset: '0',
-                    background: color,
-                    transform: 'scaleX(0)',
-                    transformOrigin: 'left center',
-                    zIndex: '1'
+                wrappers.forEach((wrapper) => {
+                    const overlay = document.createElement('div');
+                    overlay.classList.add('reveal-bar');
+                    Object.assign(overlay.style, {
+                        position: 'absolute',
+                        height: '101%',
+                        width: '101%',
+                        inset: '0',
+                        background: color,
+                        transform: 'scaleX(0)',
+                        transformOrigin: 'left center',
+                        zIndex: '1'
+                    });
+                    wrapper.appendChild(overlay);
+                    const h1 = wrapper.querySelector('h1');
+                    if (h1) {
+                        gsap.set(h1, { opacity: 0 });
+                    }
                 });
-                wrapper.appendChild(overlay);
-                const h1 = wrapper.querySelector('h1');
-                if (h1) {
-                    gsap.set(h1, { opacity: 0 });
-                }
-            });
 
-            const delay = parseFloat(this.dataset.delay || '0');
+                const delay = parseFloat(this.dataset.delay || '0');
 
-            const tl = gsap.timeline({
-                defaults: { ease: 'power3.inOut' },
-                delay,
-                scrollTrigger: {
-                    trigger: this,
-                    start: 'top 95%',
-                    once: true
-                }
-            });
+                const tl = gsap.timeline({
+                    defaults: { ease: 'power3.inOut' },
+                    delay,
+                    scrollTrigger: {
+                        trigger: this,
+                        start: 'top 95%',
+                        once: true
+                    }
+                });
 
-            wrappers.forEach((wrapper, i) => {
-                const h1 = wrapper.querySelector('h1');
-                const bar = wrapper.querySelector('.reveal-bar');
-                const offset = i * 0.1;
+                wrappers.forEach((wrapper, i) => {
+                    const h1 = wrapper.querySelector('h1');
+                    const bar = wrapper.querySelector('.reveal-bar');
+                    const offset = i * 0.1;
 
-                tl.to(bar, { scaleX: 1, duration: 0.7 }, offset)
-                    .set(h1, { opacity: 1 }, offset + 0.7)
-                    .to(
-                        bar,
-                        { scaleX: 0, transformOrigin: 'right center', duration: 0.6 },
-                        offset + 0.7
-                    );
-            });
+                    tl.to(bar, { scaleX: 1, duration: 0.7 }, offset)
+                        .set(h1, { opacity: 1 }, offset + 0.7)
+                        .to(
+                            bar,
+                            { scaleX: 0, transformOrigin: 'right center', duration: 0.6 },
+                            offset + 0.7
+                        );
+                });
 
-            ScrollTrigger.refresh();
+                ScrollTrigger.refresh();
+            }, this);
+        }
+
+        disconnectedCallback() {
+            this.ctx?.revert();
         }
     }
 

@@ -4,9 +4,9 @@ import { Icon } from 'astro-icon/components';
 import { Picture } from 'astro:assets';
 import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
-import ronCherilus from '../assets/images/roncherilus.jpg';
-import ContactFooter from '../components/ContactFooter/ContactFooter.astro';
-import handsSvgRaw from '../assets/svgs/hands.svg?raw';
+import ronCherilus from '../../assets/images/roncherilus.jpg';
+import ContactFooter from '../../components/ContactFooter/ContactFooter.astro';
+import handsSvgRaw from '../../assets/svgs/hands.svg?raw';
 import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
 import plantAnimationUrl from '@images/faces.json?url';
 
@@ -19,7 +19,7 @@ const handsInnerPaths = handsSvgRaw
     .join('\n');
 ---
 
-<Layout title="À Propos">
+<Layout title="About">
     <div
         class="hero-section flex h-fit min-h-[700px] flex-col justify-start overflow-hidden bg-bronze pt-32 pr-fluid-forty pb-fluid-270 pl-fluid-forty xl:relative xl:aspect-1512/913 xl:justify-start xl:gap-32 xl:pb-0"
     >
@@ -75,10 +75,10 @@ const handsInnerPaths = handsSvgRaw
                 delay={0.25}
                 textColor={'#E1E3D0'}
                 lines={[
-                    { text: 'Tangible: Rélever', font: 'formula' },
-                    { text: 'la pleine puissance', font: 'formula' },
-                    { text: 'des leaders', font: 'editorial' },
-                    { text: 'et des equipes.', font: 'editorial' }
+                    { text: 'Tangible: Unleashing', font: 'formula' },
+                    { text: 'the full power', font: 'formula' },
+                    { text: 'of leaders', font: 'editorial' },
+                    { text: 'and teams.', font: 'editorial' }
                 ]}
             />
         </div>
@@ -92,16 +92,16 @@ const handsInnerPaths = handsSvgRaw
             <p
                 class="border-b border-b-white pb-mob-32 text-mob-body leading-[120%] font-light tracking-[3%] md:border-none md:pb-0 md:text-body-md"
             >
-                <span class="font-bold text-bronze">Tangible</span> accompagne les leaders, équipes et
-                entrepreneur·es en quête de sens, de cohérence et d’impact. Nos parcours sur mesure allient
-                coaching, outils psychométriques, expériences immersives et ateliers pour faire émerger
-                un leadership stratégique, humain et ancré.
+                <span class="font-bold text-bronze">Tangible</span> supports leaders, teams, and entrepreneurs
+                seeking meaning, coherence, and impact. Our tailored programs combine coaching, psychometric
+                tools, immersive experiences, and workshops to foster strategic, human, and grounded
+                leadership.
             </p>
             <p
                 class="pt-mob-16 text-mob-body leading-[120%] font-light tracking-[3%] md:pt-0 md:text-body-md"
             >
-                Notre approche active les ressources individuelles et collectives pour naviguer la
-                complexité du monde du travail avec clarté et agilité.
+                Our approach activates individual and collective resources to navigate the
+                complexities of the workplace with clarity and agility.
             </p>
         </div>
     </div>
@@ -112,7 +112,7 @@ const handsInnerPaths = handsSvgRaw
             <div
                 class="font-radio flex flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-mob-section tracking-[3%] uppercase md:pb-fluid-twenty md:text-body-sm"
             >
-                À Propos
+                About
             </div>
         </div>
         <circles-animation class="col-span-6 col-start-2 w-full md:col-start-4">
@@ -120,18 +120,18 @@ const handsInnerPaths = handsSvgRaw
                 <div class="circle c1">
                     <div class="yellow y1"></div>
                     <SplitReveal class="text-circles-text leading-[120%] text-black">
-                        Alignement<br />Vertical
+                        Vertical<br />Alignment
                     </SplitReveal>
                 </div>
                 <div class="circle c2">
                     <SplitReveal class="text-circles-text leading-[120%] text-black">
-                        Direction<br />Strategique
+                        Strategic<br />Direction
                     </SplitReveal>
                 </div>
                 <div class="circle c3">
                     <div class="yellow y3"></div>
                     <SplitReveal class="text-circles-text leading-[120%] text-black">
-                        Intégration<br />Évolutive
+                        Evolutionary<br />Integration
                     </SplitReveal>
                 </div>
             </div>
@@ -139,10 +139,10 @@ const handsInnerPaths = handsSvgRaw
         <div
             class="col-span-6 col-start-2 -mt-mob-64 w-full pb-mob-128 text-mob-caption leading-[120%] tracking-[2%] md:col-start-4 md:-mt-40 md:pb-fluid-270 md:text-body-caption"
         >
-            Inspirée de la méthode I AM de Ron Cherilus, Tangible déploie trois étapes clés dans
-            chacun de ses programmes: alignement vertical, direction stratégique et intégration
-            évolutive. Un processus fluide pour se reconnecter à son intention, prendre des
-            décisions avec justesse, et faire évoluer son leadership avec profondeur.
+            Inspired by Ron Cherilus' I AM method, Tangible deploys three key steps in each of its
+            programs: vertical alignment, strategic direction, and evolutionary integration. A fluid
+            process to reconnect with one's intention, make decisions with accuracy, and evolve
+            one's leadership with depth.
         </div>
     </div>
     <div
@@ -165,9 +165,9 @@ const handsInnerPaths = handsSvgRaw
                 class="font-radio col-span-12 flex h-full w-full flex-col items-start justify-center pt-mob-128 text-mob-body leading-[120%] font-light tracking-[3%] md:col-span-4 md:pt-0 md:text-test"
             >
                 <span class="text-left"
-                    >Le leadership authentique s’enracine dans la clarté, la conscience de soi et la
-                    responsabilité partagée. Il fait émerger des personnes et des collectifs
-                    cohérents, impactants et profondément humains.</span
+                    >Authentic leadership is rooted in clarity, self-awareness, and shared
+                    responsibility. It brings out coherent, impactful, and deeply human individuals
+                    and collectives.</span
                 >
             </SplitReveal>
         </div>
@@ -178,14 +178,14 @@ const handsInnerPaths = handsSvgRaw
         <div
             class="font-radio relative col-span-8 flex grow flex-row items-center justify-center border-b border-b-offwhite pb-mob-16 text-mob-section tracking-[3%] uppercase md:col-span-12 md:pb-fluid-twenty md:text-body-sm"
         >
-            Notre promesse
+            Our Promise
         </div>
         <div class="relative col-span-8 flex flex-col items-center justify-center md:col-start-3">
             <div class="relative grid grid-cols-8">
                 <p
                     class="col-span-6 col-start-2 w-[60%] pb-fluid-eighty text-header-two leading-[120%] font-normal tracking-[1%] xs:w-full"
                 >
-                    Chez Tangible, on s'engage à
+                    At Tangible, we commit to
                 </p>
                 <div
                     class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite pt-fluid-thirty pb-fluid-thirty"
@@ -195,7 +195,7 @@ const handsInnerPaths = handsSvgRaw
                     </div>
                     <SplitReveal
                         class="col-span-7 pt-1 pr-fluid-twenty text-list-lg leading-[120%] tracking-[-0.01em]"
-                        >Ancrer chaque parcours avec présence et intention.</SplitReveal
+                        >Anchor each path with presence and intention.</SplitReveal
                     >
                 </div>
                 <div
@@ -206,7 +206,7 @@ const handsInnerPaths = handsSvgRaw
                     </div>
                     <SplitReveal
                         class="col-span-7 pt-1 pr-fluid-twenty text-list-lg leading-[120%] tracking-[-0.01em]"
-                        >Nourrir la connexion, la collaboration et la co-création.</SplitReveal
+                        >Nurture connection, collaboration, and co-creation.</SplitReveal
                     >
                 </div>
                 <div
@@ -217,7 +217,7 @@ const handsInnerPaths = handsSvgRaw
                     </div>
                     <SplitReveal
                         class="col-span-7 pt-1 pr-fluid-twenty text-list-lg leading-[120%] tracking-[-0.01em]"
-                        >Créer des espaces où la vérité peut s’exprimer.</SplitReveal
+                        >Create spaces where truth can be expressed.</SplitReveal
                     >
                 </div>
                 <div
@@ -228,7 +228,7 @@ const handsInnerPaths = handsSvgRaw
                     </div>
                     <SplitReveal
                         class="col-span-7 pt-1 pr-fluid-twenty text-list-lg leading-[120%] tracking-[-0.01em]"
-                        >Accompagner chaque croissance avec générosité.</SplitReveal
+                        >Support each growth with generosity.</SplitReveal
                     >
                 </div>
                 <div
@@ -239,7 +239,7 @@ const handsInnerPaths = handsSvgRaw
                     </div>
                     <SplitReveal
                         class="col-span-7 pt-1 text-list-lg leading-[120%] tracking-[-0.01em]"
-                        >Offrir des résultats tangibles et durables.</SplitReveal
+                        >Offer tangible and lasting results.</SplitReveal
                     >
                 </div>
             </div>
@@ -255,7 +255,7 @@ const handsInnerPaths = handsSvgRaw
             <h2
                 class="font-radio border-t border-b border-bronze pt-8 pb-[20px] text-header-two leading-[120%] sm:pt-fluid-twenty sm:pb-fluid-twenty"
             >
-                Fondateur de Tangible<br />et du Centre I AM
+                Founder of Tangible<br />and the I AM Center
             </h2>
         </div>
 
@@ -269,21 +269,19 @@ const handsInnerPaths = handsSvgRaw
             <p
                 class="col-span-6 pt-fluid-sixty pb-fluid-sixty text-body-caption leading-[120%] tracking-[3%]"
             >
-                Coach de direction et fondateur du Centre I AM à Montréal en 2012, Ron Chérilus
-                lance en 2025 Tangible, un collectif d’experts en accompagnement stratégique et
-                humain au service des entreprises et des organisations.<br /><br />Tangible est un
-                réseau de professionnel·les trié·es sur le volet : coachs, experts en leadership, en
-                stratégie et en intelligence émotionnelle réuni·es pour créer les conditions d’une
-                transformation réelle, concrète et durable.<br /><br />Fort de plus de 15 ans
-                d’expérience, Ron conçoit, structure et facilite des espaces de réflexion et de
-                décision à fort impact, où les personnes, les enjeux et les choix s’alignent. Il
-                accompagne dirigeant·es, entrepreneur·es et équipes dans des moments clés de leur
-                trajectoire : croissance, transformation, repositionnement ou prises de décisions
-                majeures.<br /><br />Certifié par plusieurs programmes de pointe en développement du
-                leadership (GLP, LCP, MPO), il allie clarté stratégique et travail intérieur
-                profond. Créateur de la méthode I AM, il soutient l’émergence d’un leadership
-                incarné, conscient et humain, au service de décisions tangibles, alignées et
-                pérennes.
+                Executive coach and founder of the I AM Center in Montreal in 2012, Ron Chérilus
+                launches Tangible in 2025, a collective of experts in strategic and human support
+                serving businesses and organizations.<br /><br />Tangible is a handpicked network of
+                professionals: coaches, leadership, strategy, and emotional intelligence experts,
+                brought together to create the conditions for real, concrete, and lasting
+                transformation.<br /><br />With over 15 years of experience, Ron designs,
+                structures, and facilitates high-impact spaces for reflection and decision-making,
+                where people, issues, and choices align. He supports executives, entrepreneurs, and
+                teams in key moments of their trajectory: growth, transformation, repositioning, or
+                major decision-making.<br /><br />Certified by several leading leadership
+                development programs (GLP, LCP, MPO), he combines strategic clarity with deep inner
+                work. Creator of the I AM method, he supports the emergence of embodied, conscious,
+                and human leadership, in the service of tangible, aligned, and lasting decisions.
             </p>
         </div>
 
@@ -294,32 +292,31 @@ const handsInnerPaths = handsSvgRaw
             <h2
                 class="font-radio border-t border-b border-bronze pt-fluid-twenty pb-fluid-twenty text-header-two leading-[120%]"
             >
-                Fondateur de Tangible<br />et du Centre I AM
+                Founder of Tangible<br />and the I AM Center
             </h2>
             <div class="grid grid-cols-6 gap-fluid-twenty border-b border-bronze">
                 <p
                     class="col-span-6 pt-fluid-sixty pb-fluid-sixty text-body-caption leading-[120%] tracking-[3%] xl:col-span-4"
                 >
-                    Coach de direction et fondateur du Centre I AM à Montréal en 2012, Ron Chérilus
-                    lance en 2025 Tangible, un collectif d’experts en accompagnement stratégique et
-                    humain au service des entreprises et des organisations.<br /><br />Tangible est
-                    un réseau de professionnel·les trié·es sur le volet : coachs, experts en
-                    leadership, en stratégie et en intelligence émotionnelle réuni·es pour créer les
-                    conditions d’une transformation réelle, concrète et durable.<br /><br />Fort de
-                    plus de 15 ans d’expérience, Ron conçoit, structure et facilite des espaces de
-                    réflexion et de décision à fort impact, où les personnes, les enjeux et les
-                    choix s’alignent. Il accompagne dirigeant·es, entrepreneur·es et équipes dans
-                    des moments clés de leur trajectoire : croissance, transformation,
-                    repositionnement ou prises de décisions majeures.<br /><br />Certifié par
-                    plusieurs programmes de pointe en développement du leadership (GLP, LCP, MPO),
-                    il allie clarté stratégique et travail intérieur profond. Créateur de la
-                    méthode I AM, il soutient l’émergence d’un leadership incarné, conscient et
-                    humain, au service de décisions tangibles, alignées et pérennes.
+                    Executive coach and founder of the I AM Center in Montreal in 2012, Ron Chérilus
+                    launches Tangible in 2025, a collective of experts in strategic and human
+                    support serving businesses and organizations.<br /><br />Tangible is a
+                    handpicked network of professionals: coaches, leadership, strategy, and
+                    emotional intelligence experts, brought together to create the conditions for
+                    real, concrete, and lasting transformation.<br /><br />With over 15 years of
+                    experience, Ron designs, structures, and facilitates high-impact spaces for
+                    reflection and decision-making, where people, issues, and choices align. He
+                    supports executives, entrepreneurs, and teams in key moments of their
+                    trajectory: growth, transformation, repositioning, or major decision-making.<br
+                    /><br />Certified by several leading leadership development programs (GLP, LCP,
+                    MPO), he combines strategic clarity with deep inner work. Creator of the I AM
+                    method, he supports the emergence of embodied, conscious, and human leadership,
+                    in the service of tangible, aligned, and lasting decisions.
                 </p>
             </div>
         </div>
     </div>
-    <ContactFooter heading="Initiez un changement concret." />
+    <ContactFooter heading="Initiate a concrete change." />
     <style>
         .circles-wrapper {
             --gap-pct: 20%; /* gap between circles as % of wrapper width */

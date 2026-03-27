@@ -24,60 +24,70 @@ const { tag: Tag = 'h1', color = '#FFE500', class: className = '' } = Astro.prop
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
     class RevealBody extends HTMLElement {
+        private ctx: gsap.Context | undefined;
+
         connectedCallback() {
-            const wrapper = this.querySelector('.reveal-heading-wrapper');
-            if (!wrapper) return;
+            this.ctx = gsap.context(() => {
+                const wrapper = this.querySelector('.reveal-heading-wrapper');
+                if (!wrapper) return;
 
-            const el = wrapper as HTMLElement;
-            const color = el.dataset.color || '#F4E727';
-            const textEl = wrapper.querySelector('h1, h2, h3, h4, p');
-            if (!textEl) return;
+                const el = wrapper as HTMLElement;
+                const color = el.dataset.color || '#F4E727';
+                const textEl = wrapper.querySelector('h1, h2, h3, h4, p');
+                if (!textEl) return;
 
-            new SplitText(textEl, {
-                type: 'lines',
-                mask: 'lines',
-                autoSplit: true,
-                onSplit(self) {
-                    const tl = gsap.timeline({
-                        defaults: { ease: 'power3.inOut' },
-                        scrollTrigger: {
-                            trigger: wrapper,
-                            start: 'top 75%',
-                            once: true
-                        }
-                    });
-
-                    self.lines.forEach((line, i) => {
-                        const maskWrapper = line.parentElement as HTMLElement | null;
-                        if (!maskWrapper) return;
-                        maskWrapper.style.position = 'relative';
-                        const overlay = document.createElement('div');
-                        Object.assign(overlay.style, {
-                            position: 'absolute',
-                            height: '101%',
-                            inset: '0',
-                            background: color,
-                            transform: 'scaleX(0)',
-                            transformOrigin: 'left center',
-                            zIndex: '1'
+                new SplitText(textEl, {
+                    type: 'lines',
+                    mask: 'lines',
+                    autoSplit: true,
+                    onSplit(self) {
+                        const tl = gsap.timeline({
+                            defaults: { ease: 'power3.inOut' },
+                            scrollTrigger: {
+                                trigger: wrapper,
+                                start: 'top 75%',
+                                once: true
+                            }
                         });
-                        maskWrapper.appendChild(overlay);
-                        gsap.set(line, { opacity: 0 });
 
-                        const offset = i * 0.05;
+                        self.lines.forEach((line, i) => {
+                            const maskWrapper = line.parentElement as HTMLElement | null;
+                            if (!maskWrapper) return;
+                            maskWrapper.style.position = 'relative';
+                            const overlay = document.createElement('div');
+                            Object.assign(overlay.style, {
+                                position: 'absolute',
+                                height: '101%',
+                                inset: '0',
+                                background: color,
+                                transform: 'scaleX(0)',
+                                transformOrigin: 'left center',
+                                zIndex: '1'
+                            });
+                            maskWrapper.appendChild(overlay);
+                            gsap.set(line, { opacity: 0 });
 
-                        tl.to(overlay, { scaleX: 1, duration: 0.8 }, offset)
-                            .set(line, { opacity: 1 }, offset + 0.8)
-                            .to(
-                                overlay,
-                                { scaleX: 0, transformOrigin: 'right center', duration: 0.8 },
-                                offset + 0.8
-                            );
-                    });
-                }
-            });
+                            const offset = i * 0.05;
 
-            ScrollTrigger.refresh();
+                            tl.to(overlay, { scaleX: 1, duration: 0.8 }, offset)
+                                .set(line, { opacity: 1 }, offset + 0.8)
+                                .to(
+                                    overlay,
+                                    { scaleX: 0, transformOrigin: 'right center', duration: 0.8 },
+                                    offset + 0.8
+                                );
+                        });
+
+                        return tl;
+                    }
+                });
+
+                ScrollTrigger.refresh();
+            }, this);
+        }
+
+        disconnectedCallback() {
+            this.ctx?.revert();
         }
     }
 

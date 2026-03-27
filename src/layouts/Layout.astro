@@ -7,6 +7,7 @@ import { defaultSeo } from '@data/seo';
 import { getSeo } from '@scripts/utils/seo';
 import { Icon } from 'astro-icon/components';
 import Navbar from '@components/Navigation/Navbar.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
 interface Props {
     title: string;
@@ -15,6 +16,10 @@ interface Props {
 
 const { title, seo = {} } = Astro.props;
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
 const seoData = getSeo(seo, defaultSeo, title);
 
 // Constants
@@ -22,7 +27,7 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, viewport-fit=cover" />
@@ -37,17 +42,21 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
 
         <Navbar />
         <main id="swup">
-            <div id="content">
+            <div id="content" class="bg-offwhite">
                 <slot />
             </div>
         </main>
-        <footer>
+        <footer id="footer">
             <div
                 class="desktop-version grid grid-cols-12 gap-fluid-twenty bg-black p-fluid-forty leading-[120%] tracking-[3%] text-offwhite"
             >
                 <div class="col-span-3 flex flex-col items-start justify-between">
                     <Icon name="logo" class="h-fluid-thirty w-auto" />
-                    <h6 class="font-sans text-body-sm">EN</h6>
+                    <a
+                        href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
+                        class="hover-underline w-fit font-sans text-body-sm"
+                        >{lang === 'en' ? 'FR' : 'EN'}</a
+                    >
                 </div>
                 <div class="col-span-5 flex flex-col items-start gap-10">
                     <h6 class="font-sans text-body-sm leading-[120%]">
@@ -63,16 +72,27 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
                 <div
                     class="col-span-2 flex flex-col justify-between font-sans text-body-sm uppercase"
                 >
-                    <a class="hover-underline w-fit">À Propos</a>
-                    <a class="hover-underline w-fit">Nos Programmes</a>
-                    <a class="hover-underline w-fit">Espace Membre</a>
+                    <a href={translatePath('/about')} class="hover-underline w-fit"
+                        >{t('nav.about')}</a
+                    >
+                    <a href={translatePath('/programs')} class="hover-underline w-fit"
+                        >{t('nav.programs')}</a
+                    >
+                    <a href={translatePath('/')} class="hover-underline w-fit">{t('nav.members')}</a
+                    >
                 </div>
                 <div
                     class="col-span-2 flex flex-col justify-between font-sans text-body-sm uppercase"
                 >
-                    <a class="hover-underline w-fit">Contact</a>
-                    <a class="hover-underline w-fit">Centre IAM</a>
-                    <a class="hover-underline w-fit">Réservez une consulatation</a>
+                    <a href={translatePath('/contact')} class="hover-underline w-fit"
+                        >{t('nav.contact')}</a
+                    >
+                    <a href={translatePath('/centre-iam')} class="hover-underline w-fit"
+                        >{t('nav.iam')}</a
+                    >
+                    <a href={translatePath('/contact')} class="hover-underline w-fit"
+                        >{t('nav.book')}</a
+                    >
                 </div>
             </div>
 
@@ -96,31 +116,26 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
                     <div class="flex flex-col gap-mob-32">
                         <div class="grid grid-cols-2 gap-mob-16 uppercase">
                             <div class="flex flex-col gap-mob-32">
-                                <a>À Propos</a>
-                                <a>Nos Programmes</a>
-                                <a>Espace Membre</a>
+                                <a href={translatePath('/about')}>{t('nav.about')}</a>
+                                <a href={translatePath('/programs')}>{t('nav.programs')}</a>
+                                <a href={translatePath('/')}>{t('nav.members')}</a>
                             </div>
                             <div class="flex flex-col gap-mob-32">
-                                <a>Contact</a>
-                                <a>Centre IAM</a>
-                                <a>Réservez une consulatation</a>
+                                <a href={translatePath('/contact')}>{t('nav.contact')}</a>
+                                <a href={translatePath('/centre-iam')}>{t('nav.iam')}</a>
+                                <a href={translatePath('/contact')}>{t('nav.book')}</a>
                             </div>
                         </div>
                         <div class="border-t border-t-white pt-mob-32 text-left">
-                            <a>EN</a>
+                            <a href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
+                                >{lang === 'en' ? 'FR' : 'EN'}</a
+                            >
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
-        <div class="transition-columns pointer-events-none fixed inset-0 z-header flex">
-            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
-            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
-            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
-            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
-            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
-            <div class="transition-col h-full flex-1 origin-left scale-x-0 bg-yellow"></div>
-        </div>
+
         <script>
             import { setViewportSize } from '@scripts/utils/setViewportSize';
             import { $screenDebounce } from '@scripts/stores/screen';

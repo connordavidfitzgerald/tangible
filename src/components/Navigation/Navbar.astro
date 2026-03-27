@@ -1,78 +1,90 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
-<div
-    id="navbar"
-    class="fixed top-10 z-50 flex h-fit w-full flex-row justify-between bg-yellow pt-2 pr-mob-16 pb-2 pl-mob-16 md:pr-fluid-forty md:pl-fluid-forty"
->
-    <a href="/" class="relative z-10"><Icon name="logo" class="h-fluid-thirty w-auto" /></a>
-
-    <!-- Desktop nav items -->
+<nav-bar style="display: contents;">
     <div
-        class="desktop-nav flex flex-row items-center gap-fluid-forty font-sans text-body-sm tracking-[2%] uppercase"
+        id="navbar"
+        class="fixed top-10 z-50 flex h-fit w-full flex-row justify-between bg-yellow pt-2 pr-mob-16 pb-2 pl-mob-16 md:pr-fluid-forty md:pl-fluid-forty"
     >
-        <a class="hover-underline" href="/about">À Propos</a>
-        <a class="hover-underline" href="/programs">Nos programmes</a>
-        <a class="hover-underline">Espace membres</a>
-        <a class="hover-underline" href="/contact">Contact</a>
-        <a class="hover-underline" href="/programs">Centre IAM</a>
-    </div>
-    <div
-        class="desktop-nav flex flex-row items-center gap-5 font-sans text-body-sm tracking-[2%] uppercase"
-    >
-        <a class="hover-underline">EN</a>
-        <a class="hover-underline" href="/contact">Réserver une consultation</a>
+        <a href={translatePath('/')} class="relative z-10"
+            ><Icon name="logo" class="h-fluid-thirty w-auto" /></a
+        >
+
+        <!-- Desktop nav items -->
+        <div
+            class="desktop-nav flex flex-row items-center gap-fluid-forty font-sans text-body-sm tracking-[2%] uppercase"
+        >
+            <a class="hover-underline" href={translatePath('/about')}>{t('nav.about')}</a>
+            <a class="hover-underline" href={translatePath('/programs')}>{t('nav.programs')}</a>
+            <a class="hover-underline" href={translatePath('/')}>{t('nav.members')}</a>
+            <a class="hover-underline" href={translatePath('/contact')}>{t('nav.contact')}</a>
+            <a class="hover-underline" href={translatePath('/centre-iam')}>{t('nav.iam')}</a>
+        </div>
+        <div
+            class="desktop-nav flex flex-row items-center gap-5 font-sans text-body-sm tracking-[2%] uppercase"
+        >
+            <a
+                href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
+                class="hover-underline">{lang === 'en' ? 'FR' : 'EN'}</a
+            >
+            <a class="hover-underline" href={translatePath('/contact')}>{t('nav.book')}</a>
+        </div>
+
+        <!-- Hamburger button (mobile only) -->
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
     </div>
 
-    <!-- Hamburger button (mobile only) -->
-    <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
-</div>
-
-<!-- Mobile menu overlay -->
-<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-    <nav class="mobile-nav gap-0 pr-mob-16 pl-mob-16">
-        <a
-            href="/about"
-            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
-            >À Propos</a
-        >
-        <a
-            href="/programs"
-            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
-            >Nos programmes</a
-        >
-        <a
-            href="#"
-            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
-            >Espace membres</a
-        >
-        <a
-            href="/contact"
-            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
-            >Contact</a
-        >
-        <a
-            href="/programs"
-            class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
-            >Centre IAM</a
-        >
-        <a
-            href="/contact"
-            class="flex w-full flex-col border-t border-b border-white pt-mob-menu pb-mob-menu text-mob-nav"
-            >Réserver une consultation</a
-        >
-        <a
-            href="#"
-            class="w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav-sm"
-            >EN</a
-        >
-    </nav>
-</div>
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <nav class="mobile-nav gap-0 pr-mob-16 pl-mob-16">
+            <a
+                href={translatePath('/about')}
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                >{t('nav.about')}</a
+            >
+            <a
+                href={translatePath('/programs')}
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                >{t('nav.programs')}</a
+            >
+            <a
+                href={translatePath('/')}
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                >{t('nav.members')}</a
+            >
+            <a
+                href={translatePath('/contact')}
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                >{t('nav.contact')}</a
+            >
+            <a
+                href={translatePath('/centre-iam')}
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                >{t('nav.iam')}</a
+            >
+            <a
+                href={translatePath('/contact')}
+                class="flex w-full flex-col border-t border-b border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                >{t('nav.book')}</a
+            >
+            <a
+                href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
+                class="w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav-sm"
+                >{lang === 'en' ? 'FR' : 'EN'}</a
+            >
+        </nav>
+    </div>
+</nav-bar>
 
 <style>
     /* ── Hamburger button ── */
@@ -172,46 +184,48 @@ import { Icon } from 'astro-icon/components';
 </style>
 
 <script>
-    function initNavbar() {
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
+    class NavBar extends HTMLElement {
+        connectedCallback() {
+            const hamburger = this.querySelector('#hamburger');
+            const mobileMenu = this.querySelector('#mobile-menu');
 
-        if (!hamburger || !mobileMenu) return;
+            if (!hamburger || !mobileMenu) return;
 
-        // Forward wheel events into the overlay so trackpad/mouse scroll works
-        // while the body is locked (fixed elements sit outside the normal scroll chain)
-        mobileMenu.addEventListener(
-            'wheel',
-            (e) => {
-                e.preventDefault();
-                mobileMenu.scrollTop += e.deltaY;
-            },
-            { passive: false }
-        );
+            // Forward wheel events into the overlay so trackpad/mouse scroll works
+            // while the body is locked (fixed elements sit outside the normal scroll chain)
+            mobileMenu.addEventListener(
+                'wheel',
+                (e) => {
+                    e.preventDefault();
+                    mobileMenu.scrollTop += (e as WheelEvent).deltaY;
+                },
+                { passive: false }
+            );
 
-        hamburger.addEventListener('click', () => {
-            const isOpen = hamburger.classList.toggle('is-open');
-            mobileMenu.classList.toggle('is-open', isOpen);
-            hamburger.setAttribute('aria-expanded', String(isOpen));
-            mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+            hamburger.addEventListener('click', () => {
+                const isOpen = hamburger.classList.toggle('is-open');
+                mobileMenu.classList.toggle('is-open', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+                mobileMenu.setAttribute('aria-hidden', String(!isOpen));
 
-            // Lock body so background page doesn't scroll behind the menu
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-
-        // Close menu when a link is clicked
-        mobileMenu.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('is-open');
-                mobileMenu.classList.remove('is-open');
-                hamburger.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
+                // Lock body so background page doesn't scroll behind the menu
+                document.body.style.overflow = isOpen ? 'hidden' : '';
             });
-        });
+
+            // Close menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('is-open');
+                    mobileMenu.classList.remove('is-open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
     }
 
-    // Run on initial load and after Astro page transitions
-    initNavbar();
-    document.addEventListener('astro:page-load', initNavbar);
+    if (!customElements.get('nav-bar')) {
+        customElements.define('nav-bar', NavBar);
+    }
 </script>

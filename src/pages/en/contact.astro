@@ -9,14 +9,14 @@ import RevealImage from '@components/RevealHeader/RevealImage.astro';
 import RevealBody from '@components/RevealHeader/RevealBody.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
-import Button from '../components/Button/Button.astro';
+import Button from '../../components/Button/Button.astro';
 
 import about from '@images/centreiam2.png';
 import leaders from '@images/leaders.jpg';
 import building from '@images/AH1A3167.jpg';
 ---
 
-<Layout title="Programmes — Leaders">
+<Layout title="Programs — Leaders">
     <div
         class="flex h-screen flex-col justify-end bg-offwhite pr-fluid-forty pb-16 pl-fluid-forty sm:justify-center sm:pb-0"
     >
@@ -32,9 +32,9 @@ import building from '@images/AH1A3167.jpg';
             delay={0.25}
             textColor="#FFFFFF"
             lines={[
-                { text: 'Un espace pour initier', font: 'formula' },
-                { text: 'un vrai', font: 'editorial' },
-                { text: 'mouvement', font: 'editorial' }
+                { text: 'A space to initiate', font: 'formula' },
+                { text: 'a real', font: 'editorial' },
+                { text: 'movement', font: 'editorial' }
             ]}
         />
     </div>
@@ -48,15 +48,14 @@ import building from '@images/AH1A3167.jpg';
                 class="flex flex-col gap-fluid-forty pt-32 pb-32 text-mob-body leading-[120%] font-light tracking-[3%] sm:pt-0 sm:pb-0 sm:text-body-md"
             >
                 <p class="font-bold text-bronze">
-                    Vous souhaitez amorcer une transformation tangible, pour vous, votre équipe ou
-                    votre écosystème ?
+                    Do you want to initiate a tangible transformation, for yourself, your team, or
+                    your ecosystem?
                 </p>
                 <div class="flex flex-col gap-0 sm:gap-fluid-forty">
                     <p class="pb-fluid-forty sm:pb-0">
-                        L’équipe Tangible est là pour vous accompagner à chaque étape. Que ce soit
-                        pour en savoir plus sur nos programmes, réserver une consultation ou
-                        rencontrer un·e coach de notre équipe, nous serons heureux de créer un
-                        moment porteur avec vous.
+                        The Tangible team is here to support you at every step. Whether to learn
+                        more about our programs, book a consultation, or meet a coach from our team,
+                        we will be happy to create a meaningful moment with you.
                     </p>
                     <div
                         class="flex flex-col gap-fluid-twenty border-t border-b border-white pt-fluid-forty pb-fluid-forty sm:grid sm:grid-cols-2"
@@ -87,7 +86,7 @@ import building from '@images/AH1A3167.jpg';
                     for="name"
                     class="font-radio block text-sm text-body-sm tracking-[2%] uppercase opacity-75"
                 >
-                    Nom
+                    Name
                 </label>
                 <input
                     type="text"
@@ -99,7 +98,7 @@ import building from '@images/AH1A3167.jpg';
                     for="email"
                     class="font-radio block text-sm text-body-sm tracking-[2%] uppercase opacity-75"
                 >
-                    Courriel
+                    Email
                 </label>
                 <input
                     type="email"
@@ -111,7 +110,7 @@ import building from '@images/AH1A3167.jpg';
                     for="phone"
                     class="font-radio block text-sm text-body-sm tracking-[2%] uppercase opacity-75"
                 >
-                    Téléphone
+                    Phone
                 </label>
                 <input
                     type="text"
@@ -139,11 +138,11 @@ import building from '@images/AH1A3167.jpg';
                         class="aspect-square h-4.5 w-auto shrink-0 cursor-pointer appearance-none rounded-none border border-black bg-offwhite transition-colors checked:border-black checked:bg-black checked:bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22white%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12.207%204.793a1%201%200%200%201%200%201.414l-5%205a1%201%200%200%201-1.414%200l-2-2a1%201%200%200%201%201.414-1.414L6.5%209.086l4.293-4.293a1%201%200%200%201%201.414%200z%22%2F%3E%3C%2Fsvg%3E')] checked:bg-center checked:bg-no-repeat"
                     />
                     <label for="reserver" class="text-body-caption leading-[120%] tracking-[3%]"
-                        >Je souhaite réserver une consultation gratuite avec un·e coach de Tangible.</label
+                        >I would like to book a free consultation with a Tangible coach.</label
                     >
                 </div>
                 <div class="flex flex-row justify-center">
-                    <Button id="submit-btn" class="text-body-sm" type="submit">Soumettre</Button>
+                    <Button id="submit-btn" class="text-body-sm" type="submit">Submit</Button>
                 </div>
             </form>
         </div>

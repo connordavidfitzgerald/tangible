@@ -127,153 +127,161 @@ const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
     gsap.registerPlugin(SplitText);
 
     class ServiceSlider extends HTMLElement {
+        private ctx: gsap.Context | undefined;
+
         connectedCallback() {
-            const slider = this;
-            const slides: any[] = JSON.parse(slider.dataset.slides || '[]');
-            const totalSlides = slides.length;
-            if (totalSlides === 0) return;
+            this.ctx = gsap.context(() => {
+                const slider = this;
+                const slides: any[] = JSON.parse(slider.dataset.slides || '[]');
+                const totalSlides = slides.length;
+                if (totalSlides === 0) return;
 
-            let currentIndex = 0;
-            let isAnimating = false;
+                let currentIndex = 0;
+                let isAnimating = false;
 
-            const leftSlides = slider.querySelectorAll<HTMLElement>('.slider-left-slide');
-            const rightSlides = slider.querySelectorAll<HTMLElement>('.slider-right-slide');
-            const prevBtn = slider.querySelector<HTMLElement>('.slider-prev');
-            const nextBtn = slider.querySelector<HTMLElement>('.slider-next');
+                const leftSlides = slider.querySelectorAll<HTMLElement>('.slider-left-slide');
+                const rightSlides = slider.querySelectorAll<HTMLElement>('.slider-right-slide');
+                const prevBtn = slider.querySelector<HTMLElement>('.slider-prev');
+                const nextBtn = slider.querySelector<HTMLElement>('.slider-next');
 
-            const splitInstances: SplitText[] = [];
-            leftSlides.forEach((slideEl) => {
-                const h2 = slideEl.querySelector<HTMLElement>('h2');
-                if (!h2) return;
-                const split = new SplitText(h2, {
-                    type: 'words',
-                    mask: 'words',
-                    autoSplit: true
+                const splitInstances: SplitText[] = [];
+                leftSlides.forEach((slideEl) => {
+                    const h2 = slideEl.querySelector<HTMLElement>('h2');
+                    if (!h2) return;
+                    const split = new SplitText(h2, {
+                        type: 'words',
+                        mask: 'words',
+                        autoSplit: true
+                    });
+                    splitInstances.push(split);
+                    split.words.forEach((word) => {
+                        const mask = word.parentElement as HTMLElement | null;
+                        if (mask) {
+                            mask.style.paddingTop = '0.2em';
+                            mask.style.marginTop = '-0.2em';
+                        }
+                    });
+                    gsap.set(split.words, { yPercent: 130 });
                 });
-                splitInstances.push(split);
-                split.words.forEach((word) => {
-                    const mask = word.parentElement as HTMLElement | null;
-                    if (mask) {
-                        mask.style.paddingTop = '0.2em';
-                        mask.style.marginTop = '-0.2em';
-                    }
-                });
-                gsap.set(split.words, { yPercent: 130 });
-            });
 
-            function playTitleReveal(index: number) {
-                const split = splitInstances[index];
-                if (!split) return;
-                gsap.fromTo(
-                    split.words,
-                    { yPercent: 130 },
-                    {
-                        yPercent: 0,
-                        duration: 0.8,
-                        ease: 'power3.out',
-                        stagger: 0.04
-                    }
-                );
-            }
-
-            leftSlides.forEach((el, i) => {
-                if (i === 0) {
-                    gsap.set(el, { position: 'relative', left: 0, top: 0 });
-                } else {
-                    gsap.set(el, { position: 'absolute', left: '100%', top: 0, bottom: 0 });
+                function playTitleReveal(index: number) {
+                    const split = splitInstances[index];
+                    if (!split) return;
+                    gsap.fromTo(
+                        split.words,
+                        { yPercent: 130 },
+                        {
+                            yPercent: 0,
+                            duration: 0.8,
+                            ease: 'power3.out',
+                            stagger: 0.04
+                        }
+                    );
                 }
-            });
 
-            rightSlides.forEach((el, i) => {
-                if (i === 0) {
-                    gsap.set(el, { opacity: 1, x: 0, pointerEvents: 'auto' });
-                } else {
-                    gsap.set(el, { opacity: 0, x: 0, pointerEvents: 'none' });
-                }
-            });
-
-            playTitleReveal(0);
-
-            function goTo(newIndex: number, direction: 'next' | 'prev') {
-                if (isAnimating || newIndex === currentIndex) return;
-                isAnimating = true;
-
-                const currentLeft = leftSlides[currentIndex];
-                const nextLeft = leftSlides[newIndex];
-                const currentRight = rightSlides[currentIndex];
-                const nextRight = rightSlides[newIndex];
-
-                const slideOutX = direction === 'next' ? '-100%' : '100%';
-                const slideInX = direction === 'next' ? '100%' : '-100%';
-
-                const incomingSplit = splitInstances[newIndex];
-                if (incomingSplit) gsap.set(incomingSplit.words, { yPercent: 130 });
-
-                const tl = gsap.timeline({
-                    defaults: { ease: 'power3.inOut' },
-                    onComplete: () => {
-                        currentIndex = newIndex;
-                        isAnimating = false;
-                        playTitleReveal(newIndex);
+                leftSlides.forEach((el, i) => {
+                    if (i === 0) {
+                        gsap.set(el, { position: 'relative', left: 0, top: 0 });
+                    } else {
+                        gsap.set(el, { position: 'absolute', left: '100%', top: 0, bottom: 0 });
                     }
                 });
 
-                if (direction === 'next') {
-                    gsap.set(nextRight, { x: slideOutX, opacity: 1, pointerEvents: 'auto' });
-                    gsap.set(nextLeft, {
-                        position: 'absolute',
-                        left: slideOutX,
-                        top: 0,
-                        bottom: 0
+                rightSlides.forEach((el, i) => {
+                    if (i === 0) {
+                        gsap.set(el, { opacity: 1, x: 0, pointerEvents: 'auto' });
+                    } else {
+                        gsap.set(el, { opacity: 0, x: 0, pointerEvents: 'none' });
+                    }
+                });
+
+                playTitleReveal(0);
+
+                function goTo(newIndex: number, direction: 'next' | 'prev') {
+                    if (isAnimating || newIndex === currentIndex) return;
+                    isAnimating = true;
+
+                    const currentLeft = leftSlides[currentIndex];
+                    const nextLeft = leftSlides[newIndex];
+                    const currentRight = rightSlides[currentIndex];
+                    const nextRight = rightSlides[newIndex];
+
+                    const slideOutX = direction === 'next' ? '-100%' : '100%';
+                    const slideInX = direction === 'next' ? '100%' : '-100%';
+
+                    const incomingSplit = splitInstances[newIndex];
+                    if (incomingSplit) gsap.set(incomingSplit.words, { yPercent: 130 });
+
+                    const tl = gsap.timeline({
+                        defaults: { ease: 'power3.inOut' },
+                        onComplete: () => {
+                            currentIndex = newIndex;
+                            isAnimating = false;
+                            playTitleReveal(newIndex);
+                        }
                     });
 
-                    tl.to(
-                        currentRight,
-                        { x: slideInX, opacity: 0, duration: 0.75, pointerEvents: 'none' },
-                        0
-                    )
-                        .to(nextRight, { x: 0, opacity: 1, duration: 0.75 }, 0)
-                        .to(currentLeft, { left: slideInX, duration: 0.75 }, 0.2)
-                        .to(nextLeft, { left: 0, duration: 0.75 }, 0.2)
-                        .call(() => {
-                            gsap.set(currentLeft, { position: 'absolute', left: slideInX });
-                            gsap.set(nextLeft, { position: 'relative', left: 0 });
-                            gsap.set(currentRight, { pointerEvents: 'none' });
+                    if (direction === 'next') {
+                        gsap.set(nextRight, { x: slideOutX, opacity: 1, pointerEvents: 'auto' });
+                        gsap.set(nextLeft, {
+                            position: 'absolute',
+                            left: slideOutX,
+                            top: 0,
+                            bottom: 0
                         });
-                } else {
-                    gsap.set(nextLeft, {
-                        position: 'absolute',
-                        left: slideOutX,
-                        top: 0,
-                        bottom: 0
-                    });
-                    gsap.set(nextRight, { x: slideOutX, opacity: 1, pointerEvents: 'auto' });
 
-                    tl.to(currentLeft, { left: slideInX, duration: 0.75 }, 0)
-                        .to(nextLeft, { left: 0, duration: 0.75 }, 0)
-                        .to(
+                        tl.to(
                             currentRight,
                             { x: slideInX, opacity: 0, duration: 0.75, pointerEvents: 'none' },
-                            0.2
+                            0
                         )
-                        .to(nextRight, { x: 0, opacity: 1, duration: 0.75 }, 0.2)
-                        .call(() => {
-                            gsap.set(currentLeft, { position: 'absolute', left: slideInX });
-                            gsap.set(nextLeft, { position: 'relative', left: 0 });
-                            gsap.set(currentRight, { pointerEvents: 'none' });
+                            .to(nextRight, { x: 0, opacity: 1, duration: 0.75 }, 0)
+                            .to(currentLeft, { left: slideInX, duration: 0.75 }, 0.2)
+                            .to(nextLeft, { left: 0, duration: 0.75 }, 0.2)
+                            .call(() => {
+                                gsap.set(currentLeft, { position: 'absolute', left: slideInX });
+                                gsap.set(nextLeft, { position: 'relative', left: 0 });
+                                gsap.set(currentRight, { pointerEvents: 'none' });
+                            });
+                    } else {
+                        gsap.set(nextLeft, {
+                            position: 'absolute',
+                            left: slideOutX,
+                            top: 0,
+                            bottom: 0
                         });
+                        gsap.set(nextRight, { x: slideOutX, opacity: 1, pointerEvents: 'auto' });
+
+                        tl.to(currentLeft, { left: slideInX, duration: 0.75 }, 0)
+                            .to(nextLeft, { left: 0, duration: 0.75 }, 0)
+                            .to(
+                                currentRight,
+                                { x: slideInX, opacity: 0, duration: 0.75, pointerEvents: 'none' },
+                                0.2
+                            )
+                            .to(nextRight, { x: 0, opacity: 1, duration: 0.75 }, 0.2)
+                            .call(() => {
+                                gsap.set(currentLeft, { position: 'absolute', left: slideInX });
+                                gsap.set(nextLeft, { position: 'relative', left: 0 });
+                                gsap.set(currentRight, { pointerEvents: 'none' });
+                            });
+                    }
                 }
-            }
 
-            prevBtn?.addEventListener('click', () => {
-                const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                goTo(newIndex, 'prev');
-            });
+                prevBtn?.addEventListener('click', () => {
+                    const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    goTo(newIndex, 'prev');
+                });
 
-            nextBtn?.addEventListener('click', () => {
-                const newIndex = (currentIndex + 1) % totalSlides;
-                goTo(newIndex, 'next');
-            });
+                nextBtn?.addEventListener('click', () => {
+                    const newIndex = (currentIndex + 1) % totalSlides;
+                    goTo(newIndex, 'next');
+                });
+            }, this);
+        }
+
+        disconnectedCallback() {
+            this.ctx?.revert();
         }
     }
 

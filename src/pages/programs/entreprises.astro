@@ -22,7 +22,7 @@ import entreprises from '@images/entreprises.jpg';
                 alt="A clipboard and paper"
                 src={entreprises}
                 layout="full-width"
-                class="h-full min-w-full object-cover"
+                class="object-cover"
             />
         </div>
         <RevealHeader
@@ -56,65 +56,65 @@ import entreprises from '@images/entreprises.jpg';
             </p>
         </div>
     </div>
-
-    <ServiceSlider
-        slides={[
-            {
-                shapeClass: 'hexagon',
-                shapeTitle: 'Programmes<br/>Individuels',
-                descriptions: [
-                    {
-                        title: 'Propulse',
-                        text: "Coaching ciblé pour les employé·es qui prennent de nouvelles responsabilités. Pour clarifier les priorités, renforcer la confiance et poser un plan d'action clair."
-                    },
-                    {
-                        title: 'Croissance+',
-                        text: 'Développement sur mesure pour gestionnaires et cadres. Pour structurer une posture de leadership durable et à aligner la vision stratégique avec les réalités du terrain.'
-                    },
-                    {
-                        title: 'Focus stratégique',
-                        text: 'Parcours pour dirigeant·es ou cadres expérimentés, incluant une évaluation GLP (Global Leadership Profile). Pour prendre du recul, affiner la clarté décisionnelle et maximiser l’impact à long terme.'
-                    }
-                ]
-            },
-            {
-                shapeClass: 'circle',
-                shapeTitle: 'Programmes<br/>De Groupe',
-                descriptions: [
-                    {
-                        title: 'LÉA – Leadership évolutif authentique',
-                        text: 'Programme de transformation culturelle pour les comités exécutifs. Vise l’alignement stratégique, le renforcement des relations et l’émergence de dynamiques collectives solides.'
-                    },
-                    {
-                        title: 'LÉON – Leadership évolutif et opportunités à naviguer',
-                        text: 'Parcours de développement pour les équipes de direction, axé sur la cohésion et le style relationnel, conçu pour créer des cadres collaboratifs permettant de naviguer dans la complexité humaine et de maximiser les opportunités de succès.'
-                    }
-                ]
-            },
-            {
-                shapeClass: 'diamond',
-                shapeTitle: 'Expériences<br/>Immersives',
-                descriptions: [
-                    {
-                        title: 'TRUST™',
-                        text: 'Atelier immersif pour (re)connecter à la confiance, individuelle et collective. Idéal pour les moments charnières d’équipe.'
-                    },
-                    {
-                        title: 'Leadership Week',
-                        text: 'Semaine immersive pour directions élargies. Un temps fort pour aligner vision, posture et plan d’action dans un cadre stimulant.'
-                    },
-                    {
-                        title: 'Whiteboard™',
-                        text: 'Atelier présentiel structuré pour clarifier un enjeu stratégique, prendre des décisions clés et faire émerger une vision commune.'
-                    },
-                    {
-                        title: 'Retraite / Lac-à-l’épaule',
-                        text: 'Immersion stratégique sur mesure, en nature ou en ville, pour nourrir la cohésion, renforcer la vision partagée et accompagner les virages clés.'
-                    }
-                ]
-            }
-        ]}
-    />
-
+    <div class="z-10 bg-offwhite">
+        <ServiceSlider
+            slides={[
+                {
+                    shapeClass: 'hexagon',
+                    shapeTitle: 'Programmes<br/>Individuels',
+                    descriptions: [
+                        {
+                            title: 'Propulse',
+                            text: "Coaching ciblé pour les employé·es qui prennent de nouvelles responsabilités. Pour clarifier les priorités, renforcer la confiance et poser un plan d'action clair."
+                        },
+                        {
+                            title: 'Croissance+',
+                            text: 'Développement sur mesure pour gestionnaires et cadres. Pour structurer une posture de leadership durable et à aligner la vision stratégique avec les réalités du terrain.'
+                        },
+                        {
+                            title: 'Focus stratégique',
+                            text: 'Parcours pour dirigeant·es ou cadres expérimentés, incluant une évaluation GLP (Global Leadership Profile). Pour prendre du recul, affiner la clarté décisionnelle et maximiser l’impact à long terme.'
+                        }
+                    ]
+                },
+                {
+                    shapeClass: 'circle',
+                    shapeTitle: 'Programmes<br/>De Groupe',
+                    descriptions: [
+                        {
+                            title: 'LÉA – Leadership évolutif authentique',
+                            text: 'Programme de transformation culturelle pour les comités exécutifs. Vise l’alignement stratégique, le renforcement des relations et l’émergence de dynamiques collectives solides.'
+                        },
+                        {
+                            title: 'LÉON – Leadership évolutif et opportunités à naviguer',
+                            text: 'Parcours de développement pour les équipes de direction, axé sur la cohésion et le style relationnel, conçu pour créer des cadres collaboratifs permettant de naviguer dans la complexité humaine et de maximiser les opportunités de succès.'
+                        }
+                    ]
+                },
+                {
+                    shapeClass: 'diamond',
+                    shapeTitle: 'Expériences<br/>Immersives',
+                    descriptions: [
+                        {
+                            title: 'TRUST™',
+                            text: 'Atelier immersif pour (re)connecter à la confiance, individuelle et collective. Idéal pour les moments charnières d’équipe.'
+                        },
+                        {
+                            title: 'Leadership Week',
+                            text: 'Semaine immersive pour directions élargies. Un temps fort pour aligner vision, posture et plan d’action dans un cadre stimulant.'
+                        },
+                        {
+                            title: 'Whiteboard™',
+                            text: 'Atelier présentiel structuré pour clarifier un enjeu stratégique, prendre des décisions clés et faire émerger une vision commune.'
+                        },
+                        {
+                            title: 'Retraite / Lac-à-l’épaule',
+                            text: 'Immersion stratégique sur mesure, en nature ou en ville, pour nourrir la cohésion, renforcer la vision partagée et accompagner les virages clés.'
+                        }
+                    ]
+                }
+            ]}
+        />
+    </div>
     <ContactFooter heading="Amorcez une transformation tangible." />
 </Layout>
