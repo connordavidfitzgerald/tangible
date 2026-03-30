@@ -14,7 +14,7 @@
     --text-heading-xl: utopia.clamp(60, 120);
     --text-heading-lg: utopia.clamp(40, 94);
     --text-body-sm: utopia.clamp(12, 20);
-    --text-body-caption: clamp(0.9rem, 0.2386rem + 1.1vw, 1.95rem);
+    --text-body-caption: clamp(1.1rem, 0.2386rem + 1vw, 1.95rem);
     --text-body-md: utopia.clamp(14, 48);
     --text-body-lg: utopia.clamp(32, 40);
     --text-button: utopia.clamp(12, 18);
@@ -56,7 +56,7 @@
     --spacing-mob-footer: clamp(17.1875rem, -1.1458rem + 91.6667vw, 27.5rem);
     --spacing-mob-128: clamp(6rem, 0rem + 30vw, 15rem);
 
-    --spacing-fluid-twenty: utopia.clamp(5, 33);
+    --spacing-fluid-twenty: utopia.clamp(10, 33);
     --spacing-fluid-thirty: utopia.clamp(25, 40);
     --spacing-fluid-forty: clamp(1.3125rem, 0.0057rem + 2.6136vw, 4.1875rem);
     --spacing-fluid-sixty: utopia.clamp(12, 100);
