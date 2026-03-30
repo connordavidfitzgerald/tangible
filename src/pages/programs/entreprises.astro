@@ -1,7 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Button from '@components/Button/Button.astro';
-import Image from '@components/Image/Image.astro';
+
 import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import chalkboard from '@images/Home_about.jpg';
@@ -13,26 +12,37 @@ import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
 
 import entreprises from '@images/entreprises.jpg';
+import mob from '@images/entreprises-mob.jpg';
 ---
 
 <Layout title="Programmes — Entreprises">
-    <div class="flex h-screen flex-col justify-center bg-offwhite pr-fluid-forty pl-fluid-forty">
-        <div class="absolute top-0 right-0 left-0 z-0 h-full w-full">
+    <div
+        class="flex aspect-393/852 max-h-dvh flex-col justify-end overflow-clip bg-offwhite pr-fluid-forty pb-fluid-eighty pl-fluid-forty sm:aspect-1512/902 sm:justify-center sm:pb-0"
+    >
+        <div class="absolute right-0 left-0 z-0 aspect-393/852 sm:aspect-1512/902">
             <Picture
                 alt="A clipboard and paper"
                 src={entreprises}
                 layout="full-width"
-                class="object-cover"
+                class="hidden h-full w-full object-cover sm:flex"
+            />
+            <Picture
+                alt="A clipboard and paper"
+                src={mob}
+                layout="full-width"
+                class="flex h-full w-full object-cover sm:hidden"
             />
         </div>
-        <RevealHeader
-            textColor="#FFFFFF"
-            delay={0.25}
-            lines={[
-                { text: 'Coaching', font: 'formula' },
-                { text: 'D’Entreprises', font: 'editorial' }
-            ]}
-        />
+        <div class="pb-fluid-270 sm:pb-0">
+            <RevealHeader
+                delay={0.25}
+                textColor="#FFFFFF"
+                lines={[
+                    { text: 'Coaching', font: 'formula' },
+                    { text: "D'Entreprises", font: 'editorial' }
+                ]}
+            />
+        </div>
     </div>
     <div
         class="grid h-fit grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-5xl pr-fluid-forty pb-fluid-5xl pl-fluid-forty"
@@ -56,7 +66,7 @@ import entreprises from '@images/entreprises.jpg';
             </p>
         </div>
     </div>
-    <div class="z-10 bg-offwhite">
+    <div class="z-10 h-fit w-full bg-offwhite">
         <ServiceSlider
             slides={[
                 {
