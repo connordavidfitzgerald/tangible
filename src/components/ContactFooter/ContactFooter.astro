@@ -1,6 +1,7 @@
 ---
 import Button from '@components/Button/Button.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import SplitAlt from '@components/SplitReveal/SplitAlt.astro';
 
 interface Props {
     heading?: string;
@@ -53,9 +54,12 @@ const t = dict[lang];
         <div
             class="col-span-10 col-start-2 flex flex-col justify-center gap-fluid-forty pt-fluid-lg pb-fluid-lg"
         >
-            <h1 class="font-radio text-footer-header leading-[105%] font-normal text-perle">
+            <SplitReveal
+                class="font-radio text-footer-header leading-[110%] font-normal text-perle"
+            >
                 {heading}
-            </h1>
+            </SplitReveal>
+
             <div class="grid grid-cols-2 gap-fluid-twenty">
                 <SplitReveal
                     class="font-radio text-body-md leading-[120%] font-light tracking-[3%] text-perle"
@@ -120,11 +124,11 @@ const t = dict[lang];
     <div
         class="mob-version grid grid-cols-8 gap-x-mob-16 gap-y-mob-64 bg-bronze pt-mob-64 pr-mob-16 pb-mob-64 pl-mob-16"
     >
-        <h1
+        <SplitReveal
             class="font-radio col-span-6 col-start-2 text-mob-footer leading-[105%] font-normal text-perle"
         >
             {heading}
-        </h1>
+        </SplitReveal>
         <SplitReveal
             class="font-radio col-span-8 text-mob-body leading-[120%] font-light tracking-[3%] text-perle"
             tag="p"

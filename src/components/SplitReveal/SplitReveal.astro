@@ -48,8 +48,6 @@ const { tag: Tag = 'p', class: className = '' } = Astro.props;
                         // produce a different line-height than the original flow, so when
                         // revert() removes them the text snaps to a different height.
                         // Setting it explicitly keeps both states identical.
-                        const computedLineHeight = getComputedStyle(el).lineHeight;
-                        (el as HTMLElement).style.lineHeight = computedLineHeight;
 
                         new SplitText(el, {
                             type: 'words, lines',
@@ -58,8 +56,8 @@ const { tag: Tag = 'p', class: className = '' } = Astro.props;
 
                             onSplit(self) {
                                 // Return the animation! This allows autoSplit to properly clean up and manage state when fonts load
-                                return gsap.from(self.lines, {
-                                    yPercent: 120,
+                                gsap.from(self.lines, {
+                                    yPercent: 110,
                                     duration: 1.2,
                                     ease: 'power3.out',
                                     stagger: 0.1,
@@ -67,7 +65,8 @@ const { tag: Tag = 'p', class: className = '' } = Astro.props;
                                         trigger: el,
                                         start: 'top 90%',
                                         once: true
-                                    }
+                                    },
+                                    onComplete: () => self.revert()
                                 });
                             }
                         });

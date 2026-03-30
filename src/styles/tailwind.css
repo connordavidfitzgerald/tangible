@@ -14,7 +14,7 @@
     --text-heading-xl: utopia.clamp(60, 120);
     --text-heading-lg: utopia.clamp(40, 94);
     --text-body-sm: utopia.clamp(12, 20);
-    --text-body-caption: clamp(0.9rem, 0.2386rem + 1.0227vw, 1.95rem);
+    --text-body-caption: clamp(0.9rem, 0.2386rem + 1.1vw, 1.95rem);
     --text-body-md: utopia.clamp(14, 48);
     --text-body-lg: utopia.clamp(32, 40);
     --text-button: utopia.clamp(12, 18);

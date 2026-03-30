@@ -34,7 +34,7 @@ import img7 from '@images/LEADER.jpg';
         <div class="programs-scroll-wrapper relative bg-offwhite">
             <!-- Card 1: pins to the top while card 2 scrolls past -->
             <div
-                class="programs-card programs-card-1 sm:h-200vh relative top-0 z-10 grid h-fit grid-cols-8 gap-fluid-twenty bg-perle pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty sm:sticky sm:grid-cols-12"
+                class="programs-card programs-card-1 sm:h-200vh relative top-fluid-forty z-10 grid h-fit grid-cols-8 gap-fluid-twenty bg-perle pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty sm:sticky sm:grid-cols-12"
             >
                 <div class="col-span-4 hidden overflow-clip sm:flex">
                     <Image src={img6} class="aspect-444/668 h-full" />
@@ -173,12 +173,11 @@ import img7 from '@images/LEADER.jpg';
                         // card2 is in normal flow directly after card1 (both are h-screen).
                         // As card2 scrolls in from the bottom, scale card1 down.
                         gsap.to(card1, {
-                            scale: 0.85,
-                            borderRadius: '1.5rem',
+                            scale: 0.8,
                             ease: 'none',
                             scrollTrigger: {
                                 trigger: card2,
-                                start: 'top 80%', // card2's top hits the bottom of the viewport
+                                start: 'top 100%', // card2's top hits the bottom of the viewport
                                 end: 'top top', // card2's top reaches the top (fully overlapping)
                                 scrub: true
                             }

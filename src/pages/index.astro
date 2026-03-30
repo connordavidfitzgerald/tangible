@@ -9,6 +9,8 @@ import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
 import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
 import RevealImage from '@components/RevealHeader/RevealImage.astro';
 import RevealBody from '@components/RevealHeader/RevealBody.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import FadeUp from '@components/FadeUp/FadeUp.astro';
 
 import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
 import plantAnimationUrl from '@images/plant.json?url';
@@ -21,6 +23,12 @@ import img5 from '@images/tangible5.jpg';
 
 import img6 from '@images/Tangible0797.jpg';
 import img7 from '@images/LEADER.jpg';
+
+import mob1 from '@images/mob_tang1.jpg';
+import mob2 from '@images/mob_tang2.jpg';
+import mob3 from '@images/mob_tang3.jpg';
+import mob4 from '@images/mob_tang4.jpg';
+import mob5 from '@images/mob_tang5.jpg';
 ---
 
 <Layout title="Tangible">
@@ -28,7 +36,7 @@ import img7 from '@images/LEADER.jpg';
         class="hero-section relative flex min-h-250 w-full flex-col justify-end overflow-hidden pr-fluid-forty pb-fluid-270 pl-fluid-forty lg:aspect-1512/913 lg:justify-center lg:pb-0"
     >
         <!-- Crossfade background slideshow -->
-        <div class="hero-slideshow brightness-80">
+        <div class="hero-slideshow hidden brightness-80 sm:flex">
             <div class="hero-slide" style="z-index: 5; animation-delay: 0s" aria-hidden="true">
                 <Picture src={img1} alt="" layout="full-width" />
             </div>
@@ -43,6 +51,23 @@ import img7 from '@images/LEADER.jpg';
             </div>
             <div class="hero-slide" style="z-index: 1; animation-delay: 16s" aria-hidden="true">
                 <Picture src={img5} alt="" layout="full-width" loading="lazy" />
+            </div>
+        </div>
+        <div class="hero-slideshow mob-version flex brightness-80 sm:hidden">
+            <div class="hero-slide" style="z-index: 5; animation-delay: 0s" aria-hidden="true">
+                <Picture src={mob1} alt="" layout="full-width" />
+            </div>
+            <div class="hero-slide" style="z-index: 4; animation-delay: 4s" aria-hidden="true">
+                <Picture src={mob2} alt="" layout="full-width" loading="lazy" />
+            </div>
+            <div class="hero-slide" style="z-index: 3; animation-delay: 8s" aria-hidden="true">
+                <Picture src={mob3} alt="" layout="full-width" loading="lazy" />
+            </div>
+            <div class="hero-slide" style="z-index: 2; animation-delay: 12s" aria-hidden="true">
+                <Picture src={mob4} alt="" layout="full-width" loading="lazy" />
+            </div>
+            <div class="hero-slide" style="z-index: 1; animation-delay: 16s" aria-hidden="true">
+                <Picture src={mob5} alt="" layout="full-width" loading="lazy" />
             </div>
         </div>
         <!-- Overlay for text legibility -->
@@ -65,14 +90,15 @@ import img7 from '@images/LEADER.jpg';
         class="desktop-version grid h-fit min-h-[500px] grid-cols-12 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
     >
         <div class="col-span-4 min-h-full overflow-clip pr-fluid-twenty">
-            <RevealImage>
+            <FadeUp>
                 <Picture
                     src={chalkboard}
                     class="aspect-444/668 min-h-[500px] object-cover"
                     layout="full-width"
                     alt="chalkboard"
+                    loading="lazy"
                 />
-            </RevealImage>
+            </FadeUp>
         </div>
         <div class="col-span-8 flex grow flex-col">
             <div
@@ -80,6 +106,7 @@ import img7 from '@images/LEADER.jpg';
             >
                 À Propos
             </div>
+
             <div
                 class="desktop-version flex grow flex-col justify-between pt-fluid-eighty pr-[3.78rem] pl-[3.78rem]"
             >
@@ -105,15 +132,16 @@ import img7 from '@images/LEADER.jpg';
         >
             À Propos
         </div>
-        <div class="col-span-6 col-start-2 min-h-full overflow-clip pt-mob-64">
-            <RevealImage>
+
+        <div class="col-span-6 col-start-2 min-h-full pt-mob-64">
+            <FadeUp>
                 <Picture
                     src={chalkboard}
                     class="aspect-267/343 object-cover"
                     layout="full-width"
                     alt="chalkboard"
                 />
-            </RevealImage>
+            </FadeUp>
         </div>
         <div class="col-span-8 flex flex-col pt-mob-64 pb-mob-64">
             <div class="flex flex-col gap-mob-32">
@@ -132,13 +160,13 @@ import img7 from '@images/LEADER.jpg';
     </div>
 
     <div
-        class="desktop-version grid h-fit grid-cols-12 items-center justify-center gap-fluid-twenty bg-yellow pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
+        class="desktop-version mx-fluid-twenty grid h-fit grid-cols-12 items-center justify-center gap-fluid-twenty bg-yellow pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty"
     >
-        <h1
-            class="heading-lg font-radio col-span-6 col-start-2 flex h-full flex-col justify-center leading-[105%] font-normal tracking-[0%]"
-        >
-            Et si cultiver l’effervescence de votre mission faisait toute la différence ?
-        </h1>
+        <div class="col-span-6 col-start-2 flex flex-col justify-center leading-[110%]">
+            <SplitReveal class="heading-lg font-radio leading-[110%] font-normal tracking-[0%]">
+                Et si cultiver l’effervescence de votre mission faisait toute la différence ?
+            </SplitReveal>
+        </div>
         <div class="col-span-4 col-start-9 pt-fluid-4xl pr-fluid-sixty pb-fluid-4xl">
             <div class="w-full mix-blend-multiply">
                 <LottieAnimation src={plantAnimationUrl} autoplay={true} loop={true} />
@@ -147,7 +175,7 @@ import img7 from '@images/LEADER.jpg';
     </div>
 
     <div
-        class="mob-version grid grid-cols-8 items-center justify-center gap-mob-16 bg-yellow pt-mob-64 pr-mob-16 pb-mob-64 pl-mob-16"
+        class="mob-version mx-fluid-forty grid grid-cols-8 items-center justify-center gap-mob-16 bg-yellow pt-mob-64 pr-mob-16 pb-mob-64 pl-mob-16"
     >
         <div class="col-span-6 col-start-2 flex flex-col gap-mob-64">
             <div class="w-full mix-blend-multiply">
