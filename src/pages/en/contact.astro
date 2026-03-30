@@ -44,14 +44,16 @@ import building from '@images/AH1A3167.jpg';
         <div
             class="col-span-12 flex h-full flex-col justify-start gap-fluid-eighty sm:col-span-8 sm:col-start-3"
         >
-            <div
-                class="flex flex-col gap-fluid-forty pt-32 pb-32 text-mob-body leading-[120%] font-light tracking-[3%] sm:pt-0 sm:pb-0 sm:text-body-md"
-            >
-                <p class="font-bold text-bronze">
+            <div class="flex flex-col gap-fluid-forty pt-32 pb-32 sm:pt-0 sm:pb-0">
+                <SplitReveal
+                    class="w-full text-mob-body leading-[120%] font-bold tracking-[2%] text-bronze sm:text-body-md"
+                >
                     Do you want to initiate a tangible transformation, for yourself, your team, or
                     your ecosystem?
-                </p>
-                <div class="flex flex-col gap-0 sm:gap-fluid-forty">
+                </SplitReveal>
+                <div
+                    class="flex flex-col gap-0 text-mob-body leading-[120%] font-light tracking-[2%] sm:gap-fluid-forty sm:text-body-md"
+                >
                     <p class="pb-fluid-forty sm:pb-0">
                         The Tangible team is here to support you at every step. Whether to learn
                         more about our programs, book a consultation, or meet a coach from our team,
@@ -60,13 +62,17 @@ import building from '@images/AH1A3167.jpg';
                     <div
                         class="flex flex-col gap-fluid-twenty border-t border-b border-white pt-fluid-forty pb-fluid-forty sm:grid sm:grid-cols-2"
                     >
-                        <a>info@tangiblecoach.com</a>
-                        <a class="hidden sm:flex">514-679-2312</a>
+                        <a href="mailto:info@tangiblecoach.com" class="hover-underline w-fit"
+                            >info@tangiblecoach.com</a
+                        >
+                        <a class="hover-underline hidden w-fit sm:flex" href="tel:5146792312"
+                            >514-679-2312</a
+                        >
                     </div>
                     <div
                         class="flex flex-col gap-fluid-twenty border-b border-white pt-fluid-forty pb-fluid-forty sm:hidden sm:grid-cols-2"
                     >
-                        <a>514-679-2312</a>
+                        <a href="tel:5146792312">514-679-2312</a>
                     </div>
                 </div>
             </div>
@@ -142,7 +148,7 @@ import building from '@images/AH1A3167.jpg';
                     >
                 </div>
                 <div class="flex flex-row justify-center">
-                    <Button id="submit-btn" class="text-body-sm" type="submit">Submit</Button>
+                    <Button id="submit-btn" type="submit">Submit</Button>
                 </div>
             </form>
         </div>

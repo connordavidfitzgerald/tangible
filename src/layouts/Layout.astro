@@ -54,8 +54,7 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
                     <Icon name="logo" class="h-fluid-thirty w-auto" />
                     <a
                         href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
-                        class="hover-underline w-fit font-sans text-body-sm"
-                        >{lang === 'en' ? 'FR' : 'EN'}</a
+                        class="w-fit font-sans text-body-sm">{lang === 'en' ? 'FR' : 'EN'}</a
                     >
                 </div>
                 <div class="col-span-5 flex flex-col items-start gap-10">
@@ -65,34 +64,23 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
                         CANADA
                     </h6>
                     <h6 class="font-sans text-body-sm leading-[120%]">
-                        (514) 903-1794<br />
-                        info@tangible.com
+                        <a href="tel:5149031794">(514) 903-1794</a><br />
+                        <a href="mailto:info@tangible.com">info@tangible.com</a>
                     </h6>
                 </div>
                 <div
                     class="col-span-2 flex flex-col justify-between font-sans text-body-sm uppercase"
                 >
-                    <a href={translatePath('/about')} class="hover-underline w-fit"
-                        >{t('nav.about')}</a
-                    >
-                    <a href={translatePath('/programs')} class="hover-underline w-fit"
-                        >{t('nav.programs')}</a
-                    >
-                    <a href={translatePath('/')} class="hover-underline w-fit">{t('nav.members')}</a
-                    >
+                    <a href={translatePath('/about')} class="w-fit">{t('nav.about')}</a>
+                    <a href={translatePath('/programs')} class="w-fit">{t('nav.programs')}</a>
+                    <a href={translatePath('/')} class="w-fit">{t('nav.members')}</a>
                 </div>
                 <div
                     class="col-span-2 flex flex-col justify-between font-sans text-body-sm uppercase"
                 >
-                    <a href={translatePath('/contact')} class="hover-underline w-fit"
-                        >{t('nav.contact')}</a
-                    >
-                    <a href={translatePath('/centre-iam')} class="hover-underline w-fit"
-                        >{t('nav.iam')}</a
-                    >
-                    <a href={translatePath('/contact')} class="hover-underline w-fit"
-                        >{t('nav.book')}</a
-                    >
+                    <a href={translatePath('/contact')} class="w-fit">{t('nav.contact')}</a>
+                    <a href={translatePath('/centre-iam')} class="w-fit">{t('nav.iam')}</a>
+                    <a href={translatePath('/contact')} class="w-fit">{t('nav.book')}</a>
                 </div>
             </div>
 
@@ -109,8 +97,8 @@ const FONTS: CssVariable[] = ['--radio', '--editorial', '--formula'];
                         1337 Avenue du Mont-Royal Est<br />
                         Montreal (Quebec) H2J 1Y6<br />
                         CANADA<br /><br />
-                        (514) 903-1794<br />
-                        info@tangible.com
+                        <a href="tel:5149031794">(514) 903-1794</a><br />
+                        <a href="mailto:info@tangible.com">info@tangible.com</a>
                     </h6>
 
                     <div class="flex flex-col gap-mob-32">

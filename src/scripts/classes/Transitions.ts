@@ -109,6 +109,7 @@ export class Transitions {
                         this.oldCloneWrapper,
                         {
                             scale: 0.95,
+                            delay: 0.1,
                             opacity: 1,
                             duration: 1.5,
                             ease: 'power3.out'
