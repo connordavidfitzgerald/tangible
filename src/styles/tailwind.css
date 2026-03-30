@@ -23,7 +23,7 @@
     --text-list-lg: clamp(1.7813rem, 1.2645rem + 2.5838vw, 4.365rem);
     --text-list-num: clamp(1.7813rem, 1.1851rem + 2.9806vw, 4.7619rem);
     --text-header-two: clamp(1.2213rem, 0.91rem + 1.5563vw, 2.7775rem);
-    --text-button: clamp(0.6875rem, 0.233rem + 0.9091vw, 1.6875rem);
+    --text-button: utopia.clamp(14, 16);
 
     --text-nav: utopia.clamp(14, 16);
 
@@ -59,16 +59,16 @@
     --spacing-fluid-twenty: utopia.clamp(10, 33);
     --spacing-fluid-thirty: utopia.clamp(25, 40);
     --spacing-fluid-forty: clamp(1.3125rem, 0.0057rem + 2.6136vw, 4.1875rem);
-    --spacing-fluid-sixty: utopia.clamp(12, 100);
-    --spacing-fluid-eighty: utopia.clamp(16, 132);
+    --spacing-fluid-sixty: utopia.clamp(20, 100);
+    --spacing-fluid-eighty: utopia.clamp(25, 125);
     --spacing-fluid-160: utopia.clamp(32, 264);
     --spacing-fluid-270: utopia.clamp(54, 444);
 
     --spacing-fluid-nav: utopia.clamp(5, 10);
-    --spacing-button-vert: clamp(0.375rem, 0.0625rem + 0.625vw, 1.0625rem);
-    --spacing-button-hor: clamp(1.25rem, 0rem + 2.5vw, 4rem);
-    --spacing-button-vert-mob: clamp(0.625rem, -0.0417rem + 3.3333vw, 1rem);
-    --spacing-button-hor-mob: clamp(1.9375rem, 0.0486rem + 9.4444vw, 3rem);
+    --spacing-button-vert: 0.6rem;
+    --spacing-button-hor: 2.5rem;
+    --spacing-button-vert-mob: 0.6rem;
+    --spacing-button-hor-mob: 2.5rem;
 
     --spacing-unit-sm: var(--unit-sm);
     --spacing-unit-md: var(--unit-md);
@@ -145,8 +145,6 @@
         --button-width: auto;
         --button-radius: 0px;
         --button-font-size: var(--text-button);
-        --button-padding: 0.65625rem, 2.59375rem;
-        --button-gap: 25px;
 
         /* Idle state - Default styles */
         --button-color: var(--color-black);
