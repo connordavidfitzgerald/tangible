@@ -2,7 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 
 import { Picture } from 'astro:assets';
-
+import FadeUp from '@components/FadeUp/FadeUp.astro';
 import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
 import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
 import RevealImage from '@components/RevealHeader/RevealImage.astro';
@@ -57,12 +57,16 @@ import mob from '@images/hands.jpg';
         <div
             class="col-span-6 col-start-2 hidden w-full sm:col-span-4 sm:col-start-1 sm:flex sm:pr-fluid-twenty"
         >
-            <Picture src={about} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+            <FadeUp>
+                <Picture src={about} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+            </FadeUp>
         </div>
         <div
             class="col-span-6 col-start-2 flex w-full pt-16 pb-16 pl-fluid-forty sm:col-span-4 sm:col-start-1 sm:hidden sm:pl-0"
         >
-            <Picture src={mobcentre} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+            <FadeUp>
+                <Picture src={mobcentre} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+            </FadeUp>
         </div>
         <div
             class="col-span-8 flex h-full flex-col justify-start gap-fluid-eighty border-b border-b-perle"

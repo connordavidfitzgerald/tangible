@@ -18,7 +18,7 @@ const translatePath = useTranslatedPath(lang);
 
         <!-- Desktop nav items -->
         <div
-            class="desktop-nav flex flex-row items-center gap-fluid-forty font-sans text-body-sm tracking-[2%] uppercase"
+            class="desktop-nav flex flex-row items-center gap-fluid-forty font-sans text-[1rem] tracking-[2%] uppercase"
         >
             <a class="hover-underline" href={translatePath('/about')}>{t('nav.about')}</a>
             <a class="hover-underline" href={translatePath('/programs')}>{t('nav.programs')}</a>
@@ -31,7 +31,7 @@ const translatePath = useTranslatedPath(lang);
             <a class="hover-underline" href={translatePath('/centre-iam')}>{t('nav.iam')}</a>
         </div>
         <div
-            class="desktop-nav flex flex-row items-center gap-5 font-sans text-body-sm tracking-[2%] uppercase"
+            class="desktop-nav flex flex-row items-center gap-5 font-sans text-[1rem] tracking-[2%] uppercase"
         >
             <a
                 href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}

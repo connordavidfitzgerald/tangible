@@ -14,32 +14,41 @@ import Button from '../../components/Button/Button.astro';
 import about from '@images/centreiam2.png';
 import leaders from '@images/leaders.jpg';
 import building from '@images/AH1A3167.jpg';
+import mob from '@images/building-mob.jpg';
 ---
 
-<Layout title="Programs — Leaders">
+<Layout title="Tangible — Contact">
     <div
-        class="flex aspect-1512/902 flex-col justify-end overflow-hidden bg-offwhite pr-fluid-forty pb-16 pl-fluid-forty sm:justify-center sm:pb-0"
+        class="flex aspect-393/852 max-h-dvh flex-col justify-end overflow-hidden bg-offwhite pr-fluid-forty pl-fluid-forty sm:aspect-1512/902 sm:justify-center sm:pb-0"
     >
-        <div class="absolute right-0 left-0 z-0 aspect-1512/902 overflow-hidden">
+        <div class="absolute right-0 left-0 z-0 aspect-393/852 object-cover sm:aspect-1512/902">
             <Picture
                 alt="A clipboard and paper"
                 src={building}
                 layout="full-width"
-                class="h-full w-full object-cover brightness-80"
+                class="hidden w-full object-cover sm:flex"
+            />
+            <Picture
+                alt="A clipboard and paper"
+                src={mob}
+                layout="full-width"
+                class="flex w-full object-cover sm:hidden"
             />
         </div>
-        <RevealHeader
-            delay={0.25}
-            textColor="#FFFFFF"
-            lines={[
-                { text: 'A space to initiate', font: 'formula' },
-                { text: 'a real', font: 'editorial' },
-                { text: 'movement', font: 'editorial' }
-            ]}
-        />
+        <div class="pb-fluid-270 sm:pb-0">
+            <RevealHeader
+                delay={0.25}
+                textColor="#FFFFFF"
+                lines={[
+                    { text: 'A space to initiate', font: 'formula' },
+                    { text: 'a real', font: 'editorial' },
+                    { text: 'movement', font: 'editorial' }
+                ]}
+            />
+        </div>
     </div>
     <div
-        class="grid aspect-1512/830 h-fit grid-cols-12 gap-fluid-twenty bg-perle pt-fluid-160 pr-fluid-forty pb-fluid-160 pl-fluid-forty"
+        class="grid h-fit grid-cols-12 gap-fluid-twenty bg-perle pt-fluid-160 pr-fluid-forty pb-fluid-160 pl-fluid-forty"
     >
         <div
             class="col-span-12 flex h-full flex-col justify-start gap-fluid-eighty sm:col-span-8 sm:col-start-3"

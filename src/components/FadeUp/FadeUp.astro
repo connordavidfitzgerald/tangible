@@ -27,15 +27,24 @@ const { tag: Tag = 'div', class: className = '' } = Astro.props;
             if (!el) return;
 
             document.fonts.ready.then(() => {
-                // Defer to the next frame to guarantee layout has fully resolved
-                // before calculating the start positions.
                 requestAnimationFrame(() => {
                     this.ctx = gsap.context(() => {
+                        // Promote to compositor layer before animation begins
+                        // to prevent subpixel artifacting (e.g. 1px trails on images)
+                        gsap.set(el, { willChange: 'transform, opacity' });
+
                         gsap.from(el, {
                             yPercent: 10,
                             opacity: 0,
                             duration: 1.2,
                             ease: 'power3.out',
+                            // Keep element on GPU layer via translate3d throughout
+                            force3D: true,
+                            onComplete: () => {
+                                // Tear down the compositor layer cleanly to eliminate
+                                // any lingering pixel trails at element edges
+                                gsap.set(el, { clearProps: 'transform,opacity,willChange' });
+                            },
                             scrollTrigger: {
                                 trigger: el,
                                 start: 'top 80%',
