@@ -17,6 +17,7 @@ const {
 
 const dict = {
     fr: {
+        nameLabel: 'Nom',
         paragraph:
             'Tissons des connexions authentiques et déclenchons un impact durable — pour vous, votre équipe et votre communauté.',
         booking: 'Réservez une consultation',
@@ -28,6 +29,7 @@ const dict = {
         successText: 'Succès'
     },
     en: {
+        nameLabel: 'Name',
         paragraph:
             "Let's weave authentic connections and trigger lasting impact — for you, your team, and your community.",
         booking: 'Book a consultation',
@@ -83,7 +85,7 @@ const t = dict[lang];
                             for="name"
                             class="font-radio block text-sm text-body-sm tracking-[2%] text-perle uppercase opacity-75"
                         >
-                            Full Name
+                            {t.nameLabel}
                         </label>
                         <input
                             type="text"
@@ -140,7 +142,7 @@ const t = dict[lang];
                 for="name"
                 class="font-radio block text-sm text-button-mob tracking-[2%] text-perle uppercase opacity-75"
             >
-                Full Name
+                {t.nameLabel}
             </label>
             <input
                 type="text"

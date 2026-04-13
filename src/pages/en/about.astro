@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { Picture } from 'astro:assets';
 import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import SplitReveal2 from '@components/SplitReveal/SplitReveal2.astro';
 import ronCherilus from '../../assets/images/roncherilus.jpg';
 import ContactFooter from '../../components/ContactFooter/ContactFooter.astro';
 import handsSvgRaw from '../../assets/svgs/hands.svg?raw';
@@ -21,29 +22,20 @@ const handsInnerPaths = handsSvgRaw
 
 <Layout title="About">
     <div
-        class="hero-section flex h-fit flex-col justify-start overflow-hidden bg-bronze pr-fluid-forty pb-fluid-270 pl-fluid-forty md:relative md:aspect-1512/1000 md:justify-start md:gap-fluid-eighty md:pb-0"
+        class="hero-section flex aspect-393/852 h-auto max-h-200 w-full flex-col justify-start gap-fluid-eighty overflow-hidden bg-bronze pt-[80px] pr-fluid-forty pb-fluid-forty pl-fluid-forty sm:min-h-[800px] md:relative md:aspect-1512/902 md:min-h-[902px] md:pb-fluid-270"
     >
-        <div class="h-5"></div>
         <div
-            class="font-radio flex flex-row items-center justify-center border-b border-b-perle pt-fluid-forty pb-3 text-nav tracking-[3%] text-perle uppercase"
+            class="font-radio flex flex-row items-center justify-center border-b border-b-perle pt-fluid-forty pb-3 text-[0.875rem] text-perle uppercase lg:text-[1rem]"
         >
             Mission
         </div>
 
-        <div class="flex h-fit flex-row">
-            <div class="z-10">
-                <RevealHeader
-                    delay={0.25}
-                    textColor={'#E1E3D0'}
-                    lines={[
-                        { text: 'Tangible: Unlocking', font: 'formula' },
-                        { text: 'the full power', font: 'formula' },
-                        { text: 'of leaders', font: 'editorial' },
-                        { text: 'and teams.', font: 'editorial' }
-                    ]}
-                />
-            </div>
-            <div class="z-0 flex grow">
+        <div
+            class="flex w-full grow flex-col justify-end pt-fluid-forty md:h-fit md:flex-col md:justify-center"
+        >
+            <div
+                class="z-0 -mt-20 flex w-full grow md:absolute md:right-0 md:mt-0 md:w-[50%] md:flex-col md:justify-center"
+            >
                 <hands-animation class="block h-full w-full">
                     <svg
                         class="h-full w-full overflow-visible mix-blend-multiply"
@@ -81,6 +73,18 @@ const handsInnerPaths = handsSvgRaw
                     </svg>
                 </hands-animation>
             </div>
+            <div class="z-10">
+                <RevealHeader
+                    delay={0.25}
+                    textColor={'#E1E3D0'}
+                    lines={[
+                        { text: 'Tangible: Unlocking', font: 'formula' },
+                        { text: 'the full power', font: 'formula' },
+                        { text: 'of leaders', font: 'editorial' },
+                        { text: 'and teams.', font: 'editorial' }
+                    ]}
+                />
+            </div>
         </div>
     </div>
     <div
@@ -110,46 +114,48 @@ const handsInnerPaths = handsSvgRaw
     >
         <div class="col-span-8 md:col-span-12">
             <div
-                class="font-radio flex flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-mob-section tracking-[3%] uppercase md:pb-fluid-twenty md:text-body-sm"
+                class="font-radio flex flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-[0.875rem] tracking-[3%] uppercase md:pb-fluid-twenty md:text-[1rem]"
             >
-                About
+                Our Approach
             </div>
         </div>
         <circles-animation class="col-span-6 col-start-2 w-full md:col-start-4">
             <div class="circles-wrapper">
                 <div class="circle c1">
                     <div class="yellow y1"></div>
-                    <SplitReveal class="text-circles-text leading-[120%] text-black">
+                    <SplitReveal2 class="text-circles-text leading-[120%] text-black">
                         Vertical<br />Alignment
-                    </SplitReveal>
+                    </SplitReveal2>
                 </div>
                 <div class="circle c2">
-                    <SplitReveal class="text-circles-text leading-[120%] text-black">
+                    <SplitReveal2 class="text-circles-text leading-[120%] text-black">
                         Strategic<br />Direction
-                    </SplitReveal>
+                    </SplitReveal2>
                 </div>
                 <div class="circle c3">
                     <div class="yellow y3"></div>
-                    <SplitReveal class="text-circles-text leading-[120%] text-black">
+                    <SplitReveal2 class="text-circles-text leading-[120%] text-black">
                         Evolutionary<br />Integration
-                    </SplitReveal>
+                    </SplitReveal2>
                 </div>
             </div>
         </circles-animation>
         <div
-            class="col-span-6 col-start-2 -mt-mob-64 w-full pb-mob-128 text-mob-caption leading-[120%] tracking-[2%] md:col-start-4 md:-mt-40 md:pb-fluid-270 md:text-body-caption"
+            class="col-span-6 col-start-2 -mt-mob-128 w-full pb-mob-128 text-body-caption leading-[120%] tracking-[2%] md:col-start-4 md:-mt-80 md:pb-fluid-270"
         >
-            Inspired by Ron Cherilus' I AM method, Tangible deploys three key steps in each of its
-            programs: vertical alignment, strategic direction, and evolutionary integration. A fluid
-            process to reconnect with one's intention, make decisions with accuracy, and evolve
-            one's leadership with depth.
+            <div class="-mt-mob-64 md:border-t md:border-t-perle md:pt-fluid-forty">
+                Inspired by Ron Cherilus' I AM method, Tangible deploys three key steps in each of
+                its programs: vertical alignment, strategic direction, and evolutionary integration.
+                A fluid process to reconnect with one's intention, make decisions with accuracy, and
+                evolve one's leadership with depth.
+            </div>
         </div>
     </div>
     <div
         class="relative flex h-auto w-full flex-col justify-center gap-0 bg-bronze pt-mob-32 pr-mob-16 pb-mob-128 pl-mob-16 text-offwhite sm:aspect-1512/913 md:gap-fluid-twenty md:pt-fluid-forty md:pr-fluid-forty md:pb-fluid-eighty md:pl-fluid-forty"
     >
         <div
-            class="font-radio col-span-12 flex grow flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-mob-section tracking-[3%] uppercase md:absolute md:top-10 md:right-fluid-forty md:left-fluid-forty md:pb-fluid-twenty md:text-body-sm"
+            class="font-radio col-span-12 flex grow flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-[0.875rem] tracking-[3%] uppercase md:absolute md:top-10 md:right-fluid-forty md:left-fluid-forty md:pb-fluid-twenty lg:text-[1rem]"
         >
             Vision
         </div>
@@ -176,7 +182,7 @@ const handsInnerPaths = handsSvgRaw
         class="relative grid h-fit grid-cols-8 gap-y-mob-64 bg-perle pt-mob-32 pr-mob-16 pb-fluid-270 pl-mob-16 md:grid-cols-12 md:gap-y-fluid-270 md:pt-fluid-forty md:pr-fluid-forty md:pl-fluid-forty"
     >
         <div
-            class="font-radio relative col-span-8 flex grow flex-row items-center justify-center border-b border-b-offwhite pb-mob-16 text-mob-section tracking-[3%] uppercase md:col-span-12 md:pb-fluid-twenty md:text-body-sm"
+            class="font-radio relative col-span-8 flex grow flex-row items-center justify-center border-b border-b-offwhite pb-mob-16 text-[0.875rem] tracking-[3%] uppercase md:col-span-12 md:pb-fluid-twenty lg:text-[1rem]"
         >
             Our Promise
         </div>
@@ -188,20 +194,20 @@ const handsInnerPaths = handsSvgRaw
                     At Tangible, we commit to
                 </p>
                 <div
-                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite pt-fluid-thirty pb-fluid-thirty"
+                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite py-[2rem] md:py-fluid-twenty"
                 >
-                    <div class="col-span-1 font-formula text-list-num text-bronze">
+                    <div class="col-span-1 pt-1 font-formula text-list-num text-bronze">
                         <h4>1</h4>
                     </div>
                     <SplitReveal
-                        class="col-span-7 pt-1 pr-fluid-twenty text-list-lg leading-[120%] tracking-[-0.01em]"
+                        class="col-span-7 pt-1 pr-fluid-twenty text-list-lg leading-[120%] tracking-[-0.01em] md:pt-0"
                         >Anchor each path with presence and intention.</SplitReveal
                     >
                 </div>
                 <div
-                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite pt-fluid-thirty pb-fluid-thirty"
+                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite py-[2rem] md:py-fluid-twenty"
                 >
-                    <div class="col-span-1 font-formula text-list-num text-bronze">
+                    <div class="col-span-1 pt-1 font-formula text-list-num text-bronze md:pt-0">
                         <h4>2</h4>
                     </div>
                     <SplitReveal
@@ -210,9 +216,9 @@ const handsInnerPaths = handsSvgRaw
                     >
                 </div>
                 <div
-                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite pt-fluid-thirty pb-fluid-thirty"
+                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite py-[2rem] md:py-fluid-twenty"
                 >
-                    <div class="col-span-1 font-formula text-list-num text-bronze">
+                    <div class="col-span-1 pt-1 font-formula text-list-num text-bronze md:pt-0">
                         <h4>3</h4>
                     </div>
                     <SplitReveal
@@ -221,9 +227,9 @@ const handsInnerPaths = handsSvgRaw
                     >
                 </div>
                 <div
-                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-b border-offwhite pt-fluid-thirty pb-fluid-thirty"
+                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-b border-offwhite py-[2rem] md:py-fluid-twenty"
                 >
-                    <div class="col-span-1 font-formula text-list-num text-bronze">
+                    <div class="col-span-1 pt-1 font-formula text-list-num text-bronze md:pt-0">
                         <h4>4</h4>
                     </div>
                     <SplitReveal
@@ -232,9 +238,9 @@ const handsInnerPaths = handsSvgRaw
                     >
                 </div>
                 <div
-                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-b border-offwhite pt-fluid-thirty pb-fluid-thirty"
+                    class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-b border-offwhite py-[2rem] md:py-fluid-twenty"
                 >
-                    <div class="col-span-1 font-formula text-list-num text-bronze">
+                    <div class="col-span-1 pt-1 font-formula text-list-num text-bronze md:pt-0">
                         <h4>5</h4>
                     </div>
                     <SplitReveal
@@ -290,7 +296,7 @@ const handsInnerPaths = handsSvgRaw
                 Ron Cherilus
             </h1>
             <h2
-                class="font-radio border-t border-b border-bronze pt-fluid-twenty pb-fluid-twenty text-header-two leading-[120%]"
+                class="font-radio border-t border-b border-bronze py-[2rem] text-header-two leading-[120%] md:py-fluid-twenty"
             >
                 Founder of Tangible<br />and the I AM Center
             </h2>
@@ -407,30 +413,76 @@ const handsInnerPaths = handsSvgRaw
                         this.ctx = gsap.context(() => {
                             const size = c1.offsetWidth;
                             const overlap = 0.25 * size;
-                            const finalDist = size - overlap;
+                            const finalDist = size - overlap; // 0.75 * size
 
                             const c1Top = c1.offsetTop;
                             const c2Top = c2.offsetTop;
                             const c3Top = c3.offsetTop;
-                            const c2CenterY = c2Top + size / 2;
 
-                            gsap.set(y1, { top: c2Top - c1Top, left: 0 });
-                            gsap.set(y3, { top: c2Top - c3Top, left: 0 });
-
-                            const deltaC1 = c2CenterY - finalDist - (c1Top + size / 2);
-                            const deltaC3 = c3Top + size / 2 - (c2CenterY + finalDist);
-
-                            const tl = gsap.timeline({
+                            // How far c2 travels up to sit `finalDist` below c1's top
+                            const c2Delta = c2Top - (c1Top + finalDist);
+                            // c2's final top position
+                            const c2FinalTop = c2Top - c2Delta;
+                            // How far c3 travels up to sit `finalDist` below c2's final top
+                            const c3Delta = c3Top - (c2FinalTop + finalDist);
+                            const mobileStart = () =>
+                                window.innerWidth < 768 ? 'top 70%' : 'top 40%';
+                            // ── y1 (inside stationary c1) ──────────────────────────
+                            // Rests at top: finalDist so it's visible only in c1's
+                            // bottom `overlap` strip. Start shifted down by `overlap`
+                            // (outside the clip), animate to y:0 as c2 slides in.
+                            gsap.set(y1, { top: finalDist, left: 0, y: overlap });
+                            gsap.to(y1, {
+                                y: 0,
+                                duration: 1.4,
+                                ease: 'power3.inOut',
                                 scrollTrigger: {
-                                    trigger: wrapper,
-                                    start: 'top 40%'
+                                    trigger: c1,
+                                    start: mobileStart, // re-evaluated on refresh
+                                    invalidateOnRefresh: true
                                 }
                             });
 
-                            tl.to(c1, { y: deltaC1, duration: 1.2, ease: 'power3.inOut' }, 0);
-                            tl.to(y1, { y: -deltaC1, duration: 1.2, ease: 'power3.inOut' }, 0);
-                            tl.to(c3, { y: -deltaC3, duration: 1.2, ease: 'power3.inOut' }, 0);
-                            tl.to(y3, { y: deltaC3, duration: 1.2, ease: 'power3.inOut' }, 0);
+                            // c2 slides up into c1
+                            gsap.to(c2, {
+                                y: -c2Delta,
+                                duration: 1.4,
+                                ease: 'power3.inOut',
+                                scrollTrigger: {
+                                    trigger: c1,
+                                    start: mobileStart, // re-evaluated on refresh
+                                    invalidateOnRefresh: true
+                                }
+                            });
+
+                            // ── y3 (inside moving c3) ──────────────────────────────
+                            // Rests at top: -finalDist so it's visible only in c3's
+                            // top `overlap` strip. Start shifted up by `overlap`
+                            // (outside the clip), animate to y:0 as c3 slides in.
+
+                            // c3 slides up into c2
+                            gsap.to(c3, {
+                                y: -c3Delta,
+                                duration: 1.4,
+
+                                ease: 'power3.inOut',
+                                scrollTrigger: {
+                                    trigger: c2,
+                                    start: mobileStart, // re-evaluated on refresh
+                                    invalidateOnRefresh: true
+                                }
+                            });
+                            gsap.set(y3, { top: -finalDist, left: 0, y: -overlap });
+                            gsap.to(y3, {
+                                y: 0,
+                                duration: 1.4,
+                                ease: 'power3.inOut',
+                                scrollTrigger: {
+                                    trigger: c2,
+                                    start: mobileStart, // re-evaluated on refresh
+                                    invalidateOnRefresh: true
+                                }
+                            });
                         }, this);
                     });
                 });
@@ -452,7 +504,6 @@ const handsInnerPaths = handsSvgRaw
             customElements.define('circles-animation', CirclesAnimation);
         }
     </script>
-
     <script>
         import { gsap } from 'gsap';
 

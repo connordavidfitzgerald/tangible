@@ -8,7 +8,7 @@ import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
 import RevealImage from '@components/RevealHeader/RevealImage.astro';
 import RevealBody from '@components/RevealHeader/RevealBody.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
-import ServiceSlider from '@components/ServiceSlider/ServiceSlider.astro';
+import ServiceSliderAlt from '@components/ServiceSlider/ServiceSliderAlt.astro';
 
 import about from '@images/centreiam2.png';
 import leaders from '@images/hands_tangible.jpg';
@@ -50,7 +50,7 @@ import mob from '@images/hands.jpg';
         class="grid aspect-1512/830 h-fit grid-cols-8 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-forty pl-fluid-forty sm:grid-cols-12"
     >
         <div
-            class="font-radio sm:text-body col-span-8 flex flex-row items-center justify-center border-b border-b-perle pb-3 text-[0.9rem] tracking-[3%] uppercase sm:hidden"
+            class="font-radio col-span-8 flex flex-row items-center justify-center border-b border-b-perle pb-3 text-[0.9rem] tracking-[3%] uppercase sm:hidden sm:text-body"
         >
             About
         </div>
@@ -68,7 +68,7 @@ import mob from '@images/hands.jpg';
             class="col-span-8 flex h-full flex-col justify-start gap-fluid-eighty border-b border-b-perle"
         >
             <div
-                class="font-radio text-body hidden flex-row items-center justify-center border-b border-b-perle pb-3 tracking-[3%] uppercase sm:flex"
+                class="font-radio hidden flex-row items-center justify-center border-b border-b-perle pb-3 text-body tracking-[3%] uppercase sm:flex"
             >
                 About
             </div>
@@ -84,13 +84,13 @@ import mob from '@images/hands.jpg';
             </p>
         </div>
         <div
-            class="font-radio sm:text-body col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-16 pb-3 text-[0.9rem] tracking-[3%] uppercase sm:pt-fluid-eighty"
+            class="font-radio col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-16 pb-3 text-[0.9rem] tracking-[3%] uppercase sm:pt-fluid-eighty sm:text-body"
         >
             Our CIAM Services
         </div>
     </div>
     <div class="flex h-4 bg-offwhite"></div>
-    <ServiceSlider
+    <ServiceSliderAlt
         slides={[
             {
                 shapeClass: 'starburst',
@@ -130,7 +130,7 @@ import mob from '@images/hands.jpg';
             },
             {
                 shapeClass: 'hexagon',
-                shapeTitle: 'Our pro bono services',
+                shapeTitle: 'Pro Bono<br/>services',
                 descriptions: [
                     {
                         text: 'To increase our social impact, the I AM coaching team offers pro bono services to non-profit organizations that have a social, environmental, sports, or educational mission with youth. A concrete way to put our expertise at the service of those who build a better world.'

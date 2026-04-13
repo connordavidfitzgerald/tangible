@@ -22,7 +22,11 @@ const translatePath = useTranslatedPath(lang);
         >
             <a class="hover-underline" href={translatePath('/about')}>{t('nav.about')}</a>
             <a class="hover-underline" href={translatePath('/programs')}>{t('nav.programs')}</a>
-            <a class="hover-underline" href={translatePath('/')}>{t('nav.members')}</a>
+            <a
+                class="hover-underline"
+                href="https://www.cognito-app.com/coach/?askedByTenant=ten181110034803"
+                >{t('nav.members')}</a
+            >
             <a class="hover-underline" href={translatePath('/contact')}>{t('nav.contact')}</a>
             <a class="hover-underline" href={translatePath('/centre-iam')}>{t('nav.iam')}</a>
         </div>
@@ -58,7 +62,7 @@ const translatePath = useTranslatedPath(lang);
                 >{t('nav.programs')}</a
             >
             <a
-                href={translatePath('/')}
+                href="https://www.cognito-app.com/coach/?askedByTenant=ten181110034803"
                 class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
                 >{t('nav.members')}</a
             >

@@ -13,22 +13,25 @@
     --text-heading-xl2: utopia.clamp(62, 128);
     --text-heading-xl: utopia.clamp(60, 120);
     --text-heading-lg: utopia.clamp(40, 94);
-    --text-body-sm: utopia.clamp(12, 20);
-    --text-body-caption: clamp(1.1rem, 0.2386rem + 1vw, 1.95rem);
+
+    --text-body: clamp(0.75rem, 0.5833rem + 0.5556vw, 1.25rem);
+
+    --text-body-sm: clamp(0.75rem, 0.5833rem + 0.5556vw, 1.25rem);
+    --text-body-caption: clamp(0.875rem, 0.75rem + 0.4167vw, 1.25rem);
     --text-body-md: utopia.clamp(14, 48);
     --text-body-lg: utopia.clamp(32, 40);
     --text-button: utopia.clamp(12, 18);
     --text-circles-text: utopia.clamp(22, 93);
     --text-test: utopia.clamp(14, 48);
-    --text-list-lg: clamp(1.7813rem, 1.2645rem + 2.5838vw, 4.365rem);
+    --text-list-lg: clamp(2.1875rem, 1.7708rem + 1.3889vw, 3.4375rem);
     --text-list-num: clamp(1.7813rem, 1.1851rem + 2.9806vw, 4.7619rem);
-    --text-header-two: clamp(1.2213rem, 0.91rem + 1.5563vw, 2.7775rem);
+    --text-header-two: clamp(1.5rem, 1.2708rem + 0.7639vw, 2.1875rem);
     --text-button: utopia.clamp(14, 16);
 
     --text-nav: utopia.clamp(14, 16);
 
-    --text-header-service2: clamp(2.7481rem, 1.5518rem + 5.9819vw, 8.73rem);
-    --text-header-service: clamp(2.5444rem, 1.3866rem + 5.7888vw, 8.3331rem);
+    --text-header-service2: clamp(2.7481rem, 1.6518rem + 5.9819vw, 8.73rem);
+    --text-header-service: clamp(2.5444rem, 1.4866rem + 5.7888vw, 8.3331rem);
     --text-footer-header: utopia.clamp(56, 100);
 
     --color-black: #000000;
@@ -39,11 +42,12 @@
     --color-offwhite: #ededed;
 
     --text-mob-section: clamp(0.7125rem, -0.0208rem + 3.6667vw, 1.125rem);
-    --text-mob-body: clamp(1.125rem, 0.0139rem + 5.5556vw, 1.75rem);
+    --text-mob-body: clamp(1.375rem, 1.1667rem + 0.6944vw, 2rem);
     --text-mob-nav: clamp(1.7813rem, -0.0312rem + 9.0625vw, 4rem);
     --text-mob-nav-sm: clamp(1.2213rem, 0.0354rem + 5.9292vw, 2.5rem);
     --text-mob-md: clamp(1.7813rem, 0.0001rem + 8.9056vw, 2.7831rem);
-    --text-mob-caption: clamp(0.7125rem, 0rem + 3.5625vw, 1.7813rem);
+    --text-mob-caption: clamp(0.875rem, 0.75rem + 0.4167vw, 1.25rem);
+    --text-slider-caption: clamp(0.75rem, 0.5833rem + 0.5556vw, 1.25rem);
     --text-button-mob: clamp(0.855rem, 0.1528rem + 3.5111vw, 1rem);
     --text-mob-footer: clamp(1.7813rem, 0.0001rem + 8.9056vw, 2.7831rem);
     --text-mob-footer-nav: clamp(0.6875rem, -0.0903rem + 3.8889vw, 1.125rem);

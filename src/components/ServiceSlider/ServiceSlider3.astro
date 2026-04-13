@@ -3,28 +3,22 @@ import { Icon } from 'astro-icon/components';
 
 interface DescriptionItem {
     title?: string;
-
     text: string;
 }
 
 interface Slide {
     shapeClass: string; // CSS class for the shape (e.g. 'hexagon', 'circle', 'diamond')
-
     shapeTitle: string; // HTML string for the shape's heading (supports <br/>)
-
     descriptions: DescriptionItem[];
 }
 
 interface Props {
     slides: Slide[];
-
     class?: string;
 }
 
 const { slides, class: className } = Astro.props;
-
 const slidesJson = JSON.stringify(slides);
-
 const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
 ---
 
@@ -32,23 +26,21 @@ const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
     id={id}
     class:list={[
         'service-slider flex w-full flex-col gap-0 md:grid md:aspect-auto md:grid-cols-12 md:gap-fluid-twenty md:pr-fluid-forty md:pl-fluid-forty',
-
         className
     ]}
     data-slides={slidesJson}
 >
     <!-- Left panel: shape + arrows -->
+    <div class="relative flex overflow-hidden bg-perle md:col-span-6 md:-ml-fluid-forty">
+        <div class="pointer-events-none aspect-square w-full"></div>
 
-    <div
-        class="relative flex overflow-hidden bg-perle md:col-span-6 md:-ml-fluid-forty md:min-h-[500px]"
-    >
-        <div class="slider-left-track flex aspect-square w-full">
+        <div class="slider-left-track absolute inset-0 h-full w-full">
             {
                 slides.map((slide, i) => (
                     <div
-                        class="slider-left-slide flex w-full shrink-0 items-center justify-center"
+                        class="slider-left-slide absolute inset-0 flex w-full shrink-0 items-center justify-center"
                         data-index={i}
-                        style={i === 0 ? '' : 'position:absolute;left:100%;top:0;bottom:0;'}
+                        style={i === 0 ? 'left: 0;' : 'left: 100%;'}
                     >
                         <div
                             class={`${slide.shapeClass} flex flex-col items-center justify-center bg-bronze text-center`}
@@ -62,7 +54,6 @@ const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
                 ))
             }
         </div>
-
         <div
             class="absolute right-fluid-forty bottom-fluid-forty left-fluid-forty z-10 flex flex-row justify-between"
         >
@@ -72,7 +63,6 @@ const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
             >
                 <Icon name="leftarrow" class="h-fluid-forty w-auto" />
             </button>
-
             <button
                 class="slider-next cursor-pointer border-0 bg-transparent p-0"
                 aria-label="Service suivant"
@@ -83,45 +73,37 @@ const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
     </div>
 
     <!-- Right panel: descriptions -->
-
-    <div class="col-span-6 overflow-hidden md:min-h-[5px]">
-        <div
-            class="slider-right-track relative aspect-square w-full px-fluid-forty md:h-full md:px-0"
-        >
+    <div class="col-span-6 overflow-hidden md:h-full">
+        <div class="slider-right-track grid h-full w-full px-fluid-forty md:px-0">
             {
                 slides.map((slide, i) => (
                     <div
-                        class="slider-right-slide absolute inset-0 flex px-fluid-forty pt-fluid-forty pb-fluid-forty md:px-0"
+                        class="slider-right-slide col-start-1 row-start-1 flex h-full w-full px-fluid-forty pt-fluid-forty pb-fluid-forty md:px-0"
                         data-index={i}
                         style={i === 0 ? '' : 'opacity:0; pointer-events:none;'}
                     >
                         <div class="flex h-fit w-full grid-cols-6 gap-fluid-twenty md:grid md:h-full">
-                            <div class="col-span-4 col-start-2 flex flex-col md:justify-between">
+                            <div class="col-span-6 col-start-1 flex flex-col md:justify-between lg:col-span-4 lg:col-start-2">
                                 {slide.descriptions.map((desc, j) => {
                                     const isLast = j === slide.descriptions.length - 1;
-
                                     const isOnly = slide.descriptions.length === 1;
-
                                     const borderClasses =
                                         j === 0
                                             ? 'border-t border-bronze'
                                             : 'border-t border-bronze';
-
                                     const lastBorder = isLast ? ' border-b border-bronze' : '';
-
                                     const growClass = isLast ? ' grow' : '';
 
                                     return (
                                         <div
-                                            class={`flex h-fit flex-col gap-fluid-twenty ${borderClasses}${lastBorder}${growClass} pt-fluid-eighty pb-fluid-eighty md:pt-fluid-forty md:pb-fluid-forty`}
+                                            class={`flex h-fit flex-col gap-fluid-twenty ${borderClasses}${lastBorder}${growClass} pt-fluid-twenty pb-fluid-forty`}
                                         >
                                             {desc.title && (
-                                                <h3 class="pt-fluid-forty pb-fluid-forty text-mob-body leading-[120%] font-light md:text-test">
+                                                <h3 class="text-mob-body leading-[120%] font-light md:text-test">
                                                     {desc.title}
                                                 </h3>
                                             )}
-
-                                            <p class="pt-fluid-forty pb-fluid-forty text-slider-caption leading-[120%] font-normal tracking-[3%] md:pt-0 md:pb-0">
+                                            <p class="text-body-caption leading-[120%] font-normal tracking-[3%]">
                                                 {desc.text}
                                             </p>
                                         </div>
@@ -309,99 +291,64 @@ const id = `slider-${Math.random().toString(36).slice(2, 7)}`;
 <style>
     .hexagon {
         width: 100%;
-
         height: auto;
-
         aspect-ratio: 1 / cos(30deg);
-
         clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
     }
 
     .circle {
         width: 100%;
-
         aspect-ratio: 1;
-
         border-radius: 50%;
     }
 
     .diamond {
         width: 100%;
-
         aspect-ratio: 1;
-
         max-height: 100%;
-
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     }
 
     .rounded-square {
         width: 100%;
-
         aspect-ratio: 1;
-
         border-radius: 15%;
     }
 
     .octagon {
         width: 100%;
-
         aspect-ratio: 1;
-
         clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     }
 
     .starburst {
         width: 100%; /* adjust to control the size */
-
         aspect-ratio: 1;
-
         clip-path: polygon(
             100% 50%,
-
             77.72% 61.48%,
-
             85.36% 85.36%,
-
             61.48% 77.72%,
-
             50% 100%,
-
             38.52% 77.72%,
-
             14.64% 85.36%,
-
             22.28% 61.48%,
-
             0% 50%,
-
             22.28% 38.52%,
-
             14.64% 14.64%,
-
             38.52% 22.28%,
-
             50% 0%,
-
             61.48% 22.28%,
-
             85.36% 14.64%,
-
             77.72% 38.52%
         );
     }
-
     .sparkle {
         aspect-ratio: 746 / 793;
-
         width: 100%;
-
         mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 746 793'%3E%3Cpath d='M373.162 1.8249C373.162 215.955 539.083 390.255 746 396.334C539.083 402.414 373.162 576.713 373.162 790.843C373.162 791.563 373.164 792.282 373.168 793H372.833C372.836 792.282 372.839 791.563 372.839 790.843C372.839 576.713 206.917 402.413 0 396.334C206.917 390.255 372.839 215.955 372.839 1.8249C372.839 1.21626 372.836 0.607991 372.833 0H373.167C373.165 0.607978 373.162 1.21627 373.162 1.8249Z' fill='black'/%3E%3C/svg%3E");
-
         mask-size: contain;
-
         mask-repeat: no-repeat;
-
         mask-position: center;
     }
 </style>
