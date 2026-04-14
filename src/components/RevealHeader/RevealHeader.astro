@@ -19,12 +19,12 @@ const fontMap: Record<string, string> = {
 ---
 
 <reveal-header class="trigger relative block" id={id} data-color={color} data-delay={delay}>
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-0">
         {
             lines.map(({ text, font }) => (
-                <div class="line-wrapper relative -mb-fluid-twenty h-fit w-fit overflow-hidden pt-fluid-twenty">
+                <div class="line-wrapper relative -mb-fluid-thirty h-fit w-fit overflow-hidden pt-fluid-twenty">
                     <h1
-                        class={`${fontMap[font]} ${font === 'formula' ? 'text-header-service2' : 'text-header-service'} w-fit leading-[105%] uppercase`}
+                        class={`${fontMap[font]} ${font === 'formula' ? 'pt-1 text-header-service2' : 'mt-1 text-header-service'} h-fit w-fit leading-[115%] uppercase`}
                         style={`color: ${textColor}`}
                     >
                         {text}
