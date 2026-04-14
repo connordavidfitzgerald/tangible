@@ -37,7 +37,9 @@ const translatePath = useTranslatedPath(lang);
                 href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
                 class="hover-underline">{lang === 'en' ? 'FR' : 'EN'}</a
             >
-            <a class="hover-underline" href={translatePath('/contact')}>{t('nav.book')}</a>
+            <a class="hover-underline" href="https://www.app.taaars.com/b/roncherilus"
+                >{t('nav.book')}</a
+            >
         </div>
 
         <!-- Hamburger button (mobile only) -->
@@ -77,7 +79,7 @@ const translatePath = useTranslatedPath(lang);
                 >{t('nav.iam')}</a
             >
             <a
-                href={translatePath('/contact')}
+                href="https://www.app.taaars.com/b/roncherilus"
                 class="flex w-full flex-col border-t border-b border-white pt-mob-menu pb-mob-menu text-mob-nav"
                 >{t('nav.book')}</a
             >

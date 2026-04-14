@@ -111,8 +111,8 @@ export class Transitions {
                             scale: 0.95,
                             delay: 0.1,
                             opacity: 1,
-                            duration: 1.5,
-                            ease: 'power3.out'
+                            duration: 1.2,
+                            ease: 'power2.out'
                         },
                         0
                     );
@@ -124,8 +124,8 @@ export class Transitions {
                         y: 0,
                         scale: 1,
                         delay: 0.1,
-                        duration: 1.5,
-                        ease: 'power3.inOut',
+                        duration: 1.2,
+                        ease: 'power2.inOut',
                         clearProps: 'all'
                     },
                     0
