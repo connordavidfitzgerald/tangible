@@ -509,8 +509,30 @@ const handsInnerPaths = handsSvgRaw
 
         class HandsAnimation extends HTMLElement {
             private ctx: gsap.Context | undefined;
+            private _pageInitHandler: (() => void) | undefined;
 
             connectedCallback() {
+                // Defer to the next frame to guarantee that Swup DOM injections
+                // have fully resolved before GSAP sets up animations.
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        this.initAnimation();
+                    });
+                });
+
+                // Re-initialise after Swup page transitions (the Transitions class
+                // dispatches this event in onContentReplace).
+                this._pageInitHandler = () => {
+                    if (document.contains(this)) {
+                        requestAnimationFrame(() => this.initAnimation());
+                    }
+                };
+                document.addEventListener('page:init', this._pageInitHandler);
+            }
+
+            private initAnimation() {
+                this.ctx?.revert();
+
                 const svg = this.querySelector('svg');
                 if (!svg) return;
 
@@ -543,6 +565,9 @@ const handsInnerPaths = handsSvgRaw
             }
 
             disconnectedCallback() {
+                if (this._pageInitHandler) {
+                    document.removeEventListener('page:init', this._pageInitHandler);
+                }
                 this.ctx?.revert();
             }
         }

@@ -22,7 +22,7 @@ const fontMap: Record<string, string> = {
     <div class="flex flex-col">
         {
             lines.map(({ text, font }) => (
-                <div class="line-wrapper relative -mb-4 h-fit w-fit overflow-hidden pt-4">
+                <div class="line-wrapper relative -mb-fluid-twenty h-fit w-fit overflow-hidden pt-fluid-twenty">
                     <h1
                         class={`${fontMap[font]} ${font === 'formula' ? 'text-header-service2' : 'text-header-service'} w-fit leading-[105%] uppercase`}
                         style={`color: ${textColor}`}
