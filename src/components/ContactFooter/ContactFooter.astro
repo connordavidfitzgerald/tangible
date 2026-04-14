@@ -200,6 +200,10 @@ const t = dict[lang];
                     const btn = form.querySelector('.submit-btn');
                     if (!btn) return;
 
+                    const labelDefault = btn.querySelector('.c-button_label_default');
+                    const labelHover = btn.querySelector('.c-button_label_hover');
+                    if (!labelDefault) return;
+
                     form.addEventListener('submit', async (e) => {
                         e.preventDefault();
 
@@ -234,21 +238,21 @@ const t = dict[lang];
                             gsap.to(split.chars, {
                                 y: 10,
                                 opacity: 0,
-                                duration: 0.4,
-                                stagger: 0.02,
-                                ease: 'power2.in',
+                                duration: 0.3,
+                                stagger: 0.01,
+                                ease: 'power2.out',
                                 onComplete: () => overlay.remove()
                             });
                         });
 
                         // Animate button text down
-                        const btnSplit = new SplitText(btn, { type: 'chars' });
+                        const btnSplit = new SplitText(labelDefault, { type: 'chars' });
                         await gsap.to(btnSplit.chars, {
                             y: 10,
                             opacity: 0,
-                            duration: 0.4,
-                            stagger: 0.02,
-                            ease: 'power2.in'
+                            duration: 0.3,
+                            stagger: 0.01,
+                            ease: 'power2.out'
                         });
 
                         // Submit the form while animation plays
@@ -264,13 +268,14 @@ const t = dict[lang];
 
                             // Swap text and animate success up from below
                             btnSplit.revert();
-                            btn.textContent = successText;
+                            labelDefault.textContent = successText;
+                            if (labelHover) labelHover.textContent = successText;
 
-                            const successSplit = new SplitText(btn, { type: 'chars' });
+                            const successSplit = new SplitText(labelDefault, { type: 'chars' });
                             gsap.from(successSplit.chars, {
                                 y: 10,
                                 opacity: 0,
-                                duration: 0.5,
+                                duration: 0.3,
                                 stagger: 0.03,
                                 ease: 'power2.out'
                             });
@@ -282,13 +287,14 @@ const t = dict[lang];
                                     opacity: 0,
                                     duration: 0.4,
                                     stagger: 0.02,
-                                    ease: 'power2.in'
+                                    ease: 'power2.out'
                                 });
 
                                 successSplit.revert();
-                                btn.textContent = submitText;
+                                labelDefault.textContent = submitText;
+                                if (labelHover) labelHover.textContent = submitText;
 
-                                const revertSplit = new SplitText(btn, { type: 'chars' });
+                                const revertSplit = new SplitText(labelDefault, { type: 'chars' });
                                 gsap.from(revertSplit.chars, {
                                     y: 10,
                                     opacity: 0,
