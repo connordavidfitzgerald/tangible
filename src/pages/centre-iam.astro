@@ -19,23 +19,23 @@ import mob from '@images/hands.jpg';
 
 <Layout title="I AM Center">
     <div
-        class="flex aspect-393/852 max-h-dvh flex-col justify-end overflow-clip bg-offwhite pr-fluid-forty pb-fluid-eighty pl-fluid-forty sm:aspect-1512/902 sm:justify-center sm:pb-0"
+        class="flex aspect-393/852 max-h-dvh flex-col justify-end bg-offwhite pr-fluid-forty pl-fluid-forty md:aspect-1512/902 md:justify-center md:pb-0"
     >
-        <div class="absolute right-0 left-0 z-0 aspect-393/852 sm:aspect-1512/902">
+        <div class="absolute right-0 left-0 z-0 aspect-393/852 md:aspect-1512/902">
             <Picture
                 alt="A clipboard and paper"
                 src={leaders}
                 layout="full-width"
-                class="hidden h-full w-full object-cover sm:flex"
+                class="hidden h-full w-full object-cover md:flex"
             />
             <Picture
                 alt="A clipboard and paper"
                 src={mob}
                 layout="full-width"
-                class="flex h-full w-full object-cover sm:hidden"
+                class="flex h-full w-full object-cover md:hidden"
             />
         </div>
-        <div class="pb-fluid-160 sm:pb-0">
+        <div class="w-full pb-fluid-160 md:pb-0">
             <RevealHeader
                 delay={0.25}
                 textColor="#FFFFFF"
@@ -47,38 +47,39 @@ import mob from '@images/hands.jpg';
             />
         </div>
     </div>
+
     <div
-        class="grid aspect-1512/830 h-fit grid-cols-8 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pb-fluid-forty pl-fluid-forty sm:grid-cols-12"
+        class="grid aspect-1512/830 h-fit w-full grid-cols-8 items-center bg-offwhite px-fluid-forty pt-fluid-eighty md:grid-cols-12 md:gap-fluid-twenty"
     >
         <div
-            class="font-radio col-span-8 flex flex-row items-center justify-center border-b border-b-perle pb-3 text-[0.9rem] tracking-[3%] uppercase sm:hidden sm:text-body"
+            class="font-radio col-span-8 flex w-full flex-row items-center justify-center border-b border-b-perle pb-3 text-[0.875rem] tracking-[3%] uppercase md:hidden md:text-[1rem]"
         >
             À Propos
         </div>
         <div
-            class="col-span-6 col-start-2 hidden w-full sm:col-span-4 sm:col-start-1 sm:flex sm:pr-fluid-twenty"
+            class="col-span-6 col-start-2 hidden w-full md:col-span-4 md:col-start-1 md:flex md:pr-fluid-twenty"
         >
             <FadeUp>
                 <Picture src={about} alt="Ron Cherilus" class="h-auto w-full object-cover" />
             </FadeUp>
         </div>
         <div
-            class="col-span-6 col-start-2 flex w-full pt-16 pb-16 pl-fluid-forty sm:col-span-4 sm:col-start-1 sm:hidden sm:pl-0"
+            class="col-span-6 col-start-2 flex w-full pt-16 pb-16 md:col-span-4 md:col-start-1 md:hidden md:pl-0"
         >
             <FadeUp>
                 <Picture src={mobcentre} alt="Ron Cherilus" class="h-auto w-full object-cover" />
             </FadeUp>
         </div>
         <div
-            class="col-span-8 flex h-full flex-col justify-start gap-fluid-eighty border-b border-b-perle"
+            class="col-span-8 flex h-full w-full flex-col items-center justify-start gap-fluid-eighty border-b border-b-perle"
         >
             <div
-                class="font-radio hidden flex-row items-center justify-center border-b border-b-perle pb-3 text-body tracking-[3%] uppercase sm:flex"
+                class="font-radio hidden w-full flex-row items-center justify-center border-b border-b-perle pb-3 text-[1rem] tracking-[3%] uppercase md:flex"
             >
                 À Propos
             </div>
             <p
-                class="pb-16 text-mob-body leading-[120%] font-light tracking-[3%] sm:pr-fluid-sixty sm:pl-fluid-sixty sm:text-body-md"
+                class="pb-16 text-mob-body leading-[120%] font-light tracking-[3%] md:pr-fluid-sixty md:pl-fluid-sixty md:text-body-md"
             >
                 Depuis 2012, le Centre I AM accompagne des milliers de membres vers la réalisation
                 de leur ÊTRE authentique. Établi au cœur du centre-ville, dans un espace à la fois
@@ -90,11 +91,12 @@ import mob from '@images/hands.jpg';
             </p>
         </div>
         <div
-            class="font-radio col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-16 pb-3 text-[0.9rem] tracking-[3%] uppercase sm:pt-fluid-eighty sm:text-body"
+            class="font-radio col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-16 pb-3 text-[0.875rem] tracking-[3%] uppercase md:pt-fluid-eighty md:text-[1rem]"
         >
             Nos services CIAM
         </div>
     </div>
+
     <div class="flex h-4 bg-offwhite"></div>
     <ServiceSliderAlt
         slides={[

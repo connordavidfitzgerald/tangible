@@ -53,7 +53,7 @@
     --text-mob-footer-nav: clamp(0.6875rem, -0.0903rem + 3.8889vw, 1.125rem);
     --text-mob-circles: clamp(1.25rem, 0.1389rem + 5.5556vw, 1.875rem);
 
-    --spacing-mob-menu: clamp(1.875rem, 0.625rem + 6.25vw, 3.75rem);
+    --spacing-mob-menu: 1.9425rem;
     --spacing-mob-64: clamp(3rem, 0rem + 15vw, 7.5rem);
     --spacing-mob-32: clamp(1.5rem, 0rem + 7.5vw, 3.75rem);
     --spacing-mob-16: clamp(0.75rem, 0rem + 3.75vw, 1.875rem);

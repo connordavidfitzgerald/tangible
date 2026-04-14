@@ -55,37 +55,37 @@ const translatePath = useTranslatedPath(lang);
         <nav class="mobile-nav gap-0 pr-mob-16 pl-mob-16">
             <a
                 href={translatePath('/about')}
-                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-[2.1875rem]"
                 >{t('nav.about')}</a
             >
             <a
                 href={translatePath('/programs')}
-                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-[2.1875rem]"
                 >{t('nav.programs')}</a
             >
             <a
                 href="https://www.cognito-app.com/coach/?askedByTenant=ten181110034803"
-                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-[2.1875rem]"
                 >{t('nav.members')}</a
             >
             <a
                 href={translatePath('/contact')}
-                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-[2.1875rem]"
                 >{t('nav.contact')}</a
             >
             <a
                 href={translatePath('/centre-iam')}
-                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                class="flex w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-[2.1875rem]"
                 >{t('nav.iam')}</a
             >
             <a
                 href="https://www.app.taaars.com/b/roncherilus"
-                class="flex w-full flex-col border-t border-b border-white pt-mob-menu pb-mob-menu text-mob-nav"
+                class="flex w-full flex-col border-t border-b border-white pt-mob-menu pb-mob-menu text-[2.1875rem]"
                 >{t('nav.book')}</a
             >
             <a
                 href={translatePath(Astro.url.pathname, lang === 'en' ? 'fr' : 'en')}
-                class="w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-mob-nav-sm"
+                class="w-full flex-col border-t border-white pt-mob-menu pb-mob-menu text-[1.5rem]"
                 >{lang === 'en' ? 'FR' : 'EN'}</a
             >
         </nav>
@@ -178,7 +178,7 @@ const translatePath = useTranslatedPath(lang);
     }
 
     /* ── Responsive ── */
-    @media (max-width: 1100px) {
+    @media (max-width: 1160px) {
         .desktop-nav {
             display: none;
         }

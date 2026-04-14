@@ -12,7 +12,7 @@ export const ui = {
         'nav.programs': 'Nos Programmes',
         'nav.members': 'Espace Membre',
         'nav.contact': 'Contact',
-        'nav.iam': 'Centre IAM',
+        'nav.iam': 'Centre I AM',
         'nav.book': 'Réservez une consultation'
     },
     en: {
@@ -20,7 +20,7 @@ export const ui = {
         'nav.programs': 'Our Programs',
         'nav.members': 'Members Area',
         'nav.contact': 'Contact',
-        'nav.iam': 'IAM Center',
+        'nav.iam': 'I AM Center',
         'nav.book': 'Book a consultation'
     }
 } as const;
