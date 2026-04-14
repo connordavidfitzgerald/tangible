@@ -6,6 +6,7 @@ import Swup from 'swup';
 import { Scroll } from '@scripts/classes/Scroll';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import type { HandsAnimation } from '@scripts/classes/HandsAnimation';
 
 export class Transitions {
     static readonly READY_CLASS = 'is-ready';
@@ -274,5 +275,12 @@ export class Transitions {
         document.documentElement.classList.remove(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.add(Transitions.READY_CLASS);
         ScrollTrigger.refresh();
+
+        // Re-initialise hands animations after the transition is fully settled.
+        // The custom element's connectedCallback may have fired while #swup was
+        // still off-screen (y: 100vh), so we re-trigger here as a safety net.
+        document
+            .querySelectorAll<HandsAnimation>('hands-animation')
+            .forEach((el) => el.initAnimation());
     }
 }
