@@ -1,23 +1,15 @@
-import metaImage from '@images/meta.png';
+import metaImage from '@images/thumbnail-preview.jpg';
 
 export const defaultSeo: Seo = {
-    title: 'Astro boilerplate',
-    description: 'Boilerplate for Astro',
+    title: 'Tangible',
+    description: 'Concrétisez votre leadership authentique',
     social: {
         facebook: {
-            title: 'Astro boilerplate',
+            title: 'Tangible',
             image: {
                 url: metaImage.src
             },
-            description: 'Boilerplate for Astro'
-        },
-        twitter: {
-            creator: '@LocomotiveMTL',
-            title: 'Astro boilerplate',
-            image: {
-                url: metaImage.src
-            },
-            description: 'Boilerplate for Astro'
+            description: 'Concrétisez votre leadership authentique'
         }
     },
     advanced: {
