@@ -1,0 +1,104 @@
+{
+    "fr": {
+        "heroLine1": "Coaching",
+        "heroLine2": "Des Leaders",
+        "introParagraph": "Nos programmes dédiés au leaders accompagnent les entrepreneur·es, coach·es et professionnel·les en transition ou en croissance. Ils sont conçus pour soutenir un leadership aligné, humain et durable à travers des parcours individuels, de groupe et immersifs.",
+        "slides": [
+            {
+                "shapeTitle": "Programmes\nIndividuels",
+                "descriptions": [
+                    {
+                        "title": "Propulse",
+                        "text": "Coaching d'activation pour leaders en émergence. Pour passer à l'action avec clarté, structurer les premières bases de son projet."
+                    },
+                    {
+                        "title": "Croissance+",
+                        "text": "Coaching structurant pour entrepreneur·es en expansion. Pour consolider sa posture, clarifier sa vision et créer un impact stratégique durable."
+                    },
+                    {
+                        "title": "Focus stratégique",
+                        "text": "Pour mentors et fondateur·ices aguerri·es en phase de transmission, de transition ou de recentragee. Inclut le GLP (Global Leadership Profile)."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Programmes\nDe Groupe",
+                "descriptions": [
+                    {
+                        "title": "NEOSPHÈRE – Le réseau des entrepreneurs ouverts aux opportunités",
+                        "text": "Un programme collectif transformationnel pour les leaders en quête de sens. Entre introspection guidée, alignement entrepreneurial et activation collective, NEOSPHÈRE offre un espace porteur, stratégique et profondément humain."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Expériences\nImmersives",
+                "descriptions": [
+                    {
+                        "title": "Cercles Tangible",
+                        "text": "Abonnements mensuels donnant accès à des contenus exclusifs, du coaching de groupe et une communauté engagée. Trois formats : Cocréation, Ancrage et Expansion."
+                    },
+                    {
+                        "title": "Whiteboard™",
+                        "text": "Ateliers intensifs pour clarifier sa trajectoire entrepreneuriale, faciliter les décisions clés et raviver sa vision stratégique."
+                    },
+                    {
+                        "title": "Retraites Tangible",
+                        "text": "Immersions humaines pour leaders et régénératrices pour leaders en quête de recentrage, d'alignement et de ressourcement — en nature ou en ville."
+                    }
+                ]
+            }
+        ],
+        "contactFooterHeading": "Amorcez une transformation tangible."
+    },
+    "en": {
+        "heroLine1": "Leader",
+        "heroLine2": "Coaching",
+        "introParagraph": "Our programs dedicated to leaders support entrepreneurs, coaches, and professionals in transition or growth. They are designed to support aligned, human, and sustainable leadership through individual, group, and immersive paths.",
+        "slides": [
+            {
+                "shapeTitle": "Individual\nPrograms",
+                "descriptions": [
+                    {
+                        "title": "Propulse",
+                        "text": "Activation coaching for emerging leaders. To take action with clarity and structure the first foundations of your project."
+                    },
+                    {
+                        "title": "Growth+",
+                        "text": "Structuring coaching for entrepreneurs in expansion. To consolidate your posture, clarify your vision, and create a sustainable strategic impact."
+                    },
+                    {
+                        "title": "Strategic Focus",
+                        "text": "For seasoned mentors and founders in the phase of transmission, transition, or refocusing. Includes the GLP (Global Leadership Profile)."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Group\nPrograms",
+                "descriptions": [
+                    {
+                        "title": "NEOSPHÈRE – The network of entrepreneurs open to opportunities",
+                        "text": "A transformational collective program for leaders seeking meaning. Between guided introspection, entrepreneurial alignment, and collective activation, NEOSPHÈRE offers a supportive, strategic, and deeply human space."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Immersive\nExperiences",
+                "descriptions": [
+                    {
+                        "title": "Tangible Circles",
+                        "text": "Monthly subscriptions providing access to exclusive content, group coaching, and an engaged community. Three formats: Co-creation, Anchoring, and Expansion."
+                    },
+                    {
+                        "title": "Whiteboard™",
+                        "text": "Intensive workshops to clarify your entrepreneurial trajectory, facilitate key decisions, and revive your strategic vision."
+                    },
+                    {
+                        "title": "Tangible Retreats",
+                        "text": "Human immersions for leaders and regenerative spaces for leaders seeking refocusing, alignment, and resourcing — in nature or in the city."
+                    }
+                ]
+            }
+        ],
+        "contactFooterHeading": "Initiate a tangible transformation."
+    }
+}

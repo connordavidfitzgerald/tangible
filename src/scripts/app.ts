@@ -1,5 +1,7 @@
 import { Transitions } from '@scripts/classes/Transitions';
 import { Scroll } from '@scripts/classes/Scroll';
+
+import '@scripts/classes/CirclesAnimation';
 import '@scripts/classes/HandsAnimation';
 
 // Initialize the Transitions class

@@ -1,0 +1,122 @@
+{
+    "fr": {
+        "heroLine1": "Coaching",
+        "heroLine2": "D'Entreprises",
+        "introParagraph": "Nos programmes dédiés aux entreprises accompagnent les dirigeants, gestionnaires et comités exécutifs des moyennes et grandes organisations. Nous proposons des services adaptés en format individuel, de groupe et immersif pour favoriser une culture de leadership stratégique, humain et durable. Nos programmes allient outils psychométriques, coaching exécutif individualisés et ateliers collaboratifs pour activer des dynamiques collectives puissantes, nourries par l'intelligence du groupe.",
+        "introResult": "L'objectif : incarner un leadership à la fois stratégique, humain et pérenne avec, à la clé, plus de clarté, plus de cohésion et un impact durable.",
+        "slides": [
+            {
+                "shapeTitle": "Programmes\nIndividuels",
+                "descriptions": [
+                    {
+                        "title": "Propulse",
+                        "text": "Coaching ciblé pour les employé·es qui prennent de nouvelles responsabilités. Pour clarifier les priorités, renforcer la confiance et poser un plan d'action clair."
+                    },
+                    {
+                        "title": "Croissance+",
+                        "text": "Développement sur mesure pour gestionnaires et cadres. Pour structurer une posture de leadership durable et à aligner la vision stratégique avec les réalités du terrain."
+                    },
+                    {
+                        "title": "Focus stratégique",
+                        "text": "Parcours pour dirigeant·es ou cadres expérimentés, incluant une évaluation GLP (Global Leadership Profile). Pour prendre du recul, affiner la clarté décisionnelle et maximiser l'impact à long terme."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Programmes\nDe Groupe",
+                "descriptions": [
+                    {
+                        "title": "LÉA – Leadership évolutif authentique",
+                        "text": "Programme de transformation culturelle pour les comités exécutifs. Vise l'alignement stratégique, le renforcement des relations et l'émergence de dynamiques collectives solides."
+                    },
+                    {
+                        "title": "LÉON – Leadership évolutif et opportunités à naviguer",
+                        "text": "Parcours de développement pour les équipes de direction, axé sur la cohésion et le style relationnel, conçu pour créer des cadres collaboratifs permettant de naviguer dans la complexité humaine et de maximiser les opportunités de succès."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Expériences\nImmersives",
+                "descriptions": [
+                    {
+                        "title": "TRUST™",
+                        "text": "Atelier immersif pour (re)connecter à la confiance, individuelle et collective. Idéal pour les moments charnières d'équipe."
+                    },
+                    {
+                        "title": "Leadership Week",
+                        "text": "Semaine immersive pour directions élargies. Un temps fort pour aligner vision, posture et plan d'action dans un cadre stimulant."
+                    },
+                    {
+                        "title": "Whiteboard™",
+                        "text": "Atelier présentiel structuré pour clarifier un enjeu stratégique, prendre des décisions clés et faire émerger une vision commune."
+                    },
+                    {
+                        "title": "Retraite / Lac-à-l'épaule",
+                        "text": "Immersion stratégique sur mesure, en nature ou en ville, pour nourrir la cohésion, renforcer la vision partagée et accompagner les virages clés."
+                    }
+                ]
+            }
+        ],
+        "contactFooterHeading": "Amorcez une transformation tangible."
+    },
+    "en": {
+        "heroLine1": "Corporate",
+        "heroLine2": "Coaching",
+        "introParagraph": "Our corporate programs support executives, managers, and executive committees of medium and large organizations. We offer tailored services in individual, group, and immersive formats to foster a culture of strategic, human, and sustainable leadership. Our programs combine psychometric tools, individualized executive coaching, and collaborative workshops to activate powerful collective dynamics, fueled by group intelligence.",
+        "introResult": "The Objective: embody leadership that is strategic, human, and lasting with, ultimately, more clarity, more cohesion, and a sustainable impact.",
+        "slides": [
+            {
+                "shapeTitle": "Individual\nPrograms",
+                "descriptions": [
+                    {
+                        "title": "Propulse",
+                        "text": "Targeted coaching for employees taking on new responsibilities. To clarify priorities, build confidence, and set a clear action plan."
+                    },
+                    {
+                        "title": "Growth+",
+                        "text": "Tailored development for managers and executives. To structure a sustainable leadership posture and align strategic vision with on-the-ground realities."
+                    },
+                    {
+                        "title": "Strategic Focus",
+                        "text": "Path for experienced executives or managers, including a GLP (Global Leadership Profile) assessment. To step back, refine decision-making clarity, and maximize long-term impact."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Group\nPrograms",
+                "descriptions": [
+                    {
+                        "title": "LÉA – Authentic Evolutionary Leadership",
+                        "text": "Cultural transformation program for executive committees. Aims at strategic alignment, strengthening relationships, and the emergence of solid collective dynamics."
+                    },
+                    {
+                        "title": "LÉON – Evolutionary Leadership and Opportunities to Navigate",
+                        "text": "Development path for management teams, focused on cohesion and relational style, designed to create collaborative frameworks to navigate human complexity and maximize opportunities for success."
+                    }
+                ]
+            },
+            {
+                "shapeTitle": "Immersive\nExperiences",
+                "descriptions": [
+                    {
+                        "title": "TRUST™",
+                        "text": "Immersive workshop to (re)connect to trust, individually and collectively. Ideal for turning points in a team."
+                    },
+                    {
+                        "title": "Leadership Week",
+                        "text": "Immersive week for extended management. A highlight to align vision, posture, and action plan in a stimulating setting."
+                    },
+                    {
+                        "title": "Whiteboard™",
+                        "text": "Structured in-person workshop to clarify a strategic issue, make key decisions, and bring out a common vision."
+                    },
+                    {
+                        "title": "Retreat / Strategic Planning",
+                        "text": "Tailor-made strategic immersion, in nature or in the city, to nurture cohesion, strengthen shared vision, and support key shifts."
+                    }
+                ]
+            }
+        ],
+        "contactFooterHeading": "Initiate a tangible transformation."
+    }
+}

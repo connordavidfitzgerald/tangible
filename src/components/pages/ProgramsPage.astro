@@ -3,19 +3,24 @@ import Layout from '@layouts/Layout.astro';
 import Button from '@components/Button/Button.astro';
 import Image from '@components/Image/Image.astro';
 import { Picture } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
-import chalkboard from '@images/Home_about.jpg';
 import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
 import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
-import RevealImage from '@components/RevealHeader/RevealImage.astro';
-import RevealBody from '@components/RevealHeader/RevealBody.astro';
 import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
 
 import img6 from '@images/Tangible0797.jpg';
 import img7 from '@images/LEADER.jpg';
+
+import content from '../../content/programs.json';
+import { getLangFromUrl } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = lang === 'en' ? content.en : content.fr;
+
+const entreprisesFonts = ['formula', 'editorial'] as const;
+const leadersFonts = ['formula', 'editorial'] as const;
 ---
 
-<Layout title="Programmes">
+<Layout title="Services">
     <div
         class="relative grid grid-cols-8 gap-fluid-twenty bg-offwhite pt-fluid-eighty pr-fluid-forty pl-fluid-forty md:grid-cols-12"
     >
@@ -23,16 +28,13 @@ import img7 from '@images/LEADER.jpg';
             class="col-span-8 flex flex-col pt-30 pr-fluid-sixty pb-16 pl-fluid-sixty md:col-start-3 md:pt-fluid-eighty md:pb-fluid-eighty"
         >
             <h1 class="text-center text-list-lg leading-[120%] text-bronze">
-                Nos programmes pour des résultats tangibles
+                {t.pageTitle}
             </h1>
         </div>
     </div>
-    <!-- Sticky scroll section -->
-    <!-- Both cards are h-screen so the wrapper is naturally 200vh.
-         Card 1 pins (sticky) while card 2 scrolls in over it in normal flow. -->
+
     <programs-animation style="display: contents;">
         <div class="programs-scroll-wrapper relative bg-offwhite">
-            <!-- Card 1: pins to the top while card 2 scrolls past -->
             <div
                 class="programs-card programs-card-1 relative top-0 z-10 grid h-fit grid-cols-8 gap-fluid-twenty bg-perle pt-fluid-eighty pr-fluid-forty pb-fluid-eighty pl-fluid-forty md:sticky md:grid-cols-12"
             >
@@ -49,10 +51,10 @@ import img7 from '@images/LEADER.jpg';
                     <div class="col-span-8 pb-8 md:pb-0">
                         <RevealHeader
                             delay={0.25}
-                            lines={[
-                                { text: 'Coaching', font: 'formula' },
-                                { text: 'D\u2019Entreprises', font: 'editorial' }
-                            ]}
+                            lines={[t.entreprisesTitle1, t.entreprisesTitle2].map((text, i) => ({
+                                text,
+                                font: entreprisesFonts[i]
+                            }))}
                         />
                     </div>
 
@@ -63,32 +65,24 @@ import img7 from '@images/LEADER.jpg';
                         <p
                             class="pt-8 pb-fluid-forty text-body-caption leading-[120%] tracking-[3%] md:pt-0"
                         >
-                            Le leadership d'entreprise ne s'improvise pas. Il se cultive. Découvrez
-                            nos programmes conçus pour les dirigeant·es, gestionnaires et équipes
-                            internes de moyennes et grandes organisations. Nous offrons un
-                            accompagnement individuel et de groupe de haute qualité pour incarner un
-                            leadership à la fois humain, stratégique et pérenne. Nos feuilles de
-                            route sur mesure associent ateliers d'expert·es, outils psychométriques,
-                            coaching exécutif et ateliers collaboratifs pour générer des dynamiques
-                            puissantes fondées sur l'intelligence collective.
-                            <br />
-                            <br />
-                            <span class="font-bold text-bronze">Résultat</span> : une clarté renforcée,
-                            une cohésion amplifiée et un impact durable.
+                            {t.entreprisesBody}
+                            <br /><br />
+                            <span class="font-bold text-bronze"
+                                >{t.entreprisesResult.split(':')[0]}:</span
+                            >{t.entreprisesResult.split(':').slice(1).join(':')}
                         </p>
                         <div
                             class="flex w-full flex-row items-center justify-center pt-4 pb-fluid-160 md:pt-0 md:pb-0"
                         >
                             <Button
                                 class="text-body-sm tracking-[3%] uppercase"
-                                href="/programs/entreprises">En savoir plus</Button
+                                href="/services/entreprises">{t.entreprisesButton}</Button
                             >
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2: normal flow, scrolls in on top of the sticky card 1 -->
             <div
                 class="programs-card-2 relative z-20 grid h-fit grid-cols-8 gap-fluid-twenty bg-bronze pt-16 pr-fluid-forty pb-fluid-eighty pl-fluid-forty text-perle md:grid-cols-12 md:pt-fluid-eighty"
             >
@@ -98,10 +92,10 @@ import img7 from '@images/LEADER.jpg';
                     <div class="col-span-8 flex w-full flex-col pt-fluid-forty">
                         <RevealHeader
                             textColor={'#e1e3d0'}
-                            lines={[
-                                { text: 'Coaching', font: 'formula' },
-                                { text: 'de leaders', font: 'editorial' }
-                            ]}
+                            lines={[t.leadersTitle1, t.leadersTitle2].map((text, i) => ({
+                                text,
+                                font: leadersFonts[i]
+                            }))}
                         />
                     </div>
                     <div
@@ -117,24 +111,18 @@ import img7 from '@images/LEADER.jpg';
                         <p
                             class="pt-8 pb-fluid-forty text-body-caption leading-[120%] tracking-[3%] md:pt-0"
                         >
-                            Un leadership authentique commence par un alignement intérieur.
-                            Entrepreneurs, professionnel·les en mouvement, coachs certifiés — nos
-                            programmes vous accompagnent pour incarner un leadership aligné sur vos
-                            valeurs et votre mission, à la fois humain et performant. Coaching
-                            individuel, outils psychométriques, cercles de co-apprentissage entre
-                            leaders : une approche sur mesure dans un cadre stratégique, stimulant
-                            et bienveillant.
-                            <br />
-                            <br />
-                            <span class="font-bold">Notre ambition</span> : du sens, de l'impact, de
-                            la cohérence.
+                            {t.leadersBody}
+                            <br /><br />
+                            <span class="font-bold">{t.leadersAmbition.split(':')[0]}:</span>{
+                                t.leadersAmbition.split(':').slice(1).join(':')
+                            }
                         </p>
                         <div
                             class="flex w-full flex-row items-center justify-center pt-4 pb-fluid-160 md:pt-0 md:pb-0"
                         >
                             <Button
                                 class="text-body-sm tracking-[3%] uppercase"
-                                href="/programs/leaders">En savoir plus</Button
+                                href="/services/leaders">{t.leadersButton}</Button
                             >
                         </div>
                     </div>
@@ -149,6 +137,7 @@ import img7 from '@images/LEADER.jpg';
             </div>
         </div>
     </programs-animation>
+
     <div
         class="flex flex-col justify-center bg-offwhite pt-65 pr-fluid-forty pb-65 pl-fluid-forty text-bronze md:aspect-1512/902 md:pt-0 md:pb-0"
     >
@@ -157,12 +146,11 @@ import img7 from '@images/LEADER.jpg';
                 class="col-span-12 flex flex-col gap-fluid-forty border-t border-b border-bronze pt-fluid-forty pb-fluid-forty md:col-span-10 md:col-start-2"
             >
                 <SplitReveal class="text-list-lg leading-[120%]">
-                    « À travers chaque rencontre, un mouvement se crée : celui qui aligne l’humain,
-                    la mission et l’impact. »
+                    {t.quote}
                 </SplitReveal>
                 <div class="grid grid-cols-2 gap-0">
                     <p class="col-span-1 col-start-2 text-mob-body font-light md:text-test">
-                        — Ron Chérilus
+                        {t.quoteAuthor}
                     </p>
                 </div>
             </div>
@@ -185,16 +173,13 @@ import img7 from '@images/LEADER.jpg';
                     this.mm = gsap.matchMedia();
 
                     this.mm.add('(min-width: 700px)', () => {
-                        // card2 is in normal flow directly after card1 (both are h-screen).
-                        // As card2 scrolls in from the bottom, scale card1 down.
                         gsap.to(card1, {
                             scale: 0.8,
-
                             ease: 'none',
                             scrollTrigger: {
                                 trigger: card2,
-                                start: 'top 100%', // card2's top hits the bottom of the viewport
-                                end: 'top top', // card2's top reaches the top (fully overlapping)
+                                start: 'top 100%',
+                                end: 'top top',
                                 scrub: true
                             }
                         });
@@ -211,5 +196,5 @@ import img7 from '@images/LEADER.jpg';
             customElements.define('programs-animation', ProgramsAnimation);
         }
     </script>
-    <ContactFooter heading="Amorcez une transformation tangible." />
+    <ContactFooter heading={t.contactFooterHeading} />
 </Layout>

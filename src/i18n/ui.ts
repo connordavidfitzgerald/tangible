@@ -9,7 +9,7 @@ export const showDefaultLang = false;
 export const ui = {
     fr: {
         'nav.about': 'À Propos',
-        'nav.programs': 'Nos Programmes',
+        'nav.programs': 'Nos Services',
         'nav.members': 'Espace Membre',
         'nav.contact': 'Contact',
         'nav.iam': 'Centre I AM',
@@ -17,7 +17,7 @@ export const ui = {
     },
     en: {
         'nav.about': 'About',
-        'nav.programs': 'Our Programs',
+        'nav.programs': 'Our Services',
         'nav.members': 'Members Area',
         'nav.contact': 'Contact',
         'nav.iam': 'I AM Center',

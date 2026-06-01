@@ -1,0 +1,109 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import FadeUp from '@components/FadeUp/FadeUp.astro';
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import ContactFooter from '@components/ContactFooter/ContactFooter.astro';
+import ServiceSliderAlt from '@components/ServiceSlider/ServiceSliderAlt.astro';
+
+import about from '@images/centreiam2.png';
+import leaders from '@images/hands_tangible.jpg';
+import mobcentre from '@images/mob_centre.png';
+import mob from '@images/hands.jpg';
+
+import content from '../../content/centre-iam.json';
+import { getLangFromUrl } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = lang === 'en' ? content.en : content.fr;
+
+const heroFonts = ['formula', 'formula', 'editorial', 'editorial'] as const;
+
+// Shape classes are a design decision — map each slide to its visual style
+const shapeClasses = ['starburst', 'diamond', 'sparkle', 'circle', 'hexagon'] as const;
+
+const slides = t.slides.map((slide, i) => ({
+    shapeClass: shapeClasses[i] ?? 'circle',
+    shapeTitle: slide.title,
+    descriptions: [{ text: slide.description }]
+}));
+---
+
+<Layout title="I AM Center">
+    <div
+        class="flex aspect-393/852 max-h-dvh flex-col justify-end bg-offwhite pr-fluid-forty pl-fluid-forty md:aspect-1512/902 md:justify-center md:pb-0"
+    >
+        <div class="absolute right-0 left-0 z-0 aspect-393/852 md:aspect-1512/902">
+            <Picture
+                alt="A clipboard and paper"
+                src={leaders}
+                layout="full-width"
+                class="hidden h-full w-full object-cover md:flex"
+            />
+            <Picture
+                alt="A clipboard and paper"
+                src={mob}
+                layout="full-width"
+                class="flex h-full w-full object-cover md:hidden"
+            />
+        </div>
+        <div class="w-full pb-fluid-160 md:pb-0">
+            <RevealHeader
+                delay={0.25}
+                textColor="#FFFFFF"
+                lines={[t.heroLine1, t.heroLine2, t.heroLine3, t.heroLine4].map((text, i) => ({
+                    text,
+                    font: heroFonts[i]
+                }))}
+            />
+        </div>
+    </div>
+
+    <div
+        class="grid aspect-1512/830 h-fit w-full grid-cols-8 items-center bg-offwhite px-fluid-forty pt-fluid-eighty md:grid-cols-12 md:gap-fluid-twenty"
+    >
+        <div
+            class="font-radio col-span-8 flex w-full flex-row items-center justify-center border-b border-b-perle pb-3 text-[0.875rem] tracking-[3%] uppercase md:hidden md:text-[1rem]"
+        >
+            {t.aboutSectionLabel}
+        </div>
+        <div
+            class="col-span-6 col-start-2 hidden h-full w-full justify-center md:col-span-4 md:col-start-1 md:flex md:flex-col md:pr-fluid-twenty"
+        >
+            <FadeUp>
+                <Picture src={about} alt="Ron Cherilus" class="aspect-5/7 w-full object-cover" />
+            </FadeUp>
+        </div>
+        <div
+            class="col-span-6 col-start-2 flex w-full pt-16 pb-16 md:col-span-4 md:col-start-1 md:hidden md:pl-0"
+        >
+            <FadeUp>
+                <Picture src={mobcentre} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+            </FadeUp>
+        </div>
+        <div
+            class="col-span-8 flex h-full w-full flex-col items-center justify-start gap-fluid-eighty border-b border-b-perle"
+        >
+            <div
+                class="font-radio hidden w-full flex-row items-center justify-center border-b border-b-perle pb-3 text-[1rem] tracking-[3%] uppercase md:flex"
+            >
+                {t.aboutSectionLabel}
+            </div>
+            <p
+                class="pb-16 text-mob-body leading-[120%] font-light tracking-[3%] whitespace-pre-line md:pr-fluid-sixty md:pl-fluid-sixty md:text-body-md"
+            >
+                {t.aboutBody}
+            </p>
+        </div>
+        <div
+            class="font-radio col-span-12 flex flex-row items-center justify-center border-b border-b-perle pt-16 pb-3 text-[0.875rem] tracking-[3%] uppercase md:pt-fluid-eighty md:text-[1rem]"
+        >
+            {t.servicesSectionLabel}
+        </div>
+    </div>
+
+    <div class="flex h-4 bg-offwhite"></div>
+    <ServiceSliderAlt {slides} />
+
+    <ContactFooter heading={t.contactFooterHeading} />
+</Layout>

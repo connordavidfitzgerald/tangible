@@ -1,0 +1,293 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import RevealHeader from '@components/RevealHeader/RevealHeader.astro';
+import SplitReveal2 from '@components/SplitReveal/SplitReveal2.astro';
+import SplitReveal from '@components/SplitReveal/SplitReveal.astro';
+import ronCherilus from '../../assets/images/roncherilus.jpg';
+import ContactFooter from '../ContactFooter/ContactFooter.astro';
+import handsSvgRaw from '../../assets/svgs/HandsNew.svg?raw';
+import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
+import plantAnimationUrl from '@images/faces.json?url';
+
+import content from '../../content/about.json';
+import { getLangFromUrl } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = lang === 'en' ? content.en : content.fr;
+
+const heroFonts = ['formula', 'formula', 'editorial', 'editorial'] as const;
+
+// Strip the outer <svg> wrapper so the grouped contents can be injected into
+// the styled <svg> below (which controls sizing, blend mode and viewBox).
+const handsInnerPaths = handsSvgRaw
+    .replace(/<svg[^>]*>/, '')
+    .replace(/<\/svg>/, '')
+    .trim();
+---
+
+<Layout title="À Propos">
+    <div
+        class="hero-section flex aspect-393/852 h-auto max-h-dvh w-full flex-col justify-start gap-fluid-eighty overflow-hidden bg-bronze pt-[80px] pr-fluid-forty pb-fluid-sixty pl-fluid-forty sm:relative sm:aspect-1512/902 sm:min-h-[902px] sm:pb-fluid-270 md:max-h-[1440px]"
+    >
+        <div
+            class="font-radio flex flex-row items-center justify-center border-b border-b-perle pt-fluid-forty pb-3 text-[0.875rem] text-perle uppercase lg:text-[1rem]"
+        >
+            {t.heroSectionLabel}
+        </div>
+
+        <div
+            class="flex w-full grow flex-col justify-end pt-fluid-forty sm:h-fit sm:flex-col sm:justify-center"
+        >
+            <div
+                class="z-0 -mt-20 flex w-full grow sm:absolute sm:right-0 sm:mt-0 sm:w-[50%] sm:flex-col sm:justify-center"
+            >
+                <hands-animation class="block h-full w-full">
+                    <svg
+                        class="h-full w-full overflow-visible mix-blend-multiply"
+                        viewBox="0 0 671 423"
+                        fill="black"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <Fragment set:html={handsInnerPaths} />
+                    </svg>
+                </hands-animation>
+            </div>
+            <div class="z-10 pb-fluid-twenty md:pb-0"></div>
+            <RevealHeader
+                delay={0.25}
+                textColor={'#E1E3D0'}
+                lines={[t.heroLine1, t.heroLine2, t.heroLine3, t.heroLine4].map((text, i) => ({
+                    text,
+                    font: heroFonts[i]
+                }))}
+            />
+        </div>
+    </div>
+
+    <div
+        class="grid h-fit grid-cols-8 gap-mob-16 bg-perle pt-mob-128 pr-mob-16 pb-mob-128 pl-mob-16 sm:min-h-[900px] sm:grid-cols-12 sm:gap-fluid-twenty sm:pt-0 sm:pr-fluid-forty sm:pb-0 sm:pl-fluid-forty xl:aspect-1512/913"
+    >
+        <div
+            class="col-span-8 flex h-full flex-col justify-center gap-fluid-eighty sm:col-span-8 sm:col-start-3"
+        >
+            <p
+                class="border-b border-b-white pb-mob-32 text-mob-body leading-[120%] font-light tracking-[3%] sm:border-none sm:pb-0 sm:text-body-md"
+            >
+                <span class="font-bold text-bronze">Tangible</span>
+                {' '}{t.introParagraph1}
+            </p>
+            <p
+                class="pt-mob-16 text-mob-body leading-[120%] font-light tracking-[3%] sm:pt-0 sm:text-body-md"
+            >
+                {t.introParagraph2}
+            </p>
+        </div>
+    </div>
+
+    <div
+        class="gap-y-mob-0 grid grid-cols-8 gap-mob-16 bg-offwhite pt-mob-64 pr-mob-16 pl-mob-16 sm:grid-cols-12 sm:gap-x-fluid-twenty sm:gap-y-fluid-twenty sm:pt-fluid-forty sm:pr-fluid-forty sm:pl-fluid-forty"
+    >
+        <div class="col-span-8 sm:col-span-12">
+            <div
+                class="font-radio flex flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-[0.875rem] tracking-[3%] uppercase sm:pb-fluid-twenty sm:text-[1rem]"
+            >
+                {t.approachSectionLabel}
+            </div>
+        </div>
+        <circles-animation class="col-span-6 col-start-2 w-full sm:col-start-4">
+            <div class="circles-wrapper">
+                <div class="circle c1">
+                    <div class="yellow y1"></div>
+                    <SplitReveal2 class="text-circles-text leading-[120%] text-black">
+                        <Fragment set:html={t.circleLabel1.replace('\n', '<br/>')} />
+                    </SplitReveal2>
+                </div>
+                <div class="circle c2">
+                    <SplitReveal2 class="text-circles-text leading-[120%] text-black">
+                        <Fragment set:html={t.circleLabel2.replace('\n', '<br/>')} />
+                    </SplitReveal2>
+                </div>
+                <div class="circle c3">
+                    <div class="yellow y3"></div>
+                    <SplitReveal2 class="text-circles-text leading-[120%] text-black">
+                        <Fragment set:html={t.circleLabel3.replace('\n', '<br/>')} />
+                    </SplitReveal2>
+                </div>
+            </div>
+        </circles-animation>
+    </div>
+
+    <div
+        class="aspect 393/852 relative flex h-auto w-full flex-col justify-start gap-0 bg-bronze pt-mob-32 pr-mob-16 pb-mob-128 pl-mob-16 text-offwhite sm:aspect-1512/913 sm:justify-center sm:gap-fluid-twenty sm:pt-fluid-forty sm:pr-fluid-forty sm:pb-fluid-eighty sm:pl-fluid-forty"
+    >
+        <div
+            class="font-radio col-span-12 flex grow flex-row items-center justify-center border-b border-b-perle pb-mob-16 text-[0.875rem] tracking-[3%] uppercase sm:absolute sm:top-10 sm:right-fluid-forty sm:left-fluid-forty sm:pb-fluid-twenty lg:text-[1rem]"
+        >
+            {t.visionSectionLabel}
+        </div>
+        <div class="relative grid h-auto grid-cols-12 gap-fluid-twenty pt-mob-64 sm:pt-0">
+            <div
+                class="col-span-12 h-fit pt-mob-32 text-black sm:col-span-7 sm:pt-0 sm:pr-fluid-sixty sm:pl-fluid-forty"
+            >
+                <div class="h-auto w-full mix-blend-multiply">
+                    <LottieAnimation src={plantAnimationUrl} autoplay={true} loop={true} />
+                </div>
+            </div>
+            <SplitReveal
+                class="font-radio col-span-12 flex w-full flex-col items-start justify-center py-mob-64 text-mob-body leading-[120%] font-light tracking-[3%] sm:col-span-4 sm:py-0 sm:text-test"
+            >
+                <span class="text-left">{t.visionQuote}</span>
+            </SplitReveal>
+        </div>
+    </div>
+
+    <div
+        class="relative grid h-fit grid-cols-8 gap-y-mob-64 bg-perle pt-mob-32 pr-mob-16 pb-fluid-270 pl-mob-16 sm:grid-cols-12 sm:gap-y-fluid-270 sm:pt-fluid-forty sm:pr-fluid-forty sm:pl-fluid-forty"
+    >
+        <div
+            class="font-radio relative col-span-8 flex grow flex-row items-center justify-center border-b border-b-offwhite pb-mob-16 text-[0.875rem] tracking-[3%] uppercase sm:col-span-12 sm:pb-fluid-twenty lg:text-[1rem]"
+        >
+            {t.promiseSectionLabel}
+        </div>
+        <div class="relative col-span-8 flex flex-col items-center justify-center sm:col-start-3">
+            <div class="relative grid w-full grid-cols-8">
+                <p
+                    class="col-span-6 col-start-2 w-[60%] pb-fluid-eighty text-header-two leading-[120%] font-normal tracking-[1%] xs:w-full"
+                >
+                    {t.promiseIntro}
+                </p>
+                {
+                    t.promiseItems.map((item, i) => (
+                        <div class="col-span-8 grid grid-cols-8 gap-fluid-twenty border-t border-offwhite py-[2rem] sm:py-fluid-twenty">
+                            <div class="col-span-1 pt-1 font-formula text-list-num text-bronze sm:pt-0">
+                                <h4>{i + 1}</h4>
+                            </div>
+                            <SplitReveal class="col-span-7 pt-1 text-list-lg leading-[120%]">
+                                {item}
+                            </SplitReveal>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="grid grid-cols-8 gap-fluid-twenty bg-offwhite pt-16 pr-fluid-forty pb-32 pl-fluid-forty sm:grid-cols-12 sm:pt-44 sm:pb-40"
+    >
+        <div class="col-span-7 col-start-2 flex flex-col sm:hidden">
+            <h1 class="font-radio pb-5 text-list-lg leading-[120%] sm:pb-fluid-twenty">
+                {t.ronName}
+            </h1>
+            <h2
+                class="font-radio border-t border-b border-bronze pt-8 pb-[20px] text-header-two leading-[120%] sm:pt-fluid-twenty sm:pb-fluid-twenty"
+            >
+                <Fragment set:html={t.ronTitle.replace('\n', '<br/>')} />
+            </h2>
+        </div>
+
+        <div class="col-span-6 col-start-2 pt-16 sm:col-span-5 sm:col-start-0 sm:pt-0">
+            <Picture src={ronCherilus} alt="Ron Cherilus" class="h-auto w-full object-cover" />
+        </div>
+
+        <div
+            class="col-span-6 col-start-2 grid grid-cols-6 gap-fluid-twenty border-b border-bronze pt-16 pb-16 sm:hidden sm:pt-0 sm:pb-0"
+        >
+            <p
+                class="col-span-6 pt-fluid-sixty pb-fluid-sixty text-body-caption leading-[120%] tracking-[3%]"
+            >
+                <Fragment
+                    set:html={t.ronBio
+                        .split('\n\n')
+                        .map((p) => `<span>${p}</span>`)
+                        .join('<br/><br/>')}
+                />
+            </p>
+        </div>
+
+        <div class="col-span-6 col-start-7 hidden flex-col sm:flex">
+            <h1 class="font-radio pb-fluid-twenty text-circles-text leading-[120%]">
+                {t.ronName}
+            </h1>
+            <h2
+                class="font-radio border-t border-b border-bronze pt-fluid-twenty pb-fluid-twenty text-header-two leading-[120%]"
+            >
+                <Fragment set:html={t.ronTitle.replace('\n', '<br/>')} />
+            </h2>
+            <div class="grid grid-cols-6 gap-fluid-twenty border-b border-bronze">
+                <p
+                    class="col-span-6 pt-fluid-sixty pb-fluid-sixty text-body-caption leading-[120%] tracking-[3%] xl:col-span-4"
+                >
+                    <Fragment
+                        set:html={t.ronBio
+                            .split('\n\n')
+                            .map((p) => `<span>${p}</span>`)
+                            .join('<br/><br/>')}
+                    />
+                </p>
+            </div>
+        </div>
+    </div>
+    <ContactFooter heading={t.contactFooterHeading} />
+</Layout>
+
+<style>
+    .circles-wrapper {
+        --gap-pct: 20%;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 3.4;
+    }
+
+    .circle {
+        position: absolute;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transform: translateZ(0);
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+
+    .c1 {
+        top: 0;
+        background: #997e4e;
+        color: white;
+        z-index: 2;
+    }
+    .c2 {
+        top: 29.41%;
+        background: #e1e3d0;
+        color: #333;
+        z-index: 1;
+    }
+    .c3 {
+        top: 58.82%;
+        background: #a29a93;
+        color: white;
+        z-index: 2;
+    }
+
+    .yellow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background: #f4e727;
+        pointer-events: none;
+    }
+</style>
+
+<!--
+    The <circles-animation> custom element used to be defined by an inline <script>
+    here. Because that script sat after </Layout> (outside the layout slot), Astro
+    never re-ran it on Swup navigation, so the element stayed un-upgraded and the
+    animation didn't play when arriving via the navbar. The element is now registered
+    globally in `@scripts/classes/CirclesAnimation` (imported by app.ts), so its
+    definition persists across page transitions.
+-->

@@ -6,6 +6,8 @@ import Swup from 'swup';
 import { Scroll } from '@scripts/classes/Scroll';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import type { CirclesAnimation } from '@scripts/classes/CirclesAnimation';
 import type { HandsAnimation } from '@scripts/classes/HandsAnimation';
 
 export class Transitions {
@@ -276,9 +278,17 @@ export class Transitions {
         document.documentElement.classList.add(Transitions.READY_CLASS);
         ScrollTrigger.refresh();
 
-        // Re-initialise hands animations after the transition is fully settled.
+        // Same safety net for the circles animation. Its ScrollTriggers are set up
+        // asynchronously (fonts.ready + rAF), so they can be created before the final
+        // refresh or while #swup is still off-screen, leaving them with stale start
+        // positions that never fire. Rebuild them now that the layout has settled.
+        document
+            .querySelectorAll<CirclesAnimation>('circles-animation')
+            .forEach((el) => el.initCircles());
+
+        // Re-initialise the hands ripple animation after the transition settles.
         // The custom element's connectedCallback may have fired while #swup was
-        // still off-screen (y: 100vh), so we re-trigger here as a safety net.
+        // still off-screen (y: 100vh), so re-trigger here as a safety net.
         document
             .querySelectorAll<HandsAnimation>('hands-animation')
             .forEach((el) => el.initAnimation());

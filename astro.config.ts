@@ -5,9 +5,13 @@ import postcssHelpersFunctions from '@locomotivemtl/postcss-helpers-functions';
 import postcssTailwindShortcuts from '@locomotivemtl/postcss-tailwind-shortcuts';
 import tailwindcss from '@tailwindcss/postcss';
 import lottie from 'astro-integration-lottie';
+import cloudflare from '@astrojs/cloudflare';
+import keystatic from '@keystatic/astro';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+    adapter: cloudflare(),
     site: 'https://connordavidfitzgerald.github.io/tangible/',
     i18n: {
         defaultLocale: 'fr',
@@ -36,7 +40,9 @@ export default defineConfig({
         icon({
             iconDir: './src/assets/svgs'
         }),
-        lottie()
+        lottie(),
+        keystatic(),
+        react()
     ],
     devToolbar: {
         enabled: false
