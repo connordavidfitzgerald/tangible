@@ -51,10 +51,17 @@ const slides = t.slides.map((slide, i) => ({
             <RevealHeader
                 delay={0.25}
                 textColor="#FFFFFF"
-                lines={[t.heroLine1, t.heroLine2, t.heroLine3, t.heroLine4].map((text, i) => ({
-                    text,
-                    font: heroFonts[i]
-                }))}
+                lines={[
+                    t.heroLine1,
+                    t.heroLine2,
+                    t.heroLine3,
+                    (t as { heroLine4?: string }).heroLine4
+                ]
+                    .filter((text): text is string => Boolean(text))
+                    .map((text, i) => ({
+                        text,
+                        font: heroFonts[i]
+                    }))}
             />
         </div>
     </div>

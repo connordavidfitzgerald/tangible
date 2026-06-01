@@ -57,10 +57,17 @@ const handsInnerPaths = handsSvgRaw
             <RevealHeader
                 delay={0.25}
                 textColor={'#E1E3D0'}
-                lines={[t.heroLine1, t.heroLine2, t.heroLine3, t.heroLine4].map((text, i) => ({
-                    text,
-                    font: heroFonts[i]
-                }))}
+                lines={[
+                    t.heroLine1,
+                    t.heroLine2,
+                    t.heroLine3,
+                    (t as { heroLine4?: string }).heroLine4
+                ]
+                    .filter((text): text is string => Boolean(text))
+                    .map((text, i) => ({
+                        text,
+                        font: heroFonts[i]
+                    }))}
             />
         </div>
     </div>
